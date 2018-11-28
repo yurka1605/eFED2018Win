@@ -1,0 +1,637 @@
+{
+	"info": {
+		"_postman_id": "f7e6db9b-8c6b-4963-9987-dc6dfe95c9d0",
+		"name": "http",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Paris",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Paris,FR&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,FR"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				},
+				"description": "Paris wether 5 day"
+			},
+			"response": []
+		},
+		{
+			"name": "Washington",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Washington,US&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,US"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				},
+				"description": "Wether 5 day for Washington"
+			},
+			"response": []
+		},
+		{
+			"name": "izhevsk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=izhevsk,RU&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "izhevsk,RU"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				},
+				"description": "wether on 5 day"
+			},
+			"response": []
+		},
+		{
+			"name": "Paris Current weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Paris,FR&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,FR"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				},
+				"description": "Current wether"
+			},
+			"response": []
+		},
+		{
+			"name": "Washington current weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Washington,US&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,US"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Izhevsk current weather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Izhevsk,RU&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Izhevsk,RU"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Washington air pollution",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/47.500118,-120.501472/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"47.500118,-120.501472",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Izhevsk air pollution",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/56.87,53.21/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"56.87,53.21",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paris air pollution",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/48.86,2.35/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"48.86,2.35",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paris",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Paris,FR&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,FR"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Washington",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Washington,US&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,US"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Izhevsk",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=izhevsk,RU&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "izhevsk,RU"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paris Current weather",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Paris,FR&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,FR"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Washington current weather",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Washington,US&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,US"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Izhevsk current weather",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Izhevsk,RU&APPID=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Izhevsk,RU"
+						},
+						{
+							"key": "APPID",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Washington air pollution",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/47.500118,-120.501472/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"47.500118,-120.501472",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Izhevsk air pollution",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/56.87,53.21/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"56.87,53.21",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Paris air pollution",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/o3/48.86,2.35/2018-11-26Z.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"o3",
+						"48.86,2.35",
+						"2018-11-26Z.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
