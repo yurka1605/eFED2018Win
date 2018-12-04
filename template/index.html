@@ -1,16 +1,137 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
     <meta charset="UTF-8">
-    <title>Five-day weather forecast</title>
-    <script type="text/javascript" src="mocks/FullWeatherDetailsMock.js"></script>
+    <meta name="description" content="Краткосрочные и долгосрочные прогнозы погоды для всех стран и городов. Сведения об осадках, силе ветра, относительной влажности.">
+    <meta name="yandex" content="index, nofollow">
+    <meta name="keywords" content="Погода.Погода на сегодня.Прогноз погоды">
+    <meta name = "author" content = "Литвинов Юрий">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сайт погоды</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- <script type="text/javascript" src="mocks/FullWeatherDetailsMock.js"></script>
     <script type="text/javascript" src="mocks/HistoricalReviewMock.js"></script>
-    <script type="text/javascript" src="mocks/WeekForecastMock.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="mocks/WeekForecastMock.js"></script> 
+    <script type="text/javascript" src="js/index.js"></script>-->
   </head>
   <body>
-    <h1>Пятидневный прогноз погоды</h1>
     <div id="mainInfo">
+      <div id="header">
+        <div id="topHeader">
+          <button id="today" class="mainTab">Сегодня</button>
+          <button id="fiveDay" class="mainTab">5 дней</button>
+          <button id="historyWeather" class="mainTab">История погоды</button>
+        </div>
+        <div id="bottomHeader">
+          <span>Загрязнение воздуха: <span id="polutionInfo">8.2312332413431413</span></span>
+          <img src="img/find.png" alt="Поиск" title="Поиск">
+          <input title="Поиск" role="search" type="search" placeholder="Поиск">
+        </div>
+      </div>
+      <div id="main">
+        <div id="mainDetails">
+          <div id="detailsPlace">
+            <span><span id="cityInfo">Ижевск</span>,<span id="countryInfo">Россия</span></span><br>
+            <span id="dayWeekInfo">среда</span><br>
+            <span id="weatherInfo">солнечно</span><br>
+            <img src="img/Today/Sunny-Weather.png" alt="Sunny" title="Солнечно">
+            <span><span id="temperatureInfo">22</span>&degC</span>
+          </div>
+          <div id="details">
+            <span>Вероятность осадков: <span id="probabilityPracipationInfo">20%</span></span><br>  
+            <span>Влажность:<span id="wetnessInfo">45%</span></span><br>
+            <span>Ветер:<span id="windSpeedinfo">11 км/ч</span></span><br>
+            <button id="temp" class="mainTab">Температура</button>
+            <button id="fiveDay" class="mainTab">Вероятность осадков</button>
+            <button id="historyWeather" class="mainTab">Ветер</button>
+          </div>
+        </div>
+        <ul id="wind">
+            <li class="wind">
+              <span class="speedWind">7 m/c</span>
+              <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">17:00</span>
+              <div class="dayWeek">
+                <div>ср</div>
+                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">5 m/c</span>
+              <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">20:00</span>
+              <div class="dayWeek">
+                <div>чт</div>
+                <img src="img/weather/SunRainy.jpg" alt="Солнечно кратковременные дожди" title="Солнечно кратковременные дожди">
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">5 m/c</span>
+              <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">23:00</span>
+              <div class="dayWeek">
+                <div>пт</div>
+                <img src="img/weather/SunCloudy.jpg" alt="Облачно" title="Облачно" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">7 m/c</span>
+              <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">2:00</span>
+              <div class="dayWeek">
+                <div>сб</div>
+                <img src="img/weather/ThunderstormRainy.jpg" alt="Гроза с дождем" title="Гроза с дождем" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">6 m/c</span>
+              <img src="img/Today/3.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">5:00</span>
+              <div class="dayWeek">
+                <div>вс</div>
+                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
+                <div><span>22&deg</span><span>1&deg&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">6 m/c</span>
+              <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">8:00</span>
+              <div class="dayWeek">
+                <div>пн</div>
+                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">5 m/c</span>
+              <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">11:00</span>
+              <div class="dayWeek">
+                <div>вт</div>
+                <img src="img/weather/Cloudy.jpg" alt="Облачно" title="Облачно" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+            <li class="wind">
+              <span class="speedWind">7 m/c</span>
+              <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
+              <span class="timeWeather">14:00</span>
+              <div class="dayWeek">
+                <div>ср</div>
+                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
+                <div><span>22&deg</span><span>13&deg</span></div>
+              </div>
+            </li>
+        </ul>
+      </div>
+      <div id="footer">
+        2018 &copy Copyright
+      </div>
+    </div>
   </body>
-  
 </html>
