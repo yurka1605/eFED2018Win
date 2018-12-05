@@ -2,7 +2,7 @@
     margin:0;
     padding:0;
 }
-#detailsPlace,#details,.wind{
+#detailsPlace,#details,.days{
     display:inline-block;
 }
 .timeWeather,.speedWind{
@@ -13,4 +13,7 @@
 }
 #detailsPlace>img{
     height:100px;
+}
+.wind{
+    display:none;
 }
