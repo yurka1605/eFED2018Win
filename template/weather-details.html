@@ -7,149 +7,153 @@
     <meta name="keywords" content="Погода.Погода на сегодня.Прогноз погоды">
     <meta name = "author" content = "Литвинов Юрий">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Сайт погоды</title>
+    <title>Сайт погоды. Погода на сегодня</title>
     <link rel="stylesheet" href="styles/main.css">
+    <style>
+      @import url('styles/today.css');
+    </style>
   </head>
   <body>
-    <div id="mainToday">
-      <div id="header">
-        <div id="topHeader">
-          <button id="today" class="mainTab">Сегодня</button>
+    <section id="mainToday">
+      <header id="header">
+        <nav id="topHeader">
+          <button id="today" class="mainTab currentPage">Сегодня</button>
           <button id="fiveDay" class="mainTab">5 дней</button>
           <button id="historyWeather" class="mainTab">История погоды</button>
-        </div>
-        <div id="bottomHeader">
-          <span>Загрязнение воздуха: <span id="polutionInfo">8.2312332413431413</span></span>
-          <img src="img/find.png" alt="Поиск" title="Поиск">
-          <input title="Поиск" role="search" type="search" placeholder="Поиск">
-        </div>
-      </div>
-      <div id="main">
-        <div id="mainDetails">
-          <div id="detailsPlace">
-            <span><span id="cityInfo">Ижевск</span>,<span id="countryInfo">Россия</span></span><br>
-            <span id="dayWeekInfo">среда</span><br>
-            <span id="weatherInfo">солнечно</span><br>
-            <img src="img/Today/Sunny-Weather.png" alt="Sunny" title="Солнечно">
-            <span><span id="temperatureInfo">22</span>&degC</span>
-          </div>
-          <div id="details">
-            <span>Вероятность осадков: <span id="probabilityPracipationInfo">20%</span></span><br>  
-            <span>Влажность:<span id="wetnessInfo">45%</span></span><br>
-            <span>Ветер:<span id="windSpeedinfo">11 км/ч</span></span><br>
-            <button id="temp" class="mainTab">Температура</button>
-            <button id="fiveDay" class="mainTab">Вероятность осадков</button>
-            <button id="historyWeather" class="mainTab">Ветер</button>
-          </div>
-        </div>
-        <div id="graf">
-          <br>
+        </nav>
+        <section id="bottomHeader">
+          <span>Загрязнение воздуха: <span id="polutionInfo">8.2312332413431413e-8</span></span>
+          <form>
+            <button type="submit"><img id="find" src="img/find.png" alt="Поиск" title="Поиск"></button>
+            <input title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
+          </form>
+        </section>
+      </header>
+      <main id="main">
+        <section id="mainDetails">
+          <span id="detailsPlace">
+            <p><span id="cityInfo">Ижевск</span>,<span id="countryInfo">Россия</span></p>
+            <p id="dayWeekInfo">среда</p>
+            <p id="weatherInfo">солнечно</p>
+            <p><img src="img/Today/Sunny-Weather.png" alt="Sunny" title="Солнечно">
+            <p id="temperature"><span id="temperatureInfo">22</span>&degC</p></p>
+            </span>
+          <span id="details">
+            <p>Вероятность осадков: <span id="probabilityPracipationInfo">20%</span></p>  
+            <p>Влажность:<span id="wetnessInfo">45%</span></p>
+            <p>Ветер:<span id="windSpeedinfo">11 км/ч</span></p>
+            <button id="temperatureInformarion" class="detailsTab">Температура</button>
+            <button id="probability" class="detailsTab">Вероятность осадков</button>
+            <button id="windInfo" class="detailsTab">Ветер</button>
+          </span>
+        </section>
+        <section id="graf">
+
           Графики
-          <br>
-          <br>
-        </div>
+
+        </section>
         <ul>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">7 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">17:00</span>
-              <div class="dayWeek">
-                <div>ср</div>
+              <section class="dayWeek">
+                <p>ср</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">5 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">20:00</span>
-              <div class="dayWeek">
-                <div>чт</div>
+              <section class="dayWeek">
+                <p>чт</p>
                 <img src="img/weather/SunRainy.jpg" alt="Солнечно кратковременные дожди" title="Солнечно кратковременные дожди">
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">5 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">23:00</span>
-              <div class="dayWeek">
-                <div>пт</div>
+              <section class="dayWeek">
+                <p>пт</p>
                 <img src="img/weather/SunCloudy.jpg" alt="Облачно" title="Облачно" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">7 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">2:00</span>
-              <div class="dayWeek">
-                <div>сб</div>
+              <section class="dayWeek">
+                <p>сб</p>
                 <img src="img/weather/ThunderstormRainy.jpg" alt="Гроза с дождем" title="Гроза с дождем" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">6 m/c</span>
-                <img src="img/Today/3.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/3.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">5:00</span>
-              <div class="dayWeek">
-                <div>вс</div>
+              <section class="dayWeek">
+                <p>вс</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <div><span>22&deg</span><span>1&deg&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">6 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">8:00</span>
-              <div class="dayWeek">
-                <div>пн</div>
+              <section class="dayWeek">
+                <p>пн</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">5 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">11:00</span>
-              <div class="dayWeek">
-                <div>вт</div>
+              <section class="dayWeek">
+                <p>вт</p>
                 <img src="img/weather/Cloudy.jpg" alt="Облачно" title="Облачно" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
             <li class="days">
-              <div class="wind">
+              <section class="wind">
                 <span class="speedWind">7 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направдение ветра">
-              </div>
+                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+              </section>
               <span class="timeWeather">14:00</span>
-              <div class="dayWeek">
-                <div>ср</div>
+              <section class="dayWeek">
+                <p>ср</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <div><span>22&deg</span><span>13&deg</span></div>
-              </div>
+                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
+              </section>
             </li>
         </ul>
-      </div>
-      <div id="footer">
+      </main>
+      <footer id="footer">
         2018 &copy Copyright
-      </div>
-    </div>
+      </footer>
+    </section>
   </body>
 </html>

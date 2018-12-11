@@ -1,0 +1,64 @@
+/* Страница истории */
+
+/* Нижняя часть шапки */
+
+section#bottomHeader span#placeTop{
+    display: inline-block;
+    font-size: 16px;
+    color: #0f0f0f;
+    margin-top: 9px;
+    margin-left: 40px;
+}
+
+/* Основное содеражание страницы */
+
+main#main{
+    padding: 70px 0 143px 0;
+    height: auto;
+    background-color: #ffffff;
+    border-right: 2px solid #bcb5b9;
+    border-left: 2px solid #bcb5b9;
+    border-bottom: 1px solid #979797;
+}
+ul#tableHistory{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+ul#tableHistory > li{
+    list-style-type: none;
+    display: inline-block;
+    width: 80px;
+    background: #0f0f0f;
+    height: 250px;
+    border: 0;
+    margin-right: -5.5px;
+    padding: 0;
+}
+ul#tableHistory > li > span{
+    font-size: 14px;
+    display: inline-block;
+    border: 0;
+    width: 80px;
+    height: 14px;
+    text-align: center;
+    padding: 18px 0px;
+    vertical-align: middle;
+}
+ul#tableHistory > li > span.main{
+    height: 32px;
+    padding: 9px 0px;
+}
+ul#tableHistory > li:nth-child(2n+1) >span:nth-child(2n){
+    background-color: #ffffff;
+}
+ul#tableHistory > li:nth-child(2n+1) >span:nth-child(2n+1){
+    background-color: #c4c4c4;
+}
+ul#tableHistory > li:nth-child(2n) >span:nth-child(2n+1){
+    background-color: #ffffff;
+}
+ul#tableHistory > li:nth-child(2n) >span:nth-child(2n){
+    background-color: #c4c4c4;
+}

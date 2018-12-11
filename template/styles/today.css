@@ -1,0 +1,107 @@
+/* Основная часть */
+main#main{
+    border-right: 2px solid #bcb5b9;
+    border-left: 2px solid #bcb5b9;
+    border-bottom: 1px solid #979797;
+    height: auto;
+    padding: 20px;
+    background-color: #ffffff;
+}
+section#mainDetails{
+    height: 220px;
+    padding: 20px;
+}
+span#detailsPlace{
+    float: left;
+    font-size: 28px;
+    line-height: 1.3;
+    padding-left: 10px;
+    display: block;
+}
+p#temperature{
+    float: right;
+    margin-top: 25px;
+    font-size: 35px;
+}
+span#detailsPlace>p>img{
+    height:100px;
+    float: left;
+}
+span#details{
+    float: right;
+    font-size: 28px;
+    line-height: 1.3;
+    padding-right: 50px;
+    display: block;
+}
+button.detailsTab{
+    margin-top: 40px;
+    margin-right: 22px;
+    border: 1px solid #979797;
+    height: 48px;
+    padding: 15px 15px;
+    font-size: 16px;
+    color: #000000;
+}
+
+/* Графики */
+section#graf{
+    display: none;
+}
+
+/* Дни недели */
+ul{
+    padding-left: 10px;
+    list-style: none;
+}
+.days{
+    display:inline-block;
+    padding: 5px;
+    width: 105px;
+}
+section.wind{
+    height: 130px;
+    text-align: center;
+}
+section.wind>span.speedWind{
+    display:block;
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+.timeWeather{
+    display:block;
+    padding-bottom: 20px;
+    color: #afbfcd;
+    text-align: center;
+    font-weight: 600;
+}
+section.dayWeek{
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+section.dayWeek:focus,section.dayWeek:hover{
+    border: 1px solid #afbfcd;
+}
+ul li:first-child>section.dayWeek{
+    border: 1px solid #afbfcd;
+}
+section.dayWeek>p:first-child{
+    padding: 15px 0 15px 0;
+    color: #afbfcd;
+    font-weight: 600;
+}
+section.dayWeek>p:last-child{
+    padding: 10px 15px 5px 0px;
+}
+section.dayWeek>img{
+    height:50px;
+}
+span.tempDay{
+    font-weight: 600;
+}
+span.tempNight{
+    float: right;
+    color: #afbfcd;
+    font-weight: 600;
+}
