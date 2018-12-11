@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+#detailsPlace,#details,.days{
+    display:inline-block;
+}
+.timeWeather,.speedWind{
+    display:block;
+}
+.dayWeek>img{
+    height:50px;
+}
+#detailsPlace>img{
+    height:100px;
+}
+.wind{
+    display:none;
+}
