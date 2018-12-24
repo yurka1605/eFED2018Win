@@ -1,51 +1,30 @@
-console.log(makeArray(10,1,2));
-function makeArray(a,b,c){
-  var arg = addArg(a,b,c);
-  var count = a;
-  var str = a;
-  if(a<b)
-    {
-      while(count < b)
-      {
-        count = count +arg;
-        str = str + ' ' + count;
+function makeArray(firstElem, lastElem, arg) {
+  var count = firstElem;
+  var str = firstElem;
+  var newArg;
+  if(firstElem < lastElem) {
+    if(arg === undefined) {
+      arg = 1;
+    }
+    while(count < lastElem) {
+      count = count + arg;
+      if(count < lastElem) {
+          str = str + ' ' + count;
       }
     }
-  else if(a>b){
-    while(count > b)
-    {
-      count = count +arg;
-      if(count > b)
-      {
+  }
+  else if(firstElem > lastElem) {
+    if(arg === undefined) {
+      arg = 1;
+    }
+    while(count > lastElem) {
+      count = count - arg;
+      if(count > lastElem) {
           str = str + ' ' + count;
       }
     }
   } 
   var res = str.split(' '); 
-    return console.log(res);
+  return res;
 }
-function addArg(x,y,arg){
- if(arg === undefined)
- {
-   if(x>y)
-   {
-      return -1;
-   }
-   else
-   {
-     return 1;
-   }
- }
- else
- {
-   if(x<y)
-   {
-      return arg;
-   }
-   else
-   {
-     arg = (-1)*arg;
-     return arg;
-   }
- }
-}
+console.log(makeArray(1, 10, 2));
