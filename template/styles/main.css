@@ -48,10 +48,10 @@ button.mainTab{
     outline: none;
     background: #979797;
 }
-button.detailsTab:focus,button.mainTab:focus{
+/* button.detailsTab:focus,button.mainTab:focus{
     outline: none;
     background: #979797;
-}
+} */
 /* Нижняя часть шапки */
 section#bottomHeader{
     height: 41px;

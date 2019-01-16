@@ -43,6 +43,10 @@ button.detailsTab{
     font-size: 16px;
     color: #000000;
 }
+.currentTab{
+    outline: none;
+    background: #979797;
+}
 
 /* Графики */
 section#graf{
@@ -62,6 +66,7 @@ ul{
 section.wind{
     height: 130px;
     text-align: center;
+    display: none;
 }
 section.wind>span.speedWind{
     display:block;
@@ -70,7 +75,8 @@ section.wind>span.speedWind{
 }
 .timeWeather{
     display:block;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     color: #afbfcd;
     text-align: center;
     font-weight: 600;
@@ -104,4 +110,21 @@ span.tempNight{
     float: right;
     color: #afbfcd;
     font-weight: 600;
+}
+.currentBlock{
+    display: block!important;
+}
+#windBlock,#probabilityBlock, #temperatureBlock{
+    width: 100%;
+    height: 300px;
+    display: none;
+}
+#probabilityBlock{
+    background: cornflowerblue;
+}
+#temperatureBlock{
+    background: darkgoldenrod;
+}
+#windBlock{
+    background: #644ec4;
 }

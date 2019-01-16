@@ -42,14 +42,24 @@
             <p>Вероятность осадков: <span id="probabilityPracipationInfo">20%</span></p>  
             <p>Влажность:<span id="wetnessInfo">45%</span></p>
             <p>Ветер:<span id="windSpeedinfo">11 км/ч</span></p>
-            <button id="temperatureInformarion" class="detailsTab">Температура</button>
+            <button id="temperatureInformarion" class="detailsTab currentTab">Температура</button>
             <button id="probability" class="detailsTab">Вероятность осадков</button>
             <button id="windInfo" class="detailsTab">Ветер</button>
           </span>
         </section>
-        <section id="graf">
+        <section id="temperatureBlock" class="blockInformation currentBlock">
 
-          Графики
+          Температура
+
+        </section>
+        <section id="probabilityBlock" class="blockInformation">
+
+          Осадки
+
+        </section>
+        <section id="windBlock" class="blockInformation">
+
+          Ветрер
 
         </section>
         <ul>
@@ -57,8 +67,8 @@
               <section class="wind">
                 <span class="speedWind">7 m/c</span>
                 <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">17:00</span>
               </section>
-              <span class="timeWeather">17:00</span>
               <section class="dayWeek">
                 <p>ср</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
@@ -69,8 +79,8 @@
               <section class="wind">
                 <span class="speedWind">5 m/c</span>
                 <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">20:00</span>
               </section>
-              <span class="timeWeather">20:00</span>
               <section class="dayWeek">
                 <p>чт</p>
                 <img src="img/weather/SunRainy.jpg" alt="Солнечно кратковременные дожди" title="Солнечно кратковременные дожди">
@@ -81,8 +91,8 @@
               <section class="wind">
                 <span class="speedWind">5 m/c</span>
                 <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">23:00</span>
               </section>
-              <span class="timeWeather">23:00</span>
               <section class="dayWeek">
                 <p>пт</p>
                 <img src="img/weather/SunCloudy.jpg" alt="Облачно" title="Облачно" >
@@ -93,8 +103,8 @@
               <section class="wind">
                 <span class="speedWind">7 m/c</span>
                 <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">2:00</span>
               </section>
-              <span class="timeWeather">2:00</span>
               <section class="dayWeek">
                 <p>сб</p>
                 <img src="img/weather/ThunderstormRainy.jpg" alt="Гроза с дождем" title="Гроза с дождем" >
@@ -105,8 +115,8 @@
               <section class="wind">
                 <span class="speedWind">6 m/c</span>
                 <img src="img/Today/3.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">5:00</span>
               </section>
-              <span class="timeWeather">5:00</span>
               <section class="dayWeek">
                 <p>вс</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
@@ -117,8 +127,8 @@
               <section class="wind">
                 <span class="speedWind">6 m/c</span>
                 <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">8:00</span>
               </section>
-              <span class="timeWeather">8:00</span>
               <section class="dayWeek">
                 <p>пн</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
@@ -129,8 +139,8 @@
               <section class="wind">
                 <span class="speedWind">5 m/c</span>
                 <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">11:00</span>
               </section>
-              <span class="timeWeather">11:00</span>
               <section class="dayWeek">
                 <p>вт</p>
                 <img src="img/weather/Cloudy.jpg" alt="Облачно" title="Облачно" >
@@ -141,8 +151,8 @@
               <section class="wind">
                 <span class="speedWind">7 m/c</span>
                 <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
+                <span class="timeWeather">14:00</span>
               </section>
-              <span class="timeWeather">14:00</span>
               <section class="dayWeek">
                 <p>ср</p>
                 <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
@@ -155,5 +165,6 @@
         2018 &copy Copyright
       </footer>
     </section>
+    <script type="text/javascript" src="js/weather-details.js"></script>
   </body>
 </html>

@@ -14,8 +14,10 @@
       <link rel="stylesheet" href="styles/main.css">
     <!--<script type="text/javascript" src="mocks/FullWeatherDetailsMock.js"></script>
     <script type="text/javascript" src="mocks/HistoricalReviewMock.js"></script>
-    <script type="text/javascript" src="mocks/WeekForecastMock.js"></script>
-  <script type="text/javascript" src="js/index.js"></script>-->
+    <script type="text/javascript" src="mocks/WeekForecastMock.js"></script>-->
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- <script type="text/javascript" src="js/tab.js"></script> -->
+  
   </head>
   <body>
       <section id="mainToday">
@@ -38,10 +40,204 @@
           </header>
           <main id="main">
             <section id="fiveDayDetails">
-              <img src="img/FiveDay/arrow-left.png" alt="Левая стрелка">
+              <div class ="arrow"><img id="leftArrow" src="img/FiveDay/arrow-left.png" alt="Левая стрелка"></div>
               <section id="tableDay">
-                <ul id="topTable">
-                  <li>
+                <div id="outer">
+                  <div id="slider">
+                    <div id="panelNav">
+                      <div class="arrowLeft"></div>
+                      <div id="day">
+                        <div class="slide currentDayShow">
+                          <div class="numberDay"><span>Пт</span>,<span>18 мая</span></div>
+                          <div id="timeDay">
+                            <div class="timeDay">
+                              <span>Ночь</span>
+                              <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                              <span>+8</span>
+                            </div>
+                            <div class="timeDay">
+                              <span>Утро</span>
+                              <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                              <span>+17</span>
+                            </div>
+                            <div class="timeDay">
+                              <span>День</span>
+                              <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                              <span>+21</span>
+                            </div>
+                            <div class="timeDay">
+                              <span>Вечер</span>
+                              <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                              <span>+16</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="slide">
+                            <div class="numberDay"><span>Сб</span>,<span>19 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="numberDay"><span>Вс</span>,<span>20 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="numberDay"><span>Пн</span>,<span>21 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="numberDay"><span>Вт</span>,<span>22 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div>
+<!--                         <div class="slide">
+                            <div class="numberDay"><span>Ср</span>,<span>23 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <div class="numberDay"><span>Чт</span>,<span>24 мая</span></div>
+                            <div id="timeDay">
+                              <div class="timeDay">
+                                <span>Ночь</span>
+                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
+                                <span>+8</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Утро</span>
+                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
+                                <span>+17</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>День</span>
+                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
+                                <span>+21</span>
+                              </div>
+                              <div class="timeDay">
+                                <span>Вечер</span>
+                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
+                                <span>+16</span>
+                              </div>
+                            </div>
+                        </div> -->
+                      </div>
+                      <div class="arrowRight"></div>
+                    </div>
+                    <div class="navigation">
+                      <div class="navDays current">Пт</div>
+                      <div class="navDays">Сб</div>
+                      <div class="navDays">Вс</div>
+                      <div class="navDays">Пн</div>
+                      <div class="navDays">Вт</div>
+<!--                       <div class="navDays">Ср</div>
+                      <div class="navDays">Чт</div> -->
+                    </div>
+                  </div>
+                </div>
+<!--                 <ul id="topTable">
+                  <li class="days">
                     <span><span>Пт, </span><span>18 мая</span></span>
                     <ul id="firstDay">
                       <li>
@@ -66,7 +262,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  <li class="days">
                     <span><span>Сб, </span><span>19 мая</span></span>
                     <ul id="secondDay">
                       <li>
@@ -91,7 +287,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  <li class="days">
                     <span><span>Вс, </span><span>20 мая</span></span>
                     <ul id="threeDay">
                       <li>
@@ -116,7 +312,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  <li class="days">
                     <span><span>Пн, </span><span>21 мая</span></span>
                     <ul id="forthDay">
                       <li>
@@ -141,7 +337,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li>
+                  <li class="days">
                     <span><span>Вт, </span><span>22 мая</span></span>
                     <ul id="fiveDay">
                       <li>
@@ -166,86 +362,168 @@
                       </li>
                     </ul>
                   </li>
-                </ul>
+                  <li class="days">
+                    <span><span>Ср, </span><span>24 мая</span></span>
+                    <ul id="sixDay">
+                      <li>
+                        <span>Ночь</span>
+                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
+                        <span>+8</span>
+                      </li>
+                      <li>
+                        <span>Утро</span>
+                        <img src="img/FiveDay/Sunny Weather.png" alt="">
+                        <span>+17</span>
+                      </li>
+                      <li>
+                        <span>День</span>
+                        <img src="img/FiveDay/Weather.png" alt="">
+                        <span>+21</span>
+                      </li>
+                      <li>
+                        <span>Вечер</span>
+                        <img src="img/FiveDay/Weather_2.png" alt="">
+                        <span>+16</span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="days">
+                    <span><span>Чт, </span><span>24 мая</span></span>
+                    <ul id="sevenDay">
+                      <li>
+                        <span>Ночь</span>
+                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
+                        <span>+8</span>
+                      </li>
+                      <li>
+                        <span>Утро</span>
+                        <img src="img/FiveDay/Sunny Weather.png" alt="">
+                        <span>+17</span>
+                      </li>
+                      <li>
+                        <span>День</span>
+                        <img src="img/FiveDay/Weather.png" alt="">
+                        <span>+21</span>
+                      </li>
+                      <li>
+                        <span>Вечер</span>
+                        <img src="img/FiveDay/Weather_2.png" alt="">
+                        <span>+16</span>
+                      </li>
+                    </ul>
+                  </li>
+                </ul> -->
                 <span id="maxSpeedWind">Максимальная скорость ветра,м/с</span>
                 <ul id="middleTable">
                   <li>
                     <ul id="speedWindDay1">
                       <li>
-                        <span>2</span>
+                        <span><span>2</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                       <li>
-                        <span>4</span>
+                        <span><span>4</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                     </ul>
                   </li>
                   <li>
                     <ul id="speedWindDay2">
                       <li>
-                        <span>2</span>
+                        <span><span>2</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                       <li>
-                        <span>4</span>
+                        <span><span>4</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                     </ul>
                   </li>
                   <li>
                     <ul id="speedWindDay3">
                       <li>
-                        <span>2</span>
+                        <span><span>2</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                       <li>
-                        <span>4</span>
+                        <span><span>4</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                     </ul>
                   </li>
                   <li>
                     <ul id="speedWindDay4">
                       <li>
-                        <span>2</span>
+                        <span><span>2</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                       <li>
-                        <span>4</span>
+                        <span><span>4</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                     </ul>
                   </li>
                   <li>
                     <ul id="speedWindDay5">
                       <li>
-                        <span>2</span>
+                        <span><span>2</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
                       </li>
                       <li>
-                        <span>4</span>
+                        <span><span>4</span></span>
                       </li>
                       <li>
-                        <span>5</span>
+                        <span><span>5</span></span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul id="speedWindDay6">
+                      <li>
+                        <span><span>2</span></span>
+                      </li>
+                      <li>
+                        <span><span>5</span></span>
+                      </li>
+                      <li>
+                        <span><span>4</span></span>
+                      </li>
+                      <li>
+                        <span><span>5</span></span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul id="speedWindDay7">
+                      <li>
+                        <span><span>2</span></span>
+                      </li>
+                      <li>
+                        <span><span>5</span></span>
+                      </li>
+                      <li>
+                        <span><span>4</span></span>
+                      </li>
+                      <li>
+                        <span><span>5</span></span>
                       </li>
                     </ul>
                   </li>
@@ -292,9 +570,25 @@
                       <li><span>4.6</span></li>
                     </ul>
                   </li>
+                  <li>
+                    <ul id="probability6Day">
+                      <li><span>0</span></li>
+                      <li><span>0</span></li>
+                      <li><span>2.2</span></li>
+                      <li><span>4.6</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <ul id="probability7Day">
+                      <li><span>0</span></li>
+                      <li><span>0</span></li>
+                      <li><span>2.2</span></li>
+                      <li><span>4.6</span></li>
+                    </ul>
+                  </li>
                 </ul>
               </section>
-              <img src="img/FiveDay/arrow-right.png" alt="Правая стрелка">
+              <div class ="arrow"><img id="rightArrow" src="img/FiveDay/arrow-right.png" alt="Правая стрелка"></div>
             </section>
             <section id="dateTodayDetails"><span>Пятница, 18 мая,сегодня</span><span>Солнце и луна</span></section >
             <section id="todayDetailsDay">

@@ -1,5 +1,7 @@
 /* Шапка */
-
+body{
+    overflow-x: hidden;
+}
 /* Картника погоды */
 
 section#bottomHeader>img#topCloudy{
@@ -36,13 +38,17 @@ section#fiveDayDetails{
 section#fiveDayDetails>img,section#fiveDayDetails>section#tableDay{
     display: inline-block;
 }
-section#fiveDayDetails>img{
+section#fiveDayDetails>div>img{
     padding: 5px;
     margin-bottom: 170px; 
     cursor: pointer;
+    margin-top: 135px;
 }
 ul li{
     list-style-type: none;
+}
+ul#topTable>li:nth-child(5), ul#middleTable>li:nth-child(5),ul#bottomTable>li:nth-child(5){
+    border-right: 1px solid #979797;
 }
 ul#topTable>li{
     width: 185px;
@@ -53,8 +59,12 @@ ul#topTable>li{
     border-right: 0px;
     margin-left: -5px;
 }
-ul#topTable>li:last-child{
-    border-right: 1px solid #979797;
+section#tableDay{
+    width: 925px;
+}
+#topTable, #middleTable, #bottomTable{
+    width: 12950px;
+    z-index: 0;
 }
 section#tableDay>span#maxSpeedWind, section#tableDay>span#probability{
     display: block;
@@ -77,9 +87,6 @@ ul#middleTable>li{
     border-top: 0px;
     margin-left: -5px;
 }
-ul#middleTable>li:last-child{
-    border-right: 1px solid #979797;
-}
 ul#bottomTable>li{
     width: 185px;
     height: 110px;
@@ -89,9 +96,6 @@ ul#bottomTable>li{
     border-right: 0px;
     border-top: 0px;
     margin-left: -5px;
-}
-ul#bottomTable>li:last-child{
-    border-right: 1px solid #979797;
 }
 section#todayDetailsNight, section#todayDetailsDay{
     display: inline-block;
@@ -133,42 +137,52 @@ section#dateTodayDetails>span{
 }
 
 /* Таблица со значениями */
-
+div.arrow{
+    display: inline-block;
+    z-index: 999;
+    background: #ffffff;
+    opacity: 0;
+}
+/* Дни */
+ul#topTable>li:nth-child(6), ul#topTable>li:nth-child(7){
+    margin-left: 333px;
+    opacity: 0;
+}
 ul#topTable> li > span{
     display: block;
     padding: 5px 0px;
     border-bottom: 1px solid #979797;
     text-align: center;
 }
-ul#firstDay > li,ul#secondDay > li,ul#threeDay > li,ul#forthDay > li,ul#fiveDay > li{
+ul#firstDay > li,ul#secondDay > li,ul#threeDay > li,ul#forthDay > li,ul#fiveDay > li,ul#sixDay > li,ul#sevenDay > li{
     display: inline-block;
 }
-ul#firstDay > li> span:first-child,ul#secondDay > li> span:first-child,ul#threeDay > li> span:first-child,ul#forthDay > li> span:first-child,ul#fiveDay  > li> span:first-child{
+ul#firstDay > li> span:first-child,ul#secondDay > li> span:first-child,ul#threeDay > li> span:first-child,ul#forthDay > li> span:first-child,ul#fiveDay  > li> span:first-child,ul#sixDay  > li> span:first-child,ul#sevenDay  > li> span:first-child{
     display: block;
     height: 20px;
     text-align: center;
     padding: 10px 0px;
 }
-ul#firstDay > li> img,ul#secondDay > li >img,ul#threeDay > li >img,ul#forthDay > li >img,ul#fiveDay > li >img{
+ul#firstDay > li> img,ul#secondDay > li >img,ul#threeDay > li >img,ul#forthDay > li >img,ul#fiveDay > li >img,ul#sixDay > li >img,ul#sevenDay > li >img{
     display: block;
     height: 25px;
     width: 35px;
     margin-left: 5px;
     text-align: center;
 }
-ul#firstDay > li:nth-child(1)> img,ul#secondDay > li:nth-child(1) >img,ul#threeDay > li:nth-child(1) >img,ul#forthDay > li:nth-child(1) >img,ul#fiveDay > li:nth-child(1) >img{
+ul#firstDay > li:nth-child(1)> img,ul#secondDay > li:nth-child(1) >img,ul#threeDay > li:nth-child(1) >img,ul#forthDay > li:nth-child(1) >img,ul#fiveDay > li:nth-child(1) >img,ul#sixDay > li:nth-child(1) >img,ul#sevenDay > li:nth-child(1) >img{
     padding-bottom: 10px;
 }
-ul#firstDay > li:nth-child(2)> img,ul#secondDay > li:nth-child(2) >img,ul#threeDay > li:nth-child(2) >img,ul#forthDay > li:nth-child(2) >img,ul#fiveDay > li:nth-child(2) >img{
+ul#firstDay > li:nth-child(2)> img,ul#secondDay > li:nth-child(2) >img,ul#threeDay > li:nth-child(2) >img,ul#forthDay > li:nth-child(2) >img,ul#fiveDay > li:nth-child(2) >img,ul#sixDay > li:nth-child(2) >img,ul#sevenDay > li:nth-child(2) >img{
     padding-bottom: 10px;
 }
-ul#firstDay > li:nth-child(3)> img,ul#secondDay > li:nth-child(3) >img,ul#threeDay > li:nth-child(3) >img,ul#forthDay > li:nth-child(3) >img,ul#fiveDay > li:nth-child(3) >img{
+ul#firstDay > li:nth-child(3)> img,ul#secondDay > li:nth-child(3) >img,ul#threeDay > li:nth-child(3) >img,ul#forthDay > li:nth-child(3) >img,ul#fiveDay > li:nth-child(3) >img,ul#sixDay > li:nth-child(3) >img,ul#sevenDay > li:nth-child(3) >img{
     height: 35px;
 }
-ul#firstDay > li:nth-child(4)> img,ul#secondDay > li:nth-child(4) >img,ul#threeDay > li:nth-child(4) >img,ul#forthDay > li:nth-child(4) >img,ul#fiveDay > li:nth-child(4) >img{
+ul#firstDay > li:nth-child(4)> img,ul#secondDay > li:nth-child(4) >img,ul#threeDay > li:nth-child(4) >img,ul#forthDay > li:nth-child(4) >img,ul#fiveDay > li:nth-child(4) >img,ul#sixDay > li:nth-child(4) >img,ul#sevenDay > li:nth-child(4) >img{
     height: 35px;
 }
-ul#firstDay > li> span:last-child,ul#secondDay > li > span:last-child,ul#threeDay > li > span:last-child,ul#forthDay > li > span:last-child,ul#fiveDay > li > span:last-child{
+ul#firstDay > li> span:last-child,ul#secondDay > li > span:last-child,ul#threeDay > li > span:last-child,ul#forthDay > li > span:last-child,ul#fiveDay > li > span:last-child,ul#sixDay > li > span:last-child,ul#sevenDay > li > span:last-child{
     display: block;
     height: 20px;
     text-align: center;
@@ -176,30 +190,33 @@ ul#firstDay > li> span:last-child,ul#secondDay > li > span:last-child,ul#threeDa
     border: 1px solid #979797;
     padding: 0px;
 }
-ul#firstDay > li:nth-child(1) > span:last-child,ul#secondDay > li:nth-child(1) > span:last-child,ul#threeDay > li:nth-child(1) > span:last-child,ul#forthDay > li:nth-child(1) > span:last-child,ul#fiveDay > li:nth-child(1) > span:last-child{
+ul#firstDay > li:nth-child(1) > span:last-child,ul#secondDay > li:nth-child(1) > span:last-child,ul#threeDay > li:nth-child(1) > span:last-child,ul#forthDay > li:nth-child(1) > span:last-child,ul#fiveDay > li:nth-child(1) > span:last-child,ul#sixDay > li:nth-child(1) > span:last-child,ul#sevenDay > li:nth-child(1) > span:last-child{
     background-color: #b9e88b;
 }
-ul#firstDay > li:nth-child(2) > span:last-child,ul#secondDay > li:nth-child(2) > span:last-child,ul#threeDay > li:nth-child(2) > span:last-child,ul#forthDay > li:nth-child(2) > span:last-child,ul#fiveDay > li:nth-child(2) > span:last-child{
+ul#firstDay > li:nth-child(2) > span:last-child,ul#secondDay > li:nth-child(2) > span:last-child,ul#threeDay > li:nth-child(2) > span:last-child,ul#forthDay > li:nth-child(2) > span:last-child,ul#fiveDay > li:nth-child(2) > span:last-child,ul#sixDay > li:nth-child(2) > span:last-child,ul#sevenDay > li:nth-child(2) > span:last-child{
     background-color: #f7e53b;
 }
-ul#firstDay > li:nth-child(3) > span:last-child,ul#secondDay > li:nth-child(3) > span:last-child,ul#threeDay > li:nth-child(3) > span:last-child,ul#forthDay > li:nth-child(3) > span:last-child,ul#fiveDay > li:nth-child(3) > span:last-child{
+ul#firstDay > li:nth-child(3) > span:last-child,ul#secondDay > li:nth-child(3) > span:last-child,ul#threeDay > li:nth-child(3) > span:last-child,ul#forthDay > li:nth-child(3) > span:last-child,ul#fiveDay > li:nth-child(3) > span:last-child,ul#sixDay > li:nth-child(3) > span:last-child,ul#sevenDay > li:nth-child(3) > span:last-child{
     background-color: #f3a536;
 }
-ul#firstDay > li:nth-child(4) > span:last-child,ul#secondDay > li:nth-child(4) > span:last-child,ul#threeDay > li:nth-child(4) > span:last-child,ul#forthDay > li:nth-child(4) > span:last-child,ul#fiveDay > li:nth-child(4) > span:last-child{
+ul#firstDay > li:nth-child(4) > span:last-child,ul#secondDay > li:nth-child(4) > span:last-child,ul#threeDay > li:nth-child(4) > span:last-child,ul#forthDay > li:nth-child(4) > span:last-child,ul#fiveDay > li:nth-child(4) > span:last-child,ul#sixDay > li:nth-child(4) > span:last-child,ul#sevenDay > li:nth-child(4) > span:last-child{
     background-color: #f7e53b;
 }
 
 /* Скорость ветра */
-
-ul#speedWindDay1,ul#speedWindDay2,ul#speedWindDay3,ul#speedWindDay4,ul#speedWindDay5{
+ul#middleTable>li:nth-child(6), ul#middleTable>li:nth-child(7){
+    margin-left: 333px;
+    opacity: 0;
+}
+ul#speedWindDay1,ul#speedWindDay2,ul#speedWindDay3,ul#speedWindDay4,ul#speedWindDay5,ul#speedWindDay6,ul#speedWindDay7{
     padding-top: 10px;
 }
-ul#speedWindDay1>li,ul#speedWindDay2>li,ul#speedWindDay3>li,ul#speedWindDay4>li,ul#speedWindDay5>li{
+ul#speedWindDay1>li,ul#speedWindDay2>li,ul#speedWindDay3>li,ul#speedWindDay4>li,ul#speedWindDay5>li,ul#speedWindDay6>li,ul#speedWindDay7>li{
     display: inline-block;
     margin-left: 7px;
     margin-right: 7px;
 }
-ul#speedWindDay1>li>span,ul#speedWindDay2>li>span,ul#speedWindDay3>li>span,ul#speedWindDay4>li>span,ul#speedWindDay5>li>span{
+ul#speedWindDay1>li>span,ul#speedWindDay2>li>span,ul#speedWindDay3>li>span,ul#speedWindDay4>li>span,ul#speedWindDay5>li>span,ul#speedWindDay6>li>span,ul#speedWindDay7>li>span{
     display: block;
     overflow: hidden;
 	width: 25px;
@@ -209,19 +226,29 @@ ul#speedWindDay1>li>span,ul#speedWindDay2>li>span,ul#speedWindDay3>li>span,ul#sp
     background: #d8d8d8;
     text-align: center;
 }
-
+ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>span>span,ul#speedWindDay4>li>span>span,ul#speedWindDay5>li>span>span,ul#speedWindDay6>li>span>span,ul#speedWindDay7>li>span>span{
+    transform: skewX(25deg);
+    transform-origin: 0 100%;
+    display: block;
+    margin-left: 7px;
+    margin-top: 1px;
+}
 /* Осадки */
-ul#probability1Day, ul#probability2Day, ul#probability3Day, ul#probability4Day, ul#probability5Day{
+ul#bottomTable>li:nth-child(6), ul#bottomTable>li:nth-child(7){
+    margin-left: 333px;
+    opacity: 0;
+}
+ul#probability1Day, ul#probability2Day, ul#probability3Day, ul#probability4Day, ul#probability5Day, ul#probability6Day, ul#probability7Day{
     padding: 40px 0 0 0;
 }
-ul#probability1Day>li, ul#probability2Day>li, ul#probability3Day>li, ul#probability4Day>li, ul#probability5Day>li{
+ul#probability1Day>li, ul#probability2Day>li, ul#probability3Day>li, ul#probability4Day>li, ul#probability5Day>li, ul#probability6Day>li, ul#probability7Day>li{
     display: inline-block;
     width: 34px;
     height: 70px;
     margin-left: 5px;
     background-position: right bottom!important;
 }
-ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>span, ul#probability4Day>li>span, ul#probability5Day>li>span{
+ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>span, ul#probability4Day>li>span, ul#probability5Day>li>span, ul#probability6Day>li>span, ul#probability7Day>li>span{
     text-align: center;
     width: 34px;
     display: inline-block;
@@ -257,4 +284,306 @@ ul#probability5Day>li:nth-child(4){
 }
 ul#probability5Day>li:nth-child(3){
     background: url('../img/FiveDay/Group1.png') no-repeat;
+}
+ul#probability6Day>li:nth-child(4){
+    background: url('../img/FiveDay/Group.png') no-repeat;
+}
+ul#probability6Day>li:nth-child(3){
+    background: url('../img/FiveDay/Group1.png') no-repeat;
+}
+ul#probability7Day>li:nth-child(4){
+    background: url('../img/FiveDay/Group.png') no-repeat;
+}
+ul#probability7Day>li:nth-child(3){
+    background: url('../img/FiveDay/Group1.png') no-repeat;
+}
+
+/* Анимация */
+
+@keyframes show {
+    from {margin-left: -10px;opacity: 0;}
+    35% {margin-left: -5px;opacity: 0.2;}
+    50% {margin-left: -5px;opacity: 0.9;}
+    75% {margin-left: -5px;opacity: 1;}
+    to {margin-left: -5px;opacity: 1;}
+}
+@keyframes hide {
+    from {margin-left: -5px; margin-right: 0px;opacity: 0.8;}
+    5% {margin-left: -25px;margin-right: 0px;opacity: 0.6;}
+    10% {margin-left: -40px;margin-right: 0px;opacity: 0.4;}
+    25% {margin-left: -100px;margin-right: 0px;opacity: 0.1;}
+    50% {margin-left: -190px;margin-right: 0px;opacity: 0;}
+    to {margin-left: -499px;margin-right: 308px;opacity: 0;}
+}
+@keyframes showLeft {
+    from {margin-left: -190px;opacity: 0;margin-right: 0;}
+    50% {margin-left: -100px;opacity: 0.1;margin-right:0;}
+    75% {margin-left: -40px;margin-right: 0px;opacity: 0.4;}
+    90% {margin-left: -25px;margin-right: 0px;opacity: 0.8;}
+    to {margin-left: -5px;opacity: 1;margin-right: 0;}
+}
+@keyframes hideRight {
+    from {margin-left: -5px;opacity: 1;}
+    50% {margin-left: -5px;opacity: 0.1;}
+    75% {margin-left: -5px;opacity: 0;}
+    90% {margin-left: -5px;opacity: 0;}
+    to {margin-left: 499px;opacity: 0;}
+}
+.animate{
+    animation: show 0.5s linear forwards;
+}
+.hideElem{
+    animation: hide 0.5s linear forwards;
+}
+.animateRight{
+    animation: showLeft 0.5s linear forwards;
+}
+.hideRight{
+    animation: hideRight 0.5s linear forwards;
+}
+
+/* слайдер дней */
+
+#outer{
+    border: 1px solid #979797;
+    height: 170px;
+    margin-left: -5px;
+    background:#fff;
+}
+#slider{
+    height: 170px;
+    width: 500px;
+    margin: 0 auto;
+}
+#panelNav{
+    display: block;
+    height: 120px;
+}
+.navigation{
+    display: block;
+    margin: 0 auto;
+    width: 180px;
+    height: 30px;
+    padding: 10px;
+  /*   border: 1px solid black; */
+}
+.arrowLeft,.arrowRight{
+    width: 40px;
+    height: 120px;
+    display: inline-block;
+}
+.arrowLeft{
+    margin-left: 10px;
+}
+.arrowRight{
+    margin-left: 5px;
+}
+.arrowLeft::after{
+    content: '';
+    width: 30px;
+    height: 5px;
+    background: #0f0f0f;
+    display: block;
+    transform: rotate(45deg);
+    margin-top: 14px;
+}
+.arrowLeft::before{
+    content: '';
+    width: 30px;
+    transform: rotate(-45deg);
+    height: 5px;
+    background: #0f0f0f;
+    display: block;
+    margin-top: 50px;
+}
+.arrowRight::after{
+    content: '';
+    height: 5px;
+    width: 30px;
+    background: #0f0f0f;
+    display: block;
+    transform: rotate(-45deg);
+    margin-top: 14px;
+}
+.arrowRight::before{
+    content: '';
+    width: 30px;
+    transform: rotate(45deg);
+    height: 5px;
+    background: #0f0f0f;
+    display: block;
+    margin-top: 50px;
+}
+.arrowLeft,.arrowRight{
+    cursor: pointer;
+    z-index: 0;
+}
+.arrowLeft:hover,.arrowRight:hover{
+    cursor: pointer;
+    color: #bcb5b9;
+}
+#day{
+    width: 400px;
+    height: 110px;
+    display: inline-block;
+    margin-left: -5px;
+    padding: 5px 0;
+    perspective: 400px;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+    z-index: 1;
+}
+.slide,.timeDay{
+    display: inline-block;
+}
+.slide{
+    z-index: 1;
+    opacity: 0;
+    border: 1px solid black;
+    position: absolute;
+    width: 400px;
+    height: 110px;
+    transform: rotate(180deg);
+    transition: all 1s ease;
+    background: #ffffff;
+}
+@keyframes show {
+    from {opacity: 1;transform: rotateY(180deg)}
+    10% {opacity: 1;transform: rotateY(162deg)}
+    20% {opacity: 1;transform: rotateY(144deg)}
+    30% {opacity: 1;transform: rotateY(126deg)}
+    40% {opacity: 1;transform: rotateY(108deg)}
+    50% {opacity: 1;transform: rotateY(90deg)}
+    60% {opacity: 1;transform: rotateY(72deg)}
+    70% {opacity: 1;transform: rotateY(54deg)}
+    80% {opacity: 1;transform: rotateY(36deg)}
+    90% {opacity: 1;transform: rotateY(18deg)}
+    to {opacity: 1;transform: rotateY(0deg)}
+}
+.currentDayShow{
+    animation: show 1s ease forwards;
+    /* transform: scale(1,1); */
+}
+@keyframes showRight {
+    from {opacity: 1;transform: rotateY(-180deg)}
+    10% {opacity: 1;transform: rotateY(-162deg)}
+    20% {opacity: 1;transform: rotateY(-144deg)}
+    30% {opacity: 1;transform: rotateY(-126deg)}
+    40% {opacity: 1;transform: rotateY(-108deg)}
+    50% {opacity: 1;transform: rotateY(-90deg)}
+    60% {opacity: 1;transform: rotateY(-72deg)}
+    70% {opacity: 1;transform: rotateY(-54deg)}
+    80% {opacity: 1;transform: rotateY(-36deg)}
+    90% {opacity: 1;transform: rotateY(-18deg)}
+    to {opacity: 1;transform: rotateY(0deg)}
+}
+.currentDayShowRight{
+    animation: showRight 1s ease forwards;
+}
+@keyframes hide {
+    from {opacity: 1;transform: rotateY(0deg)}
+    10% {opacity: 1;transform: rotateY(-18deg)}
+    20% {opacity: 1;transform: rotateY(-36deg)}
+    30% {opacity: 1;transform: rotateY(-54deg)}
+    40% {opacity: 1;transform: rotateY(-72deg)}
+    50% {opacity: 0;transform: rotateY(-90deg)}
+    60% {opacity: 0;transform: rotateY(-108deg)}
+    70% {opacity: 0;transform: rotateY(-126deg)}
+    80% {opacity: 0;transform: rotateY(-144deg)}
+    90% {opacity: 0;transform: rotateY(-162deg)}
+    to {opacity: 0;transform: rotateY(-180deg)}
+}
+.dayHide{
+    animation: hide 1s ease forwards;
+}
+@keyframes hideRight {
+    from {opacity: 1;transform: rotateY(0deg)}
+    10% {opacity: 1;transform: rotateY(18deg)}
+    20% {opacity: 1;transform: rotateY(36deg)}
+    30% {opacity: 1;transform: rotateY(54deg)}
+    40% {opacity: 1;transform: rotateY(72deg)}
+    50% {opacity: 0;transform: rotateY(90deg)}
+    60% {opacity: 0;transform: rotateY(108deg)}
+    70% {opacity: 0;transform: rotateY(126deg)}
+    80% {opacity: 0;transform: rotateY(144deg)}
+    90% {opacity: 0;transform: rotateY(162deg)}
+    to {opacity: 0;transform: rotateY(180deg)}
+}
+.dayHideRight{
+    animation: hideRight 1s ease forwards;
+}
+.numberDay{
+    text-align: center;
+    border-bottom: 1px solid black; 
+    padding: 2px 5px;
+    background: springgreen;
+}
+#timeDay{
+    padding: 5px 0 ;
+}
+.timeDay{
+    display: inline-block;
+    width: 50px;
+    margin: 0px 23px;
+    text-align: center;
+}
+.timeDay>span{
+    display: block;
+    font-size: 12px;
+}
+.timeDay>span:nth-child(1){
+    height: 20px;
+    text-align: center;
+}
+.timeDay>span:nth-child(2){
+    height: 35px;
+    text-align: center;
+}
+.timeDay>span:nth-child(3){
+    padding: 2px 0;
+    width: 30px;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid black;
+}
+.timeDay:nth-child(1)>span>img{
+    height: 20px;
+}
+.timeDay:nth-child(2)>span>img{
+    height: 20px;
+}
+.timeDay:nth-child(3)>span>img{
+    height: 30px;
+}
+.timeDay:nth-child(4)>span>img{
+    height: 30px;
+}
+.timeDay:nth-child(1)>span:nth-child(3){
+    background: chartreuse;
+}
+.timeDay:nth-child(2)>span:nth-child(3){
+    background: coral;
+}
+.timeDay:nth-child(3)>span:nth-child(3){
+    background: #f3a536;
+}
+.timeDay:nth-child(4)>span:nth-child(3){
+    background: greenyellow;
+}
+.navDays{
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    padding: 3px 0;
+    border: 1px solid black;
+    background: yellow;
+    cursor: pointer;
+}
+.hideNavDay{
+    width: 0;
+    font-size: 0;
+    border: 0;
+}
+.current{
+    background: springgreen;;
 }
