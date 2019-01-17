@@ -330,16 +330,16 @@ ul#probability7Day>li:nth-child(3){
     to {margin-left: 499px;opacity: 0;}
 }
 .animate{
-    animation: show 0.5s linear forwards;
+    animation: show 200ms linear forwards;
 }
 .hideElem{
-    animation: hide 0.5s linear forwards;
+    animation: hide 200ms linear forwards;
 }
 .animateRight{
-    animation: showLeft 0.5s linear forwards;
+    animation: showLeft 200ms linear forwards;
 }
 .hideRight{
-    animation: hideRight 0.5s linear forwards;
+    animation: hideRight 200ms linear forwards;
 }
 
 /* слайдер дней */

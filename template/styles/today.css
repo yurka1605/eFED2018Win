@@ -34,7 +34,7 @@ span#details{
     padding-right: 50px;
     display: block;
 }
-button.detailsTab{
+.detailsTab{
     margin-top: 40px;
     margin-right: 22px;
     border: 1px solid #979797;
@@ -43,7 +43,8 @@ button.detailsTab{
     font-size: 16px;
     color: #000000;
 }
-.currentTab{
+
+.detailsTab:hover, .currentTab{
     outline: none;
     background: #979797;
 }
@@ -114,7 +115,7 @@ span.tempNight{
 .currentBlock{
     display: block!important;
 }
-#windBlock,#probabilityBlock, #temperatureBlock{
+.blockInformation{
     width: 100%;
     height: 300px;
     display: none;

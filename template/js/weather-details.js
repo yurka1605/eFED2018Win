@@ -16,11 +16,4 @@ window.onload = function () {
     for (let i = 0; i < detailsTab.length; i++) {
     detailsTab[i].addEventListener('click', tabCheck);
     }
-    var today = document.getElementById('today');
-    var fiveDay = document.getElementById('fiveDay');
-    var history = document.getElementById('historyWeather');
-  
-    today.addEventListener('click',function () {javascript:document.location.href='weather-details.html';});
-    fiveDay.addEventListener('click',function () {javascript:document.location.href='index.html';});
-    history.addEventListener('click',function () {javascript:document.location.href='historical-review.html';});
 };

@@ -15,17 +15,15 @@
     <!--<script type="text/javascript" src="mocks/FullWeatherDetailsMock.js"></script>
     <script type="text/javascript" src="mocks/HistoricalReviewMock.js"></script>
     <script type="text/javascript" src="mocks/WeekForecastMock.js"></script>-->
-  <script type="text/javascript" src="js/index.js"></script>
-  <!-- <script type="text/javascript" src="js/tab.js"></script> -->
-  
+    <script type="text/javascript" src="js/index.js"></script>  
   </head>
   <body>
-      <section id="mainToday">
+    <section id="mainToday">
           <header id="header">
             <nav id="topHeader">
-              <button id="today" class="mainTab">Сегодня</button>
+              <a href="weather-details.html"><button id="today" class="mainTab">Сегодня</button></a>
               <button id="fiveDay" class="mainTab currentPage">5 дней</button>
-              <button id="historyWeather" class="mainTab">История погоды</button>
+              <a href="historical-review.html"><button id="historyWeather" class="mainTab">История погоды</button></a>
             </nav>
             <section id="bottomHeader">
               <img id="topCloudy" src="img/FiveDay/cloudyTop.png" alt="Облако" title="Облако">
@@ -172,56 +170,6 @@
                               </div>
                             </div>
                         </div>
-<!--                         <div class="slide">
-                            <div class="numberDay"><span>Ср</span>,<span>23 мая</span></div>
-                            <div id="timeDay">
-                              <div class="timeDay">
-                                <span>Ночь</span>
-                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
-                                <span>+8</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>Утро</span>
-                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
-                                <span>+17</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>День</span>
-                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
-                                <span>+21</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>Вечер</span>
-                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
-                                <span>+16</span>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <div class="numberDay"><span>Чт</span>,<span>24 мая</span></div>
-                            <div id="timeDay">
-                              <div class="timeDay">
-                                <span>Ночь</span>
-                                <span><img src="img/FiveDay/Cloudy Weather.png" alt=""></span>
-                                <span>+8</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>Утро</span>
-                                <span><img src="img/FiveDay/Sunny Weather.png" alt=""></span>
-                                <span>+17</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>День</span>
-                                <span><img src="img/FiveDay/Weather.png" alt=""></span>
-                                <span>+21</span>
-                              </div>
-                              <div class="timeDay">
-                                <span>Вечер</span>
-                                <span><img src="img/FiveDay/Weather_2.png" alt=""></span>
-                                <span>+16</span>
-                              </div>
-                            </div>
-                        </div> -->
                       </div>
                       <div class="arrowRight"></div>
                     </div>
@@ -231,188 +179,9 @@
                       <div class="navDays">Вс</div>
                       <div class="navDays">Пн</div>
                       <div class="navDays">Вт</div>
-<!--                       <div class="navDays">Ср</div>
-                      <div class="navDays">Чт</div> -->
                     </div>
                   </div>
                 </div>
-<!--                 <ul id="topTable">
-                  <li class="days">
-                    <span><span>Пт, </span><span>18 мая</span></span>
-                    <ul id="firstDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Сб, </span><span>19 мая</span></span>
-                    <ul id="secondDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Вс, </span><span>20 мая</span></span>
-                    <ul id="threeDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Пн, </span><span>21 мая</span></span>
-                    <ul id="forthDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Вт, </span><span>22 мая</span></span>
-                    <ul id="fiveDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Ср, </span><span>24 мая</span></span>
-                    <ul id="sixDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="days">
-                    <span><span>Чт, </span><span>24 мая</span></span>
-                    <ul id="sevenDay">
-                      <li>
-                        <span>Ночь</span>
-                        <img src="img/FiveDay/Cloudy Weather.png" alt="">
-                        <span>+8</span>
-                      </li>
-                      <li>
-                        <span>Утро</span>
-                        <img src="img/FiveDay/Sunny Weather.png" alt="">
-                        <span>+17</span>
-                      </li>
-                      <li>
-                        <span>День</span>
-                        <img src="img/FiveDay/Weather.png" alt="">
-                        <span>+21</span>
-                      </li>
-                      <li>
-                        <span>Вечер</span>
-                        <img src="img/FiveDay/Weather_2.png" alt="">
-                        <span>+16</span>
-                      </li>
-                    </ul>
-                  </li>
-                </ul> -->
                 <span id="maxSpeedWind">Максимальная скорость ветра,м/с</span>
                 <ul id="middleTable">
                   <li>
@@ -635,7 +404,6 @@
           <footer id="footer">
             2018 &copy Copyright
           </footer>
-        </section>
+    </section>
   </body>
-  
 </html>
