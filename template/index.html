@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-      <meta charset="UTF-8">
-      <meta name="description" content="Краткосрочные и долгосрочные прогнозы погоды для всех стран и городов. Сведения об осадках, силе ветра, относительной влажности.">
-      <meta name="yandex" content="index, nofollow">
-      <meta name="keywords" content="Погода.Погода на сегодня.Прогноз погоды">
-      <meta name = "author" content = "Литвинов Юрий">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Сайт погоды. Погода на 5 дней</title>
-      <style>
-        @import url('styles/fiveDay.css');
-      </style>
-      <link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="Краткосрочные и долгосрочные прогнозы погоды для всех стран и городов. Сведения об осадках, силе ветра, относительной влажности.">
+    <meta name="yandex" content="index, nofollow">
+    <meta name="keywords" content="Погода.Погода на сегодня.Прогноз погоды">
+    <meta name = "author" content = "Литвинов Юрий">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Сайт погоды. Погода на 5 дней</title>
+    <style>
+      @import url('styles/fiveDay.css');
+    </style>
+    <link rel="stylesheet" href="styles/main.css">
     <!--<script type="text/javascript" src="mocks/FullWeatherDetailsMock.js"></script>
     <script type="text/javascript" src="mocks/HistoricalReviewMock.js"></script>
     <script type="text/javascript" src="mocks/WeekForecastMock.js"></script>-->
@@ -30,10 +30,10 @@
               <span id="placeTop">
                 <span id="temperatureHeaderInfo">34</span>&deg <span id="cityInfo">Ижевск</span>,<span id="countryInfo">Россия</span>
               </span>
-              <form> 
-                <button type="submit"><img type="submit" id="findFiveDay" src="img/find.png" alt="Поиск" title="Поиск"></button>
-                <input title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
-            </form>
+              <div id="form">
+                <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
+                <input id="searchField" title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
+              </div>
             </section>
           </header>
           <main id="main">
