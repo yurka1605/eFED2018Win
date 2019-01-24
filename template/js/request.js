@@ -330,7 +330,7 @@ function getWeatherFiveDay(data) {
      /* Заменяем массивы на объекты из данных */
      for (const key in objectDay) {
          let weekDay, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '';
-         for (let i = 0; i < objectDay[key].length-1; i++) {
+         for (let i = 0; i < objectDay[key].length; i++) {
             weekDay = new Date(objectDay[key][i].dt*1000).getDay();
             weekDay =  getDayWeek(weekDay, 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' );
             if (objectDay[key].length == '1') {
