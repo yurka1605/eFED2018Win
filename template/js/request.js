@@ -65,16 +65,19 @@ const page = {
             /* Осадки */
             arr[4].innerHTML = data.clouds.all;
             /* Дата */
-            let currenDayWeek = getDayWeek(currentDate.getDay(), 'Воскресение', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота' );
+            let currenDayWeek = currentDate.toLocaleString('ru', {
+                weekday: 'long'
+            });
             arr[5].innerHTML = currenDayWeek;
             arr[6].innerHTML = upperCaseFirstChar(data.weather[0].description);
         } else if(window.location.href == `${ currentLocation }/index.html`) {
             arr =  getDataPage('Id','temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay');
             /* Дата */
-            let month = currentDate.getMonth();
-            month = getCurrentMonth(month);
-            let daYNumber = currentDate.getDate();
-            let currentDayWeek = getDayWeek(currentDate.getDay(), `Bоскресение,${ daYNumber } ${ month }, сегодня`, `Понедельник,${ daYNumber } ${ month }, сегодня`, `Вторник,${ daYNumber } ${ month }, сегодня`, `Среда, ${ daYNumber } ${ month }, сегодня`, `Четверг, ${ daYNumber } ${ month }, сегодня`, `Пятница, ${ daYNumber } ${ month }, сегодня`, `Суббота, ${ daYNumber } ${ month }, сегодня` );
+            let month = currentDate.toLocaleDateString('ru', {
+                day: 'numeric',
+                month: 'long'
+            });
+            let currentDayWeek = `${ month }, сегодня`;
             arr[2].innerHTML = currentDayWeek;
         } else {
 
@@ -238,26 +241,6 @@ const page = {
     }
 };
 page.init();
-function getDayWeek() {
-    switch (arguments[0]) {
-        case 0:
-            return arguments[1];
-        case 1:
-            return arguments[2];
-        case 2:
-            return arguments[3];
-        case 3:
-            return arguments[4];
-        case 4:
-            return arguments[5];
-        case 5:
-            return arguments[6];
-        case 6:
-            return arguments[7];
-        default:
-            return;
-    }
-}
 function getCurrentMonth() {
     switch (arguments[0]) {
         case 0:
@@ -331,8 +314,11 @@ function getWeatherFiveDay(data) {
      for (const key in objectDay) {
          let weekDay, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '';
          for (let i = 0; i < objectDay[key].length; i++) {
-            weekDay = new Date(objectDay[key][i].dt*1000).getDay();
-            weekDay =  getDayWeek(weekDay, 'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб' );
+            let currentWeekDay = objectDay[key][i].dt*1000; 
+            currentWeekDay = new Date(currentWeekDay).toLocaleString('ru', {
+                weekday: 'short'
+            });
+            weekDay = currentWeekDay;
             if (objectDay[key].length == '1') {
                 tempDay = objectDay[key][i].main.temp_max;
                 imgSrcDay = objectDay[key][i].weather[0].icon;
