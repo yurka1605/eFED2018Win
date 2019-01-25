@@ -6,18 +6,17 @@ const lang = '&lang=ru';
 const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?&appid=${ APP_ID }&q=`;
 const WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ defaultCityCoord }/current.json?appid=${ APP_ID }`;
 const WEATHER_DETAILS_HOURS = `http://api.openweathermap.org/data/2.5/forecast?appid=${ APP_ID }&q=`;
+/* const HISTORY_DETAILS = `file:///C:/Users/yurka-pc/Documents/eFED2018Win/template/mocks/historicalReviewMock.js`; */
 const currentLocation = 'file:///C:/Users/yurka-pc/Documents/eFED2018Win/template';
 const units = '&units=metric';
 
 const page = {
     init() {
         const This = this;
-        if(window.location.href != `${ currentLocation }/historical-review.html`) {
             This.getWeatherDetails(defaultCity, This.render, WEATHER_DETAILS_ENDPOINT);
             This.getWeatherDetails(defaultCity, This.hours, WEATHER_DETAILS_HOURS);
-        } else {
-            This.getWeatherDetails(defaultCity, This.rendering, );
-        }
+            /* This.getWeatherDetails(defaultCity, This.rendering, HISTORY_DETAILS); */
+
         const searchField = document.getElementById('searchField');
         searchField.addEventListener('change', getAction);
         function getAction() {
@@ -71,7 +70,7 @@ const page = {
             arr[5].innerHTML = currenDayWeek;
             arr[6].innerHTML = upperCaseFirstChar(data.weather[0].description);
         } else if(window.location.href == `${ currentLocation }/index.html`) {
-            arr =  getDataPage('Id','temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay');
+            arr =  getDataPage('Id','temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset');
             /* Дата */
             let month = currentDate.toLocaleDateString('ru', {
                 day: 'numeric',
@@ -79,23 +78,48 @@ const page = {
             });
             let currentDayWeek = `${ month }, сегодня`;
             arr[2].innerHTML = currentDayWeek;
-        } else {
-
+            let sunrise = new Date(data.sys.sunrise*1000).toLocaleDateString('ru', {
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+            let sunset = new Date(data.sys.sunset*1000).toLocaleDateString('ru', {
+                hour: 'numeric',
+                minute: 'numeric'
+            });
+            arr[3].innerHTML = sunrise.split(',')[1];
+            arr[4].innerHTML = sunset.split(',')[1];
+            let hour = sunset.split(',')[1].split(':')[0];
+            let minutes = sunset.split(',')[1].split(':')[1];
+            let hour0 = sunrise.split(',')[1].split(':')[0];
+            let minutes0 = sunrise.split(',')[1].split(':')[1];
+            let long = hour*60 + minutes*1 - hour0*60 - minutes0*1;
+            let longDay = Math.round(long/60) + " ч " + long%60 + ' мин';
+            let longNight = Math.round((24*60 - long)/60) + ' ч ' + (24*60 - long)%60 + ' мин';
+            arr[5].innerHTML = longDay;
+            arr[6].innerHTML = longNight;
+            arr[7].innerHTML = sunset.split(',')[1];
+            arr[8].innerHTML = sunrise.split(',')[1];
+        } else if(window.location.href == `${ currentLocation }/historical-review.html`) {
+            /* arr =  getDataPage('Id','cityInfo','countryInfo'); */
         }
-        let currentTemp = arr[0];
-        let currentImage = arr[1];
+        if(window.location.href !== `${ currentLocation }/historical-review.html`) {
+            let currentTemp = arr[0];
+            let currentImage = arr[1];  
+          /* Температура целыми числами */
+            currentTemp.innerHTML = data.main.temp.toFixed(0) + '&degC';
+            /* Текущая погода картинкой */
+            currentImage.src = `img/Today/${data.weather[0].icon}.png`;
+            currentImage.alt = upperCaseFirstChar(data.weather[0].description);
+            currentImage.title = upperCaseFirstChar(data.weather[0].description);
+        }
         
         /* Страна */
         if (data.sys.country == 'RU') currentCountry.innerHTML = 'Россия';
         else currentCountry.innerHTML = data.sys.country;
         /* Город */
         currentCity.innerHTML = data.name;
-        /* Температура целыми числами */
-        currentTemp.innerHTML = data.main.temp.toFixed(0) + '&degC';
-        /* Текущая погода картинкой */
-        currentImage.src = `img/Today/${data.weather[0].icon}.png`;
-        currentImage.alt = upperCaseFirstChar(data.weather[0].description);
-        currentImage.title = upperCaseFirstChar(data.weather[0].description);
+
+
         /* Год */
         year.innerHTML = currentDate.getFullYear();
     },
@@ -189,7 +213,7 @@ const page = {
                 }
             }
         } else if (window.location.href == `${ currentLocation }/index.html`) {
-            arr = getDataPage('ClassName', 'navDays', 'numberDay', 'nightImg', 'moningImg', 'dayImg', 'eveningImg',  'nightTemp', 'moningTemp', 'dayTemp', 'eveningTemp', 'windNigth', 'windMoning', 'windDay', 'windEvening');
+            arr = getDataPage('ClassName', 'navDays', 'numberDay', 'nightImg', 'moningImg', 'dayImg', 'eveningImg', 'nightTemp', 'moningTemp', 'dayTemp', 'eveningTemp', 'windNigth', 'windMoning', 'windDay', 'windEvening', 'probNigth', 'probMoning', 'probDay', 'probEvening');
             let navDays = arr[0],
                 numberDay = arr[1],
                 nightImg = arr[2],
@@ -204,6 +228,10 @@ const page = {
                 moningWind = arr[11],
                 dayWind = arr[12],
                 eveningWind = arr[13];
+                nightProb = arr[14],
+                moningProb = arr[15],
+                dayProb = arr[16],
+                eveningProb = arr[17];
             const objectDay =  getWeatherFiveDay(data);
             console.log(objectDay);
             let i = 0;
@@ -217,23 +245,44 @@ const page = {
                     moningImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[0]);
                     moningTemp[i].innerHTML = objectDay[key].temp[0].toFixed(0) + '&deg';
                     moningWind[i].innerHTML = objectDay[key].wind[0].toFixed(0);
+                    moningProb[i].children[0].innerHTML = objectDay[key].prob[0].toFixed(1);
 
                     nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
                     nightImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[1]);
                     nightImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[1]);
                     nightWind[i].innerHTML = objectDay[key].wind[1].toFixed(0);
                     nightTemp[i].innerHTML = objectDay[key].temp[1].toFixed(0) + '&deg';
+                    nightProb[i].children[0].innerHTML = objectDay[key].prob[1].toFixed(1);
                     
                     dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
                     dayImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[2]);
+                    dayImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[2]);
                     dayWind[i].innerHTML = objectDay[key].wind[2].toFixed(0);
                     dayTemp[i].innerHTML = objectDay[key].temp[2].toFixed(0) + '&deg';
+                    dayProb[i].children[0].innerHTML = objectDay[key].prob[2].toFixed(1);
                     
                     eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
                     eveningImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[3]);
                     eveningImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[3]);
                     eveningWind[i].innerHTML = objectDay[key].wind[3].toFixed(0);
                     eveningTemp[i].innerHTML = objectDay[key].temp[3].toFixed(0) + '&deg';
+                    eveningProb[i].children[0].innerHTML = objectDay[key].prob[3].toFixed(1);
+                    if (objectDay[key].prob[3].toFixed(1) > 2) {   
+                        moningProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group.png) no-repeat`;
+                        nigntProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group.png) no-repeat`;
+                        dayProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group.png) no-repeat`;
+                        eveningProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group.png) no-repeat`;
+                    } else if(objectDay[key].prob[3].toFixed(1) > 0 ) {
+                        moningProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group1.png) no-repeat`;
+                        nightProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group1.png) no-repeat`;
+                        dayProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group1.png) no-repeat`;
+                        eveningProb[i].style.background = `url(${ currentLocation }/img/FiveDay/Group1.png) no-repeat`;
+                    } else {
+                        moningProb[i].style.background = `#ffffff`;
+                        nightProb[i].style.background = `#ffffff`;
+                        dayProb[i].style.background = `#ffffff`;
+                        eveningProb[i].style.background = `#ffffff`;
+                    }  
                 i++;
                 }
             }
@@ -312,8 +361,8 @@ function getWeatherFiveDay(data) {
      }
      /* Заменяем массивы на объекты из данных */
      for (const key in objectDay) {
-         let weekDay, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '';
-         for (let i = 0; i < objectDay[key].length; i++) {
+         let weekDay, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '', probDay = '', probNigth = '', probEvening = '', probMoning = '';
+         for (let i = 0; i < objectDay[key].length-1; i++) {
             let currentWeekDay = objectDay[key][i].dt*1000; 
             currentWeekDay = new Date(currentWeekDay).toLocaleString('ru', {
                 weekday: 'short'
@@ -329,6 +378,13 @@ function getWeatherFiveDay(data) {
                 imgSrcNigth = objectDay[key][i].weather[0].icon;
                 imgDescrNigth = objectDay[key][i].weather[0].description;
                 windNigth = objectDay[key][i].wind.speed;
+                if (objectDay[key][i].snow['3h'] == undefined) {
+                    probDay = 0;
+                    probNight = 0;
+                } else {
+                    probDay = objectDay[key][i].snow['3h'];
+                    probNight = objectDay[key][i].snow['3h'];
+                }
             }
             let hours = objectDay[key][i].dt_txt.split(' ')[1].split(':')[0];
             if (hours == '06' || hours == '09') {
@@ -336,43 +392,65 @@ function getWeatherFiveDay(data) {
                 imgSrcMoning = objectDay[key][i].weather[0].icon;
                 imgDescrMoning = objectDay[key][i].weather[0].description;
                 windMoning = objectDay[key][i].wind.speed;
+                if (objectDay[key][i].snow['3h'] == undefined) {
+                    probMoning = 0;
+                } else {
+                    probMoning = objectDay[key][i].snow['3h'];
+                }
             }
             if (hours == '21' || hours == '18') {
                 tempEvening = objectDay[key][i].main.temp;
                 imgSrcEvening = objectDay[key][i].weather[0].icon;
                 imgDescrEvening = objectDay[key][i].weather[0].description;
                 windEvening = objectDay[key][i].wind.speed;
+                if (objectDay[key][i].snow['3h'] == undefined) {
+                    probEvening = 0;
+                } else {
+                    probEvening = objectDay[key][i].snow['3h'];
+                }
             }
             if (hours == '00' || hours == '03') {
                 tempNight = objectDay[key][i].main.temp;
                 imgSrcNigth = objectDay[key][i].weather[0].icon;
                 imgDescrNigth = objectDay[key][i].weather[0].description;
                 windNight = objectDay[key][i].wind.speed;
+                if (objectDay[key][i].snow['3h'] == undefined) {
+                    probNight = 0;
+                } else {
+                    probNight = objectDay[key][i].snow['3h'];
+                }
             }
             if (hours == '12' || hours == '15') {
                 tempDay = objectDay[key][i].main.temp;
                 imgSrcDay = objectDay[key][i].weather[0].icon;
                 imgDescrDay = objectDay[key][i].weather[0].description;
                 windDay = objectDay[key][i].wind.speed;
-
+                if (objectDay[key][i].snow['3h'] == undefined) {
+                    probDay = 0;
+                } else {
+                    probDay = objectDay[key][i].snow['3h'];
+                }
             }
          }
         let temp = [tempMoning, tempEvening, tempNight, tempDay];
         let imgDescr = [imgDescrMoning, imgDescrEvening, imgDescrNigth, imgDescrDay];
         let imgSrc = [imgSrcMoning, imgSrcEvening, imgSrcNigth, imgSrcDay];
         let wind = [windMoning, windEvening, windNigth, windDay];
+        let prob = [probMoning, probEvening, probNigth, probDay];
         let elem = 0;
         let empty = [];
         temp = findElements(empty, elem, temp);
         imgDescr = findElements(empty, elem, imgDescr);
         imgSrc = findElements(empty, elem, imgSrc);
         wind = findElements(empty, elem, wind);
+        prob = findElements(empty, elem, prob);
          objectDay[key] = {
             weekDay: weekDay,
             imgSrc: imgSrc,
             imgDescr: imgDescr,
             temp: temp,
-            wind: wind
+            wind: wind,
+            prob: prob
         };
     }
     return objectDay; 
