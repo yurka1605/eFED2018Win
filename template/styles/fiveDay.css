@@ -247,7 +247,6 @@ ul#probability1Day>li, ul#probability2Day>li, ul#probability3Day>li, ul#probabil
     width: 34px;
     height: 70px;
     margin-left: 5px;
-    background-position: right bottom!important;
 }
 ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>span, ul#probability4Day>li>span, ul#probability5Day>li>span, ul#probability6Day>li>span, ul#probability7Day>li>span{
     text-align: center;
@@ -256,47 +255,9 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
     margin: 50px 0 0 0;
 }
 /* Столбцы осадков фоном */
-ul#probability1Day>li:nth-child(4){
+.probNigth, .probMoning, .probDay, .probEvening{
     background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability1Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability2Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability2Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability3Day>li:nth-child(2){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability3Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability4Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability4Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability5Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability5Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability6Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability6Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability7Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability7Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
+    background-position-y: 70px;
 }
 
 /* Анимация */
@@ -519,6 +480,7 @@ ul#probability7Day>li:nth-child(3){
     border-bottom: 1px solid black; 
     padding: 0 5px;
     background: springgreen;
+    text-transform: capitalize;
 }
 #timeDay{
     padding: 2px 0;
@@ -583,5 +545,6 @@ ul#probability7Day>li:nth-child(3){
     border: 0;
 }
 .current{
-    background: springgreen;;
+    background: springgreen;
+    text-transform: capitalize;
 }

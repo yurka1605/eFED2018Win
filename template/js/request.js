@@ -78,7 +78,7 @@ const page = {
                 weekday: 'long'
             });
             arr[5].innerHTML = currenDayWeek;
-            arr[6].innerHTML = upperCaseFirstChar(data.weather[0].description);
+            arr[6].innerHTML = data.weather[0].description;
         } else if(currentLocation == `index.html`) {
             arr =  getDataPage('Id','temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset');
             /* Дата */
@@ -117,8 +117,8 @@ const page = {
             currentTemp.innerHTML = data.main.temp.toFixed(0) + '&degC';
             /* Текущая погода картинкой */
             currentImage.src = `img/Today/${data.weather[0].icon}.png`;
-            currentImage.alt = upperCaseFirstChar(data.weather[0].description);
-            currentImage.title = upperCaseFirstChar(data.weather[0].description);
+            currentImage.alt = data.weather[0].description;
+            currentImage.title = data.weather[0].description;
         }
         
         /* Страна */
@@ -211,8 +211,8 @@ const page = {
                 if (j < 5) { 
                     daysWeek[j].children[0].innerHTML = objectDay[key].weekDay;
                     daysWeek[j].children[1].src = `img/weather/${ objectDay[key].imgSrc[maxInd] }.png`;
-                    daysWeek[j].children[1].alt = upperCaseFirstChar(objectDay[key].imgDescr[maxInd]);
-                    daysWeek[j].children[1].title = upperCaseFirstChar(objectDay[key].imgDescr[maxInd]);
+                    daysWeek[j].children[1].alt = objectDay[key].imgDescr[maxInd];
+                    daysWeek[j].children[1].title = objectDay[key].imgDescr[maxInd];
                     tempDay[j].innerHTML = max.toFixed(0) + '&deg';
                     tempNight[j].innerHTML = min.toFixed(0) + '&deg';
                     j++;
@@ -242,52 +242,76 @@ const page = {
             console.log(objectDay);
             let i = 0;
             for (const key in objectDay) {
-                let month = key.split('-')[1];
                 if (i < 5) {
                     navDays[i].innerHTML = objectDay[key].weekDay;
-                    numberDay[i].innerHTML = `${ objectDay[key].weekDay }, ${ key.split('-')[2] } ${ getCurrentMonth(month*1) }`;
+                    numberDay[i].innerHTML = objectDay[key].fullDate;
                     moningImg[i].src = `img/Today/${ objectDay[key].imgSrc[0] }.png`;
-                    moningImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[0]);
-                    moningImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[0]);
+                    moningImg[i].alt = objectDay[key].imgDescr[0];
+                    moningImg[i].title = objectDay[key].imgDescr[0];
                     moningTemp[i].innerHTML = objectDay[key].temp[0].toFixed(0) + '&deg';
                     moningWind[i].innerHTML = objectDay[key].wind[0].toFixed(0);
                     moningProb[i].children[0].innerHTML = objectDay[key].prob[0].toFixed(1);
 
                     nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
-                    nightImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[1]);
-                    nightImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[1]);
+                    nightImg[i].alt = objectDay[key].imgDescr[1];
+                    nightImg[i].title = objectDay[key].imgDescr[1];
                     nightWind[i].innerHTML = objectDay[key].wind[1].toFixed(0);
                     nightTemp[i].innerHTML = objectDay[key].temp[1].toFixed(0) + '&deg';
                     nightProb[i].children[0].innerHTML = objectDay[key].prob[1].toFixed(1);
                     
                     dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
-                    dayImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[2]);
-                    dayImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[2]);
+                    dayImg[i].alt = objectDay[key].imgDescr[2];
+                    dayImg[i].title = objectDay[key].imgDescr[2];
                     dayWind[i].innerHTML = objectDay[key].wind[2].toFixed(0);
                     dayTemp[i].innerHTML = objectDay[key].temp[2].toFixed(0) + '&deg';
                     dayProb[i].children[0].innerHTML = objectDay[key].prob[2].toFixed(1);
                     
                     eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
-                    eveningImg[i].alt = upperCaseFirstChar(objectDay[key].imgDescr[3]);
-                    eveningImg[i].title = upperCaseFirstChar(objectDay[key].imgDescr[3]);
+                    eveningImg[i].alt = objectDay[key].imgDescr[3];
+                    eveningImg[i].title = objectDay[key].imgDescr[3];
                     eveningWind[i].innerHTML = objectDay[key].wind[3].toFixed(0);
                     eveningTemp[i].innerHTML = objectDay[key].temp[3].toFixed(0) + '&deg';
                     eveningProb[i].children[0].innerHTML = objectDay[key].prob[3].toFixed(1);
-                    if (objectDay[key].prob[3].toFixed(1) > 2) {   
-                        moningProb[i].style.background = `url(img/FiveDay/Group.png) no-repeat`;
-                        nightProb[i].style.background = `url(img/FiveDay/Group.png) no-repeat`;
-                        dayProb[i].style.background = `url(img/FiveDay/Group.png) no-repeat`;
-                        eveningProb[i].style.background = `url(img/FiveDay/Group.png) no-repeat`;
-                    } else if(objectDay[key].prob[3].toFixed(1) > 0 ) {
-                        moningProb[i].style.background = `url(img/FiveDay/Group1.png) no-repeat`;
-                        nightProb[i].style.background = `url(img/FiveDay/Group1.png) no-repeat`;
-                        dayProb[i].style.background = `url(img/FiveDay/Group1.png) no-repeat`;
-                        eveningProb[i].style.background = `url(img/FiveDay/Group1.png) no-repeat`;
+                    if (objectDay[key].prob[3].toFixed(1) > 6) {   
+                        moningProb[i].style.backgroundPositionY = `20px`;
+                        nightProb[i].style.backgroundPositionY = `20px`;
+                        dayProb[i].style.backgroundPositionY = `20px`;
+                        eveningProb[i].style.backgroundPositionY = `20px`;
+                    } else if(objectDay[key].prob[3].toFixed(1) > 5 ) {
+                        moningProb[i].style.backgroundPositionY = `28px`;
+                        nightProb[i].style.backgroundPositionY = `28px`;
+                        dayProb[i].style.backgroundPositionY = `28px`;
+                        eveningProb[i].style.backgroundPositionY = `28px`;
+                    } else if (objectDay[key].prob[3].toFixed(1) > 4) {   
+                        moningProb[i].style.backgroundPositionY = `30px`;
+                        nightProb[i].style.backgroundPositionY = `30px`;
+                        dayProb[i].style.backgroundPositionY = `30px`;
+                        eveningProb[i].style.backgroundPositionY = `30px`;
+                    } else if(objectDay[key].prob[3].toFixed(1) > 3) {
+                        moningProb[i].style.backgroundPositionY = `38px`;
+                        nightProb[i].style.backgroundPositionY = `38px`;
+                        dayProb[i].style.backgroundPositionY = `38px`;
+                        eveningProb[i].style.backgroundPositionY = `38px`;
+                    } else if(objectDay[key].prob[3].toFixed(1) > 2) {
+                        moningProb[i].style.backgroundPositionY = `46px`;
+                        nightProb[i].style.backgroundPositionY = `46px`;
+                        dayProb[i].style.backgroundPositionY = `46px`;
+                        eveningProb[i].style.backgroundPositionY = `46px`;
+                    } else if (objectDay[key].prob[3].toFixed(1) > 1) {   
+                        moningProb[i].style.backgroundPositionY = `54px`;
+                        nightProb[i].style.backgroundPositionY = `54px`;
+                        dayProb[i].style.backgroundPositionY = `54px`;
+                        eveningProb[i].style.backgroundPositionY = `54px`;
+                    } else if(objectDay[key].prob[3].toFixed(1) > 0) {
+                        moningProb[i].style.backgroundPositionY = `62px`;
+                        nightProb[i].style.backgroundPositionY = `62px`;
+                        dayProb[i].style.backgroundPositionY = `62px`;
+                        eveningProb[i].style.backgroundPositionY = `62px`;
                     } else {
-                        moningProb[i].style.background = `#ffffff`;
-                        nightProb[i].style.background = `#ffffff`;
-                        dayProb[i].style.background = `#ffffff`;
-                        eveningProb[i].style.background = `#ffffff`;
+                        moningProb[i].style.backgroundPositionY = `70px`;
+                        nightProb[i].style.backgroundPositionY = `70px`;
+                        dayProb[i].style.backgroundPositionY = `70px`;
+                        eveningProb[i].style.backgroundPositionY = `70px`;
                     }  
                 i++;
                 }
@@ -341,42 +365,6 @@ const page = {
     }
 };
 page.init();
-function getCurrentMonth() {
-    switch (arguments[0]) {
-        case 0:
-            return 'января';
-        case 1:
-            return 'февраля';
-        case 2:
-            return 'марта';
-        case 3:
-            return 'апреля';
-        case 4:
-            return 'мая';
-        case 5:
-            return 'июня';
-        case 6:
-            return 'июля';
-        case 7:
-            return 'августа'; 
-        case 8:
-            return 'сентября'; 
-        case 9:
-            return 'октября'; 
-        case 10:
-            return 'ноября'; 
-        case 11:
-            return 'декабря';
-        default:
-            console.log('Месяц не найден');
-    }
-}
-function upperCaseFirstChar(str) {
-    if (str.length != 0) {
-        str = str[0].toUpperCase() + str.slice(1);
-        return str;
-    }
-}
 function getDataPage (methodGet) {
     let array = [];
     for (let i = 1; i < arguments.length; i++) {
@@ -412,13 +400,16 @@ function getWeatherFiveDay(data) {
      }
      /* Заменяем массивы на объекты из данных */
      for (const key in objectDay) {
-        let weekDay, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '', probDay = '', probNigth = '', probEvening = '', probMoning = '';
+        let weekDay, fullDate, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '', probDay = '', probNigth = '', probEvening = '', probMoning = '';
          for (let i = 0; i < objectDay[key].length; i++) {
-            let currentWeekDay = objectDay[key][0].dt*1000; 
-            currentWeekDay = new Date(currentWeekDay).toLocaleString('ru', {
-                weekday: 'short'
+            let currentDay = objectDay[key][0].dt*1000; 
+            currentDay = new Date(currentDay).toLocaleString('ru', {
+                weekday: 'short',
+                month: 'long',
+                day: 'numeric',
             });
-            weekDay = currentWeekDay;
+            weekDay = currentDay.split(',')[0];
+            fullDate = currentDay;
             if (objectDay[key].length == '1') {
                 tempDay = objectDay[key][i].main.temp_max;
                 imgSrcDay = objectDay[key][i].weather[0].icon;
@@ -430,7 +421,7 @@ function getWeatherFiveDay(data) {
                 imgDescrNigth = objectDay[key][i].weather[0].description;
                 windNigth = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain['3h'] == undefined) {
+                    if (objectDay[key][i].rain == undefined) {
                         probDay = 0;
                         probNight = 0;
                     } else {
@@ -454,7 +445,7 @@ function getWeatherFiveDay(data) {
                 imgDescrMoning = objectDay[key][i].weather[0].description;
                 windMoning = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain['3h'] == undefined) {
+                    if (objectDay[key][i].rain == undefined) {
                         probMoning = 0;
                     } else {
                         probMoning = objectDay[key][i].rain['3h'];
@@ -473,7 +464,7 @@ function getWeatherFiveDay(data) {
                 imgDescrEvening = objectDay[key][i].weather[0].description;
                 windEvening = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain['3h'] == undefined) {
+                    if (objectDay[key][i].rain == undefined) {
                         probEvening = 0;
                     } else {
                         probEvening = objectDay[key][i].rain['3h'];
@@ -492,7 +483,7 @@ function getWeatherFiveDay(data) {
                 imgDescrNigth = objectDay[key][i].weather[0].description;
                 windNight = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain['3h'] == undefined) {
+                    if (objectDay[key][i].rain == undefined) {
                         probNigth = 0;
                     } else {
                         probNigth = objectDay[key][i].rain['3h'];
@@ -511,7 +502,7 @@ function getWeatherFiveDay(data) {
                 imgDescrDay = objectDay[key][i].weather[0].description;
                 windDay = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain['3h'] == undefined) {
+                    if (objectDay[key][i].rain == undefined) {
                         probDay = 0;
                     } else {
                         probDay = objectDay[key][i].rain['3h'];
@@ -539,6 +530,7 @@ function getWeatherFiveDay(data) {
         prob = findElements(empty, elem, prob);
          objectDay[key] = {
             weekDay: weekDay,
+            fullDate: fullDate,
             imgSrc: imgSrc,
             imgDescr: imgDescr,
             temp: temp,

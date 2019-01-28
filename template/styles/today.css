@@ -18,6 +18,7 @@ section#mainDetails{
     padding-left: 10px;
     display: block;
     width: 300px;
+    text-transform: capitalize;
 }
 p#temperature{
     float: right;
@@ -98,6 +99,7 @@ ul li:first-child>.dayWeek{
     padding: 15px 0 15px 0;
     color: #afbfcd;
     font-weight: 600;
+    text-transform: capitalize;
 }
 .dayWeek>p:last-child{
     padding: 10px 15px 5px 0px;
