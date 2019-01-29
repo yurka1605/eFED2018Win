@@ -22,149 +22,340 @@
           <a href="historical-review.html"><button id="historyWeather" class="mainTab">История погоды</button></a>
         </nav>
         <section id="bottomHeader">
-          <span>Загрязнение воздуха: <span id="polutionInfo">8.2312332413431413e-8</span></span>
-          <form>
-            <button type="submit"><img id="find" src="img/find.png" alt="Поиск" title="Поиск"></button>
-            <input title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
-          </form>
+          <span>Загрязнение воздуха: <span id="polutionInfo"></span></span>
+          <div id="form">
+            <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
+            <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Поиск" pattern="">
+          </div>
         </section>
       </header>
       <main id="main">
         <section id="mainDetails">
           <span id="detailsPlace">
-            <p><span id="cityInfo">Ижевск</span>,<span id="countryInfo">Россия</span></p>
-            <p id="dayWeekInfo">среда</p>
-            <p id="weatherInfo">солнечно</p>
-            <p><img src="img/Today/Sunny-Weather.png" alt="Sunny" title="Солнечно">
-            <p id="temperature"><span id="temperatureInfo">22</span>&degC</p></p>
+            <p><span id="cityInfo"></span>,<span id="countryInfo"></span></p>
+            <p id="dayWeekInfo"></p>
+            <p id="weatherInfo"></p>
+            <p><img id="imgWeatherToday" src="" alt="" title="">
+            <p id="temperature"><span id="temperatureInfo"></span></p></p>
             </span>
           <span id="details">
-            <p>Вероятность осадков: <span id="probabilityPracipationInfo">20%</span></p>  
-            <p>Влажность:<span id="wetnessInfo">45%</span></p>
-            <p>Ветер:<span id="windSpeedinfo">11 км/ч</span></p>
+            <p>Вероятность осадков: <span id="probabilityPracipationInfo"></span>%</p>  
+            <p>Влажность: <span id="wetnessInfo"></span>%</p>
+            <p>Ветер: <span id="windSpeedInfo"></span> м/с</p>
             <button id="temperatureInformarion" class="detailsTab currentTab">Температура</button>
             <button id="probability" class="detailsTab">Вероятность осадков</button>
             <button id="windInfo" class="detailsTab">Ветер</button>
           </span>
         </section>
-        <section id="temperatureBlock" class="blockInformation currentBlock">
-
-          Температура
-
+        <section  id="temperatureBlock" class="blockInformation currentBlock">
+          <ul id="tempPlus">
+            <li class="tempPlus">
+              <div class="tempInfoPlus">
+                <span class="tempvaluePlus"></span>
+                <div class="tempColPlus"></div>
+              </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+            <li class="tempPlus">
+                <div class="tempInfoPlus">
+                  <span class="tempvaluePlus"></span>
+                  <div class="tempColPlus"></div>
+                </div>
+            </li>
+          </ul>
+          <ul id="tempMinus">
+            <li class="tempMinus">
+              <div class="tempInfoMinus">
+                <div class="tempColMinus"></div>
+                <span class="tempvalueMinus"></span>
+              </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+            <li class="tempMinus">
+                <div class="tempInfoMinus">
+                  <div class="tempColMinus"></div>
+                  <span class="tempvalueMinus"></span>
+                </div>
+            </li>
+          </ul>
         </section>
         <section id="probabilityBlock" class="blockInformation">
-
-          Осадки
-
+          <ul>
+            <li class="probability">
+              <div class="colProbabilityInfo">
+                <div class="probabilityCol"></div>
+              </div>
+              <div class="colProbabilityInfo">
+                <span class="probabilityValue">24%</span>
+                <div class="probabilityCol"></div>
+              </div>
+              <div class="colProbabilityInfo">
+                <div class="probabilityCol"></div>
+              </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+            <li class="probability">
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <span class="probabilityValue">24%</span>
+                  <div class="probabilityCol"></div>
+                </div>
+                <div class="colProbabilityInfo">
+                  <div class="probabilityCol"></div>
+                </div>
+            </li>
+          </ul>
         </section>
         <section id="windBlock" class="blockInformation">
-
-          Ветрер
-
+          <ul>
+            <li class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+            <li  class="windBlockInfo">
+                <section class="wind">
+                    <span class="speedWind"></span>
+                    <img class="windArrow" src="img/Today/windArrow.png" alt="Направление ветра" title="Направление ветра">
+                </section>
+            </li>
+          </ul>
         </section>
         <ul>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">7 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">17:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>ср</p>
-                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">5 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">20:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>чт</p>
-                <img src="img/weather/SunRainy.jpg" alt="Солнечно кратковременные дожди" title="Солнечно кратковременные дожди">
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">5 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">23:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>пт</p>
-                <img src="img/weather/SunCloudy.jpg" alt="Облачно" title="Облачно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">7 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">2:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>сб</p>
-                <img src="img/weather/ThunderstormRainy.jpg" alt="Гроза с дождем" title="Гроза с дождем" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">6 m/c</span>
-                <img src="img/Today/3.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">5:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>вс</p>
-                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">6 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">8:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>пн</p>
-                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">5 m/c</span>
-                <img src="img/Today/2.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">11:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>вт</p>
-                <img src="img/weather/Cloudy.jpg" alt="Облачно" title="Облачно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
-            <li class="days">
-              <section class="wind">
-                <span class="speedWind">7 m/c</span>
-                <img src="img/Today/1.png" alt="Направление ветра" title="Направление ветра">
-                <span class="timeWeather">14:00</span>
-              </section>
-              <section class="dayWeek">
-                <p>ср</p>
-                <img src="img/weather/sun.jpg" alt="Солнечно" title="Солнечно" >
-                <p><span class="tempDay">22&deg</span><span class="tempNight">13&deg</span></p>
-              </section>
-            </li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
+          <li class="time"><span class="timeWeather"></span></li>
         </ul>
+        <section id="fiveDays">
+          <ul>
+            <li class="days">
+              <section class="dayWeek">
+                <p> </p>
+                <img src="" alt="" title="" >
+                <p><span class="tempDay"></span><span class="tempNight"></span></p>
+              </section>
+            </li>
+            <li class="days">
+                <section class="dayWeek">
+                  <p></p>
+                  <img src="" alt="" title="" >
+                  <p><span class="tempDay"></span><span class="tempNight"></span></p>
+                </section>
+            </li>
+            <li class="days">
+                <section class="dayWeek">
+                  <p></p>
+                  <img src="" alt="" title="" >
+                  <p><span class="tempDay"></span><span class="tempNight"></span></p>
+                </section>
+            </li>
+            <li class="days">
+                <section class="dayWeek">
+                  <p></p>
+                  <img src="" alt="" title="" >
+                  <p><span class="tempDay"></span><span class="tempNight"></span></p>
+                </section>
+            </li>
+            <li class="days">
+                <section class="dayWeek">
+                  <p></p>
+                  <img src="" alt="" title="" >
+                  <p><span class="tempDay"></span><span class="tempNight"></span></p>
+                </section>
+            </li>
+        </ul>    
+        </section>
       </main>
       <footer id="footer">
-        2018 &copy Copyright
+        <span id="year"></span> &copy Copyright
       </footer>
     </section>
     <script type="text/javascript" src="js/weather-details.js"></script>
+    <script type="text/javascript" src="js/request.js"></script>
   </body>
 </html>

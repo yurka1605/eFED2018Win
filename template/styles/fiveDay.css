@@ -8,6 +8,7 @@ section#bottomHeader>img#topCloudy{
     position: absolute;
     margin-left: 20px; 
     margin-top: 0px;
+    height: 30px;
 }
 
 /* Температура и место */
@@ -246,7 +247,6 @@ ul#probability1Day>li, ul#probability2Day>li, ul#probability3Day>li, ul#probabil
     width: 34px;
     height: 70px;
     margin-left: 5px;
-    background-position: right bottom!important;
 }
 ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>span, ul#probability4Day>li>span, ul#probability5Day>li>span, ul#probability6Day>li>span, ul#probability7Day>li>span{
     text-align: center;
@@ -255,47 +255,9 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
     margin: 50px 0 0 0;
 }
 /* Столбцы осадков фоном */
-ul#probability1Day>li:nth-child(4){
+.probNigth, .probMoning, .probDay, .probEvening{
     background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability1Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability2Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability2Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability3Day>li:nth-child(2){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability3Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability4Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability4Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability5Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability5Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability6Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability6Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
-}
-ul#probability7Day>li:nth-child(4){
-    background: url('../img/FiveDay/Group.png') no-repeat;
-}
-ul#probability7Day>li:nth-child(3){
-    background: url('../img/FiveDay/Group1.png') no-repeat;
+    background-position-y: 70px;
 }
 
 /* Анимация */
@@ -513,13 +475,16 @@ ul#probability7Day>li:nth-child(3){
     animation: hideRight 1s ease forwards;
 }
 .numberDay{
+    display: block;
     text-align: center;
     border-bottom: 1px solid black; 
-    padding: 2px 5px;
+    padding: 0 5px;
     background: springgreen;
+    text-transform: capitalize;
 }
 #timeDay{
-    padding: 5px 0 ;
+    padding: 2px 0;
+    display: block;
 }
 .timeDay{
     display: inline-block;
@@ -528,46 +493,41 @@ ul#probability7Day>li:nth-child(3){
     text-align: center;
 }
 .timeDay>span{
-    display: block;
     font-size: 12px;
 }
 .timeDay>span:nth-child(1){
+    text-align: center;
+    display: block;
     height: 20px;
-    text-align: center;
-}
-.timeDay>span:nth-child(2){
-    height: 35px;
-    text-align: center;
 }
 .timeDay>span:nth-child(3){
-    padding: 2px 0;
-    width: 30px;
+    padding: 2px 5px;
     margin: 0 auto;
     text-align: center;
     border: 1px solid black;
 }
-.timeDay:nth-child(1)>span>img{
-    height: 20px;
+.nightImg{
+    height: 42px;
 }
-.timeDay:nth-child(2)>span>img{
-    height: 20px;
+.moningImg{
+    height: 42px;
 }
-.timeDay:nth-child(3)>span>img{
-    height: 30px;
+.dayImg{
+    height: 42px;
 }
-.timeDay:nth-child(4)>span>img{
-    height: 30px;
+.eveningImg{
+    height: 42px;
 }
-.timeDay:nth-child(1)>span:nth-child(3){
+.nightTemp{
     background: chartreuse;
 }
-.timeDay:nth-child(2)>span:nth-child(3){
+.moningTemp{
     background: coral;
 }
-.timeDay:nth-child(3)>span:nth-child(3){
+.dayTemp{
     background: #f3a536;
 }
-.timeDay:nth-child(4)>span:nth-child(3){
+.eveningTemp{
     background: greenyellow;
 }
 .navDays{
@@ -585,5 +545,6 @@ ul#probability7Day>li:nth-child(3){
     border: 0;
 }
 .current{
-    background: springgreen;;
+    background: springgreen;
+    text-transform: capitalize;
 }

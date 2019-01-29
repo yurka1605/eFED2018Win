@@ -12,6 +12,7 @@
       <style>
         @import url('styles/history.css');
       </style>
+      <script type="text/javascript" src="mocks/HistoricalReviewMock.js"></script>
   </head>
   <body>
     <section id="mainToday">
@@ -23,12 +24,12 @@
         </nav>
         <section id="bottomHeader">
           <span id="placeTop">
-            <span id="cityInfo">Ижевск</span>, <span id="countryInfo">Россия</span>
+            <span id="cityInfo"></span>, <span id="countryInfo"></span>
           </span>
-          <form> 
-            <button type="submit"><img type="submit" id="findFiveDay" src="img/find.png" alt="Поиск" title="Поиск"></button>
-            <input title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
-        </form>
+          <div id="form">
+            <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
+            <input id="searchField" title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
+          </div>
         </section>
       </header>
       <main id="main">
@@ -127,8 +128,9 @@
         </ul>
       </main>
       <footer id="footer">
-        2018 &copy Copyright
+        <span id="year"></span> &copy Copyright
       </footer>
     </section>
+    <script type="text/javascript" src="js/request.js"></script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+'use strict';
 window.onload = function () {
     /* Tab click */
     var detailsTab = document.getElementsByClassName('detailsTab');
