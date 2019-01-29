@@ -44,7 +44,7 @@ const page = {
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
             if (this.readyState === 4 && this.status === 200) {
-                console.log(JSON.parse(xhr.responseText));
+                /* console.log(JSON.parse(xhr.responseText)); */
                 callback(JSON.parse(xhr.responseText));
             } else {
                 if (currentLocation == `historical-review.html`) {
@@ -250,69 +250,36 @@ const page = {
                     moningImg[i].title = objectDay[key].imgDescr[0];
                     moningTemp[i].innerHTML = objectDay[key].temp[0].toFixed(0) + '&deg';
                     moningWind[i].innerHTML = objectDay[key].wind[0].toFixed(0);
-                    moningProb[i].children[0].innerHTML = objectDay[key].prob[0].toFixed(1);
+                    moningProb[i].children[0].innerHTML = objectDay[key].prob[0];
+                    let moningCol = probabilityCol(objectDay[key].prob[0]);
+                    moningProb[i].style.backgroundPositionY = moningCol;
 
                     nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
                     nightImg[i].alt = objectDay[key].imgDescr[1];
                     nightImg[i].title = objectDay[key].imgDescr[1];
                     nightWind[i].innerHTML = objectDay[key].wind[1].toFixed(0);
                     nightTemp[i].innerHTML = objectDay[key].temp[1].toFixed(0) + '&deg';
-                    nightProb[i].children[0].innerHTML = objectDay[key].prob[1].toFixed(1);
+                    nightProb[i].children[0].innerHTML = objectDay[key].prob[1];
+                    let nightCol = probabilityCol(objectDay[key].prob[1]);
+                    nightProb[i].style.backgroundPositionY = nightCol;
                     
                     dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
                     dayImg[i].alt = objectDay[key].imgDescr[2];
                     dayImg[i].title = objectDay[key].imgDescr[2];
                     dayWind[i].innerHTML = objectDay[key].wind[2].toFixed(0);
                     dayTemp[i].innerHTML = objectDay[key].temp[2].toFixed(0) + '&deg';
-                    dayProb[i].children[0].innerHTML = objectDay[key].prob[2].toFixed(1);
+                    dayProb[i].children[0].innerHTML = objectDay[key].prob[2];
+                    let dayCol = probabilityCol(objectDay[key].prob[2]);
+                    dayProb[i].style.backgroundPositionY = dayCol;
                     
                     eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
                     eveningImg[i].alt = objectDay[key].imgDescr[3];
                     eveningImg[i].title = objectDay[key].imgDescr[3];
                     eveningWind[i].innerHTML = objectDay[key].wind[3].toFixed(0);
                     eveningTemp[i].innerHTML = objectDay[key].temp[3].toFixed(0) + '&deg';
-                    eveningProb[i].children[0].innerHTML = objectDay[key].prob[3].toFixed(1);
-                    if (objectDay[key].prob[3].toFixed(1) > 6) {   
-                        moningProb[i].style.backgroundPositionY = `20px`;
-                        nightProb[i].style.backgroundPositionY = `20px`;
-                        dayProb[i].style.backgroundPositionY = `20px`;
-                        eveningProb[i].style.backgroundPositionY = `20px`;
-                    } else if(objectDay[key].prob[3].toFixed(1) > 5 ) {
-                        moningProb[i].style.backgroundPositionY = `28px`;
-                        nightProb[i].style.backgroundPositionY = `28px`;
-                        dayProb[i].style.backgroundPositionY = `28px`;
-                        eveningProb[i].style.backgroundPositionY = `28px`;
-                    } else if (objectDay[key].prob[3].toFixed(1) > 4) {   
-                        moningProb[i].style.backgroundPositionY = `30px`;
-                        nightProb[i].style.backgroundPositionY = `30px`;
-                        dayProb[i].style.backgroundPositionY = `30px`;
-                        eveningProb[i].style.backgroundPositionY = `30px`;
-                    } else if(objectDay[key].prob[3].toFixed(1) > 3) {
-                        moningProb[i].style.backgroundPositionY = `38px`;
-                        nightProb[i].style.backgroundPositionY = `38px`;
-                        dayProb[i].style.backgroundPositionY = `38px`;
-                        eveningProb[i].style.backgroundPositionY = `38px`;
-                    } else if(objectDay[key].prob[3].toFixed(1) > 2) {
-                        moningProb[i].style.backgroundPositionY = `46px`;
-                        nightProb[i].style.backgroundPositionY = `46px`;
-                        dayProb[i].style.backgroundPositionY = `46px`;
-                        eveningProb[i].style.backgroundPositionY = `46px`;
-                    } else if (objectDay[key].prob[3].toFixed(1) > 1) {   
-                        moningProb[i].style.backgroundPositionY = `54px`;
-                        nightProb[i].style.backgroundPositionY = `54px`;
-                        dayProb[i].style.backgroundPositionY = `54px`;
-                        eveningProb[i].style.backgroundPositionY = `54px`;
-                    } else if(objectDay[key].prob[3].toFixed(1) > 0) {
-                        moningProb[i].style.backgroundPositionY = `62px`;
-                        nightProb[i].style.backgroundPositionY = `62px`;
-                        dayProb[i].style.backgroundPositionY = `62px`;
-                        eveningProb[i].style.backgroundPositionY = `62px`;
-                    } else {
-                        moningProb[i].style.backgroundPositionY = `70px`;
-                        nightProb[i].style.backgroundPositionY = `70px`;
-                        dayProb[i].style.backgroundPositionY = `70px`;
-                        eveningProb[i].style.backgroundPositionY = `70px`;
-                    }  
+                    eveningProb[i].children[0].innerHTML = objectDay[key].prob[3];
+                    let eveningCol = probabilityCol(objectDay[key].prob[3]);
+                    eveningProb[i].style.backgroundPositionY = eveningCol;
                 i++;
                 }
             }
@@ -351,7 +318,6 @@ const page = {
                     };
                     history.push(objectData)
                 }
-                console.log(history);
             }
         }
         const arr = getDataPage('ClassName', 'month');
@@ -410,34 +376,6 @@ function getWeatherFiveDay(data) {
             });
             weekDay = currentDay.split(',')[0];
             fullDate = currentDay;
-            if (objectDay[key].length == '1') {
-                tempDay = objectDay[key][i].main.temp_max;
-                imgSrcDay = objectDay[key][i].weather[0].icon;
-                imgDescrDay = objectDay[key][i].weather[0].description;
-                windDay = objectDay[key][i].wind.speed;
-
-                tempNight = objectDay[key][i].main.temp_min;
-                imgSrcNigth = objectDay[key][i].weather[0].icon;
-                imgDescrNigth = objectDay[key][i].weather[0].description;
-                windNigth = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
-                        probDay = 0;
-                        probNight = 0;
-                    } else {
-                        probDay = objectDay[key][i].rain['3h'];
-                        probNight = objectDay[key][i].rain['3h'];
-                    }
-                } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
-                        probDay = 0;
-                        probNight = 0;
-                    } else {
-                        probDay = objectDay[key][i].snow['3h'];
-                        probNight = objectDay[key][i].snow['3h'];
-                    }
-                }
-            }
             let hours = objectDay[key][i].dt_txt.split(' ')[1].split(':')[0];
             if (hours == '06' || hours == '09') {
                 tempMoning = objectDay[key][i].main.temp;
@@ -446,16 +384,16 @@ function getWeatherFiveDay(data) {
                 windMoning = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
                     if (objectDay[key][i].rain == undefined) {
-                        probMoning = 0;
+                        probMoning = '0.0';
                     } else {
-                        probMoning = objectDay[key][i].rain['3h'];
+                        if (objectDay[key][i].rain['3h'] == undefined) {
+                            probMoning = '0.0';
+                        } else probMoning = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
                     if (objectDay[key][i].snow['3h'] == undefined) {
-                        probMoning = 0;
-                    } else {
-                        probMoning = objectDay[key][i].snow['3h'];
-                    }
+                        probMoning = '0.0';
+                    } else probMoning = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
             if (hours == '21' || hours == '18') {
@@ -465,16 +403,16 @@ function getWeatherFiveDay(data) {
                 windEvening = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
                     if (objectDay[key][i].rain == undefined) {
-                        probEvening = 0;
+                        probEvening = '0.0';
                     } else {
-                        probEvening = objectDay[key][i].rain['3h'];
+                        if (objectDay[key][i].rain['3h'] == undefined) {
+                            probEvening = '0.0';
+                        } else probEvening = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
                     if (objectDay[key][i].snow['3h'] == undefined) {
-                        probEvening = 0;
-                    } else {
-                        probEvening = objectDay[key][i].snow['3h'];
-                    }
+                        probEvening = '0.0';
+                    } else probEvening = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
             if (hours == '00' || hours == '03') {
@@ -484,16 +422,16 @@ function getWeatherFiveDay(data) {
                 windNight = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
                     if (objectDay[key][i].rain == undefined) {
-                        probNigth = 0;
+                        probNigth = '0.0';
                     } else {
-                        probNigth = objectDay[key][i].rain['3h'];
+                        if (objectDay[key][i].rain['3h'] == undefined) {
+                            probNigth = '0.0';
+                        } else probNigth = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
                     if (objectDay[key][i].snow['3h'] == undefined) {
-                        probNigth = 0;
-                    } else {
-                        probNigth = objectDay[key][i].snow['3h'];
-                    }
+                        probNigth = '0.0';
+                    } else probNigth = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
             if (hours == '12' || hours == '15') {
@@ -503,16 +441,16 @@ function getWeatherFiveDay(data) {
                 windDay = objectDay[key][i].wind.speed;
                 if (objectDay[key][i].snow == undefined) {
                     if (objectDay[key][i].rain == undefined) {
-                        probDay = 0;
+                        probDay = '0.0';
                     } else {
-                        probDay = objectDay[key][i].rain['3h'];
+                        if (objectDay[key][i].rain['3h'] == undefined) {
+                            probDay = '0.0';
+                        } else probDay = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
                     if (objectDay[key][i].snow['3h'] == undefined) {
-                        probDay = 0;
-                    } else {
-                        probDay = objectDay[key][i].snow['3h'];
-                    }
+                        probDay = '0.0';
+                    } else probDay = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
          }
@@ -549,7 +487,28 @@ function findElements(empty ,elem, arr) {
         }
     }
     for (let k = 0; k < empty.length; k++) {
-        arr[empty[k]] = elem;        
+        arr[empty[k]] = elem;       
     }
     return arr;
+}
+function probabilityCol(numberCol) { 
+    let valueCol;
+    if (numberCol > 6) {   
+        valueCol = `22px`;
+    } else if(numberCol > 5 ) {
+        valueCol = `28px`;
+    } else if (numberCol > 4) {   
+        valueCol = `30px`;
+    } else if(numberCol > 3) {
+        valueCol = `38px`;
+    } else if(numberCol > 2) {
+        valueCol = `46px`;
+    } else if (numberCol > 1) {   
+        valueCol = `54px`;
+    } else if(numberCol > 0) {
+        valueCol = `62px`;
+    } else {
+        valueCol = `70px`;
+    }
+    return valueCol; 
 }
