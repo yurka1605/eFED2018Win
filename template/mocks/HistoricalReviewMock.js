@@ -1,4 +1,4 @@
-export default historicalReviewMock = {
+var historicalReviewMock = {
   "Izhevsk": {
     "1960": [
       {
