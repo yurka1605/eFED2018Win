@@ -1,4 +1,4 @@
-export default historicalReviewMock = {
+const historicalReviewMock = {
   "Izhevsk": {
     "1960": [
       {
