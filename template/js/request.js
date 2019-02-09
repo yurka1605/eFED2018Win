@@ -1,42 +1,28 @@
-const APP_ID = 'cbb3210df49fdf1c3c675a785e42454b';
-const defaultCity = 'Izhevsk';
-const defaultCityId = '554840';
-const defaultCityCoord = '57,53';
-const lang = '&lang=ru';
-const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?&appid=${ APP_ID }&q=`;
-const WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ defaultCityCoord }/current.json?appid=${ APP_ID }`;
-const WEATHER_DETAILS_HOURS = `http://api.openweathermap.org/data/2.5/forecast?appid=${ APP_ID }&q=`;
-const HISTORY_DETAILS = `http://api.openweathermap.org/data/2.5/group?`;
-let locationFull = window.location.pathname.split('/');
-const currentLocation = locationFull[locationFull.length-1];
-const units = '&units=metric';
-
+'use strict';
+/* import {historicalReviewMock}  from '../mocks/HistoricalReviewMock'; */
 const page = {
     init() {
         const This = this;
         This.getWeatherDetails(defaultCity, This.render, WEATHER_DETAILS_ENDPOINT);
-        if (currentLocation != `historical-review.html`) {
+        if (currentLocation != 'historical-review.html') {
             This.getWeatherDetails(defaultCity, This.hours, WEATHER_DETAILS_HOURS);
         } else  {
             This.getWeatherDetails(defaultCity, This.history, HISTORY_DETAILS);
         }
-
+        /* Find City */
         const searchField = document.getElementById('searchField');
-        searchField.addEventListener('change', getAction);
-        function getAction() {
-            const regexp = /(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)|(^[A-Z]{1}[a-z]{1,100}\-{1}[A-Za-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}\-{1}[А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100}\-{1}[A-Za-z]{1,100}\-{1}[A-Za-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}\-{1}[А-Яа-я]{1,100}\-{1}[А-Яа-я]{1,100}$)/;
+        searchField.addEventListener('change', getActionField);
+        function getActionField() {
             const city = searchField.value;
-            if (regexp.test(city) === true ) {
+            if (regExpFindField.test(city) === true ) {
                 This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
-                if (currentLocation != `historical-review.html`) {
+                if (currentLocation != 'historical-review.html') {
                     This.getWeatherDetails(city, This.hours, WEATHER_DETAILS_HOURS);
                 } else  {
                     This.getWeatherDetails(city, This.history, HISTORY_DETAILS);
                 }
-                searchField.value = '';
-            } else {
-                alert('Не удается найти данные по указанному городу.Проверьте правильность ввода города.Попробуйте ввести город на английском языке.');
-            }
+            } else return;
+            searchField.value = '';
         }
     },
     getWeatherDetails(city, callback ,requestText) {
@@ -44,29 +30,28 @@ const page = {
         const xhr = new XMLHttpRequest();
         xhr.onload = function () {
             if (this.readyState === 4 && this.status === 200) {
-                /* console.log(JSON.parse(xhr.responseText)); */
                 callback(JSON.parse(xhr.responseText));
             } else {
-                if (currentLocation == `historical-review.html`) {
-                    callback(historicalReviewMock,city);
+                if (currentLocation == 'historical-review.html') {
+                    callback(historicalReviewMock, city);
                 } else return;
             }
-        }
+        };
         xhr.open('GET', url, true);
         xhr.send();
     },
     render(data) {
-        let currentCity = document.getElementById('cityInfo');
-        let currentCountry = document.getElementById('countryInfo');
-        let year = document.getElementById('year');
-        let currentDate = new Date(data.dt*1000);
-        let arr;
-        if (currentLocation == `weather-details.html`) {
-            arr =  getDataPage('Id','temperatureInfo', 'imgWeatherToday', 'wetnessInfo', 'windSpeedInfo', 'probabilityPracipationInfo', 'dayWeekInfo','weatherInfo');
+        let currentCity = document.getElementById('cityInfo'),
+            currentCountry = document.getElementById('countryInfo'),
+            currentYear = document.getElementById('year'),
+            currentDate = new Date(data.dt*1000);
+        if (currentLocation == 'weather-details.html') {
+            arr = ['temperatureInfo', 'imgWeatherToday', 'wetnessInfo', 'windSpeedInfo', 'probabilityPracipationInfo', 'dayWeekInfo','weatherInfo'];
+            arr =  getDataPage('Id', arr);
             /* Получение загрязнения воздуха */
-            let coordinate = data.coord.lat.toFixed(0) + ',' + data.coord.lon.toFixed(0);
-            const WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ coordinate }/current.json?appid=${ APP_ID }`;
-            page.getWeatherDetails('', page.polution, WEATHER_DETAILS_POLUTION);
+            const currentCoordinate = data.coord.lat.toFixed(0) + ',' + data.coord.lon.toFixed(0);
+            const WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ currentCoordinate }/current.json?appid=${ APP_ID }`;
+            page.getWeatherDetails('', getPolution, WEATHER_DETAILS_POLUTION);
             /* Влажность */
             arr[2].innerHTML = data.main.humidity;
             /* Скорость ветра */
@@ -79,14 +64,15 @@ const page = {
             });
             arr[5].innerHTML = currenDayWeek;
             arr[6].innerHTML = data.weather[0].description;
-        } else if(currentLocation == `index.html`) {
-            arr =  getDataPage('Id','temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset');
+        } else if(currentLocation == 'index.html') {
+            arr = ['temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset'];
+            arr =  getDataPage('Id', arr);
             /* Дата */
-            let month = currentDate.toLocaleDateString('ru', {
+            let currentMonth = currentDate.toLocaleDateString('ru', {
                 day: 'numeric',
                 month: 'long'
             });
-            let currentDayWeek = `${ month }, сегодня`;
+            let currentDayWeek = `${ currentMonth }, сегодня`;
             arr[2].innerHTML = currentDayWeek;
             let sunrise = new Date(data.sys.sunrise*1000).toLocaleDateString('ru', {
                 hour: 'numeric',
@@ -98,45 +84,40 @@ const page = {
             });
             arr[3].innerHTML = sunrise.split(',')[1];
             arr[4].innerHTML = sunset.split(',')[1];
-            let hour = sunset.split(',')[1].split(':')[0];
-            let minutes = sunset.split(',')[1].split(':')[1];
-            let hour0 = sunrise.split(',')[1].split(':')[0];
-            let minutes0 = sunrise.split(',')[1].split(':')[1];
-            let long = hour*60 + minutes*1 - hour0*60 - minutes0*1;
-            let longDay = Math.round(long/60) + " ч " + long%60 + ' мин';
-            let longNight = Math.round((24*60 - long)/60) + ' ч ' + (24*60 - long)%60 + ' мин';
+            let hourSunset = sunset.split(',')[1].split(':')[0];
+            let minutesSunset = sunset.split(',')[1].split(':')[1];
+            let hourSunrise = sunrise.split(',')[1].split(':')[0];
+            let minutesSunrise = sunrise.split(',')[1].split(':')[1];
+            let longDaySeconds = hourSunset*60 + minutesSunset*1 - hourSunrise*60 - minutesSunrise*1;
+            let longDay = Math.round(longDaySeconds/60) + ' ч ' + longDaySeconds%60 + ' мин';
+            let longNight = Math.round((24*60 - longDaySeconds)/60) + ' ч ' + (24*60 - longDaySeconds)%60 + ' мин';
             arr[5].innerHTML = longDay;
             arr[6].innerHTML = longNight;
             arr[7].innerHTML = sunset.split(',')[1];
             arr[8].innerHTML = sunrise.split(',')[1];
         }
-        if(currentLocation != `historical-review.html`) {
+        if(currentLocation != 'historical-review.html') {
             let currentTemp = arr[0];
-            let currentImage = arr[1];  
-          /* Температура целыми числами */
+            let currentImage = arr[1];
+            /* Температура целыми числами */
             currentTemp.innerHTML = data.main.temp.toFixed(0) + '&degC';
             /* Текущая погода картинкой */
             currentImage.src = `img/Today/${data.weather[0].icon}.png`;
             currentImage.alt = data.weather[0].description;
             currentImage.title = data.weather[0].description;
         }
-        
-        /* Страна */
+        /* Страна Россия */
         if (data.sys.country == 'RU') currentCountry.innerHTML = 'Россия';
         else currentCountry.innerHTML = data.sys.country;
         /* Город */
         currentCity.innerHTML = data.name;
         /* Год */
-        year.innerHTML = currentDate.getFullYear();
-    },
-    polution(data) {
-        let polution = document.getElementById('polutionInfo');
-        polution.innerHTML = data.data[0].value;
+        currentYear.innerHTML = currentDate.getFullYear();
     },
     hours(data) {
-        let arr;
-        if (currentLocation == `weather-details.html`) {
-            arr = getDataPage('ClassName', 'tempvaluePlus', 'tempColPlus', 'tempvalueMinus','tempColMinus','timeWeather','speedWind','windArrow','dayWeek','tempDay','tempNight', 'probabilityValue', 'probability');
+        if (currentLocation == 'weather-details.html') {
+            arr =  ['tempvaluePlus', 'tempColPlus', 'tempvalueMinus','tempColMinus','timeWeather','speedWind','windArrow','dayWeek','tempDay','tempNight', 'probabilityValue', 'probability'];
+            arr = getDataPage('ClassName', arr);
             let tempValuePlus = arr[0],
                 tempColPlus = arr[1],
                 tempValueMinus = arr[2],
@@ -197,7 +178,7 @@ const page = {
             let j = 0;
             for (const key in objectDay) {
                 let max = '', min = '', maxInd;
-                for (i = 0; i < objectDay[key].temp.length; ++i) {
+                for (let i = 0; i < objectDay[key].temp.length; ++i) {
                     if (objectDay[key].temp[i] != '') {
                         if (max < objectDay[key].temp[i] || max == '' ) {
                             max = objectDay[key].temp[i];
@@ -208,7 +189,7 @@ const page = {
                         }
                     }
                 }
-                if (j < 5) { 
+                if (j < 5) {
                     daysWeek[j].children[0].innerHTML = objectDay[key].weekDay;
                     daysWeek[j].children[1].src = `img/weather/${ objectDay[key].imgSrc[maxInd] }.png`;
                     daysWeek[j].children[1].alt = objectDay[key].imgDescr[maxInd];
@@ -218,8 +199,9 @@ const page = {
                     j++;
                 }
             }
-        } else if (currentLocation == `index.html`) {
-            arr = getDataPage('ClassName', 'navDays', 'numberDay', 'nightImg', 'moningImg', 'dayImg', 'eveningImg', 'nightTemp', 'moningTemp', 'dayTemp', 'eveningTemp', 'windNigth', 'windMoning', 'windDay', 'windEvening', 'probNigth', 'probMoning', 'probDay', 'probEvening');
+        } else if (currentLocation == 'index.html') {
+            arr = ['navDays', 'numberDay', 'nightImg', 'moningImg', 'dayImg', 'eveningImg', 'nightTemp', 'moningTemp', 'dayTemp', 'eveningTemp', 'windNigth', 'windMoning', 'windDay', 'windEvening', 'probNigth', 'probMoning', 'probDay', 'probEvening'];
+            arr = getDataPage('ClassName', arr);
             let navDays = arr[0],
                 numberDay = arr[1],
                 nightImg = arr[2],
@@ -233,18 +215,18 @@ const page = {
                 nightWind = arr[10],
                 moningWind = arr[11],
                 dayWind = arr[12],
-                eveningWind = arr[13];
+                eveningWind = arr[13],
                 nightProb = arr[14],
                 moningProb = arr[15],
                 dayProb = arr[16],
                 eveningProb = arr[17];
             const objectDay =  getWeatherFiveDay(data);
-            console.log(objectDay);
             let i = 0;
             for (const key in objectDay) {
                 if (i < 5) {
                     navDays[i].innerHTML = objectDay[key].weekDay;
                     numberDay[i].innerHTML = objectDay[key].fullDate;
+                    /* Утро */
                     moningImg[i].src = `img/Today/${ objectDay[key].imgSrc[0] }.png`;
                     moningImg[i].alt = objectDay[key].imgDescr[0];
                     moningImg[i].title = objectDay[key].imgDescr[0];
@@ -253,7 +235,7 @@ const page = {
                     moningProb[i].children[0].innerHTML = objectDay[key].prob[0];
                     let moningCol = probabilityCol(objectDay[key].prob[0]);
                     moningProb[i].style.backgroundPositionY = moningCol;
-
+                    /* Ночь */
                     nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
                     nightImg[i].alt = objectDay[key].imgDescr[1];
                     nightImg[i].title = objectDay[key].imgDescr[1];
@@ -262,7 +244,7 @@ const page = {
                     nightProb[i].children[0].innerHTML = objectDay[key].prob[1];
                     let nightCol = probabilityCol(objectDay[key].prob[1]);
                     nightProb[i].style.backgroundPositionY = nightCol;
-                    
+                    /* День */
                     dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
                     dayImg[i].alt = objectDay[key].imgDescr[2];
                     dayImg[i].title = objectDay[key].imgDescr[2];
@@ -271,7 +253,7 @@ const page = {
                     dayProb[i].children[0].innerHTML = objectDay[key].prob[2];
                     let dayCol = probabilityCol(objectDay[key].prob[2]);
                     dayProb[i].style.backgroundPositionY = dayCol;
-                    
+                    /* Вечер */
                     eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
                     eveningImg[i].alt = objectDay[key].imgDescr[3];
                     eveningImg[i].title = objectDay[key].imgDescr[3];
@@ -280,7 +262,7 @@ const page = {
                     eveningProb[i].children[0].innerHTML = objectDay[key].prob[3];
                     let eveningCol = probabilityCol(objectDay[key].prob[3]);
                     eveningProb[i].style.backgroundPositionY = eveningCol;
-                i++;
+                    i++;
                 }
             }
         }
@@ -292,7 +274,7 @@ const page = {
                 let minMiddle, maxMiddle, recordMax, recordMin;
                 const objectYears = data[key];
                 for (let i = 0; i < 12; i++) {
-                    for (const prop in objectYears) {            
+                    for (const prop in objectYears) {
                         if (prop == '1960') {
                             minMiddle = objectYears[prop][i].avearage;
                             maxMiddle = objectYears[prop][i].avearage;
@@ -316,12 +298,11 @@ const page = {
                         recordMax: recordMax,
                         recordMin: recordMin
                     };
-                    history.push(objectData)
+                    history.push(objectData);
                 }
             }
         }
-        const arr = getDataPage('ClassName', 'month');
-        month = arr[0];
+        const month = document.getElementsByClassName('month');
         for (let k = 0; k < history.length; k++) {
             month[k+1].children[1].innerHTML = history[k].maxMiddle;
             month[k+1].children[2].innerHTML = history[k].minMiddle;
@@ -331,184 +312,3 @@ const page = {
     }
 };
 page.init();
-function getDataPage (methodGet) {
-    let array = [];
-    for (let i = 1; i < arguments.length; i++) {
-        let arg;
-        if (methodGet == 'Id') arg = document.getElementById(arguments[i]);
-        else if (methodGet == 'ClassName') arg = document.getElementsByClassName(arguments[i]); 
-        array.push(arg);     
-    }
-    return array;
-}
-function getWeatherFiveDay(data) {
-    let number = ''; 
-    let objectDay = {};
-
-    for (let i = 0; i < data.list.length; i++) {
-       /* Добавление Свойств в объект */
-       const dateFull = data.list[i].dt_txt.split(' ')[0];
-       if ( number != dateFull ) {
-           number = dateFull;
-           objectDay[dateFull] = [];
-       } else if ( number == dateFull || number == '' ) {
-           number = dateFull;
-       }
-    }
-    /* Добавляем в свойства объекта массивы из объектов */
-    for (const key in objectDay) {
-        for (let i = 0; i < data.list.length; i++) {
-             const dateFull = data.list[i].dt_txt.split(' ')[0];
-             if ( key == dateFull ) {
-                objectDay[key].push(data.list[i]);
-             }
-         }
-     }
-     /* Заменяем массивы на объекты из данных */
-     for (const key in objectDay) {
-        let weekDay, fullDate, imgSrcMoning = '', imgDescrMoning = '', imgSrcEvening = '', imgDescrEvening = '', imgSrcNigth = '', imgDescrNigth = '', imgSrcDay = '', imgDescrDay = '', tempDay = '', tempNight = '', tempEvening = '', tempMoning = '' , windDay = '', windNigth = '', windEvening = '', windMoning = '', probDay = '', probNigth = '', probEvening = '', probMoning = '';
-         for (let i = 0; i < objectDay[key].length; i++) {
-            let currentDay = objectDay[key][0].dt*1000; 
-            currentDay = new Date(currentDay).toLocaleString('ru', {
-                weekday: 'short',
-                month: 'long',
-                day: 'numeric',
-            });
-            weekDay = currentDay.split(',')[0];
-            fullDate = currentDay;
-            let hours = objectDay[key][i].dt_txt.split(' ')[1].split(':')[0];
-            if (hours == '06' || hours == '09') {
-                tempMoning = objectDay[key][i].main.temp;
-                imgSrcMoning = objectDay[key][i].weather[0].icon;
-                imgDescrMoning = objectDay[key][i].weather[0].description;
-                windMoning = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
-                        probMoning = '0.0';
-                    } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
-                            probMoning = '0.0';
-                        } else probMoning = objectDay[key][i].rain['3h'].toFixed(1);
-                    }
-                } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
-                        probMoning = '0.0';
-                    } else probMoning = objectDay[key][i].snow['3h'].toFixed(1);
-                }
-            }
-            if (hours == '21' || hours == '18') {
-                tempEvening = objectDay[key][i].main.temp;
-                imgSrcEvening = objectDay[key][i].weather[0].icon;
-                imgDescrEvening = objectDay[key][i].weather[0].description;
-                windEvening = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
-                        probEvening = '0.0';
-                    } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
-                            probEvening = '0.0';
-                        } else probEvening = objectDay[key][i].rain['3h'].toFixed(1);
-                    }
-                } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
-                        probEvening = '0.0';
-                    } else probEvening = objectDay[key][i].snow['3h'].toFixed(1);
-                }
-            }
-            if (hours == '00' || hours == '03') {
-                tempNight = objectDay[key][i].main.temp;
-                imgSrcNigth = objectDay[key][i].weather[0].icon;
-                imgDescrNigth = objectDay[key][i].weather[0].description;
-                windNight = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
-                        probNigth = '0.0';
-                    } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
-                            probNigth = '0.0';
-                        } else probNigth = objectDay[key][i].rain['3h'].toFixed(1);
-                    }
-                } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
-                        probNigth = '0.0';
-                    } else probNigth = objectDay[key][i].snow['3h'].toFixed(1);
-                }
-            }
-            if (hours == '12' || hours == '15') {
-                tempDay = objectDay[key][i].main.temp;
-                imgSrcDay = objectDay[key][i].weather[0].icon;
-                imgDescrDay = objectDay[key][i].weather[0].description;
-                windDay = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
-                        probDay = '0.0';
-                    } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
-                            probDay = '0.0';
-                        } else probDay = objectDay[key][i].rain['3h'].toFixed(1);
-                    }
-                } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
-                        probDay = '0.0';
-                    } else probDay = objectDay[key][i].snow['3h'].toFixed(1);
-                }
-            }
-         }
-        let temp = [tempMoning, tempEvening, tempNight, tempDay];
-        let imgDescr = [imgDescrMoning, imgDescrEvening, imgDescrNigth, imgDescrDay];
-        let imgSrc = [imgSrcMoning, imgSrcEvening, imgSrcNigth, imgSrcDay];
-        let wind = [windMoning, windEvening, windNigth, windDay];
-        let prob = [probMoning, probEvening, probNigth, probDay];
-        let elem = 0;
-        let empty = [];
-        temp = findElements(empty, elem, temp);
-        imgDescr = findElements(empty, elem, imgDescr);
-        imgSrc = findElements(empty, elem, imgSrc);
-        wind = findElements(empty, elem, wind);
-        prob = findElements(empty, elem, prob);
-         objectDay[key] = {
-            weekDay: weekDay,
-            fullDate: fullDate,
-            imgSrc: imgSrc,
-            imgDescr: imgDescr,
-            temp: temp,
-            wind: wind,
-            prob: prob
-        };
-    }
-    return objectDay; 
-}
-function findElements(empty ,elem, arr) {
-    for (let index = 0; index < arr.length; index++) {
-        if (arr[index] != '') {
-            elem = arr[index];
-        } else {
-            empty.push(index);
-        }
-    }
-    for (let k = 0; k < empty.length; k++) {
-        arr[empty[k]] = elem;       
-    }
-    return arr;
-}
-function probabilityCol(numberCol) { 
-    let valueCol;
-    if (numberCol > 6) {   
-        valueCol = `22px`;
-    } else if(numberCol > 5 ) {
-        valueCol = `28px`;
-    } else if (numberCol > 4) {   
-        valueCol = `30px`;
-    } else if(numberCol > 3) {
-        valueCol = `38px`;
-    } else if(numberCol > 2) {
-        valueCol = `46px`;
-    } else if (numberCol > 1) {   
-        valueCol = `54px`;
-    } else if(numberCol > 0) {
-        valueCol = `62px`;
-    } else {
-        valueCol = `70px`;
-    }
-    return valueCol; 
-}
