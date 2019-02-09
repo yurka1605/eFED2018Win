@@ -4,7 +4,7 @@ body{
 }
 /* Картника погоды */
 
-section#bottomHeader>img#topCloudy{
+#bottomHeader > #topCloudy{
     position: absolute;
     margin-left: 20px; 
     margin-top: 0px;
@@ -13,7 +13,7 @@ section#bottomHeader>img#topCloudy{
 
 /* Температура и место */
 
-section#bottomHeader span#placeTop{
+#bottomHeader #placeTop{
     display: inline-block;
     font-size: 15px;
     color: #0f0f0f;
@@ -23,196 +23,91 @@ section#bottomHeader span#placeTop{
 
 /* Основная часть*/
 
-main#main{
-    padding-bottom: 20px;
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-right: 2px solid #bcb5b9;
     border-left: 2px solid #bcb5b9;
     border-bottom: 1px solid #979797;
     height: auto;
-    padding-top: 20px;
-    background-color: #ffffff;    
+    background-color: #ffffff;  
+    padding: 3% 0;  
 }
-section#fiveDayDetails{
+#tableDay{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#middleTable, #bottomTable{
     width: 100%;
-    height: auto;
 }
-section#fiveDayDetails>img,section#fiveDayDetails>section#tableDay{
-    display: inline-block;
-}
-section#fiveDayDetails>div>img{
-    padding: 5px;
-    margin-bottom: 170px; 
-    cursor: pointer;
-    margin-top: 135px;
-}
-ul li{
-    list-style-type: none;
-}
-ul#topTable>li:nth-child(5), ul#middleTable>li:nth-child(5),ul#bottomTable>li:nth-child(5){
-    border-right: 1px solid #979797;
-}
-ul#topTable>li{
-    width: 185px;
-    height: 170px;
-    list-style-type: none;
-    display: inline-block;
+#maxSpeedWind, #probability{
     border: 1px solid #979797;
-    border-right: 0px;
-    margin-left: -5px;
-}
-section#tableDay{
-    width: 925px;
-}
-#topTable, #middleTable, #bottomTable{
-    width: 12950px;
-    z-index: 0;
-}
-section#tableDay>span#maxSpeedWind, section#tableDay>span#probability{
-    display: block;
-    border: 1px solid #979797;
-    border-top: 0px;
-    width: 927px;
-    margin-top: 0px;
-    margin-left: -5px;
+    width: 100%;
     text-align: center;
     padding: 5px 0px;
     background-color: #d8d8d8;
 }
-ul#middleTable>li{
-    width: 185px;
-    height: 40px;
+#middleTable, #bottomTable{
+    display: flex;
+    justify-content: space-around;
+    border-left: 1px solid #979797;
+}
+#bottomTable{
+    border-bottom: 1px solid #979797;
+}
+#middleTable>li, #bottomTable>li{
+    width: 20%;
     list-style-type: none;
-    display: inline-block;
-    border: 1px solid #979797;
-    border-right: 0px;
-    border-top: 0px;
-    margin-left: -5px;
+    border-right: 1px solid #979797;
 }
-ul#bottomTable>li{
-    width: 185px;
-    height: 110px;
-    list-style-type: none;
-    display: inline-block;
-    border: 1px solid #979797;
-    border-right: 0px;
-    border-top: 0px;
-    margin-left: -5px;
+#dayAndNigth{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
 }
-section#todayDetailsNight, section#todayDetailsDay{
-    display: inline-block;
-    border: 1px solid #979797;
-    width: 42.7%;
-    margin-left: 45px;
+#todayDetailsNight, #todayDetailsDay{
+    padding: 15px;
 }
-section#todayDetailsNight>span:last-child, section#todayDetailsDay>span:last-child{
+#todayDetailsNight>span:last-child, #todayDetailsDay>span:last-child{
     text-align: center;
     display: block;
     width: 100%;
-    padding: 5px 0px;
+    padding-top: 10px;
 }
-section#todayDetailsNight>span, section#todayDetailsDay>span{
-    padding: 10px;
-    display: block;
+#todayDetailsNight > span, #todayDetailsDay > span{
+    display: flex;
+    align-items: center;
 }
-section#todayDetailsNight>span>span, section#todayDetailsDay>span>span,section#todayDetailsNight>span>img, section#todayDetailsDay>span>img{
-    display: inline-block;
+#todayDetailsDay > span > img, #todayDetailsNight > span > img{
+    height: 100px;
+    
 }
-section#todayDetailsNight>span>img, section#todayDetailsDay>span>img{
-    display: inline-block;
-}
-section#todayDetailsNight>span>span>span, section#todayDetailsDay>span>span>span{
+#todayDetailsNight>span>span>span, #todayDetailsDay>span>span>span{
     display: block;
     padding: 20px;
 }
-section#dateTodayDetails{
-    width: 927px;
-    margin: 5px 45px;
+#dateTodayDetails{
+    width: 90%;
     border: 1px solid #979797;
-    padding: 5px 0px;
-    background-color: #f1f1f1;
+    display: flex;
 }
-section#dateTodayDetails>span{
-    display: inline-block;
-    width: 41%;
-    padding: 5px 10px;
+#dateTodayDetails > span{
+    width: 40%;
+    padding: 10px;
+}
+#DateAndWeekDay{
+    text-transform: capitalize;
 }
 
 /* Таблица со значениями */
-div.arrow{
-    display: inline-block;
-    z-index: 999;
-    background: #ffffff;
-    opacity: 0;
-}
-/* Дни */
-ul#topTable>li:nth-child(6), ul#topTable>li:nth-child(7){
-    margin-left: 333px;
-    opacity: 0;
-}
-ul#topTable> li > span{
-    display: block;
-    padding: 5px 0px;
-    border-bottom: 1px solid #979797;
-    text-align: center;
-}
-ul#firstDay > li,ul#secondDay > li,ul#threeDay > li,ul#forthDay > li,ul#fiveDay > li,ul#sixDay > li,ul#sevenDay > li{
-    display: inline-block;
-}
-ul#firstDay > li> span:first-child,ul#secondDay > li> span:first-child,ul#threeDay > li> span:first-child,ul#forthDay > li> span:first-child,ul#fiveDay  > li> span:first-child,ul#sixDay  > li> span:first-child,ul#sevenDay  > li> span:first-child{
-    display: block;
-    height: 20px;
-    text-align: center;
-    padding: 10px 0px;
-}
-ul#firstDay > li> img,ul#secondDay > li >img,ul#threeDay > li >img,ul#forthDay > li >img,ul#fiveDay > li >img,ul#sixDay > li >img,ul#sevenDay > li >img{
-    display: block;
-    height: 25px;
-    width: 35px;
-    margin-left: 5px;
-    text-align: center;
-}
-ul#firstDay > li:nth-child(1)> img,ul#secondDay > li:nth-child(1) >img,ul#threeDay > li:nth-child(1) >img,ul#forthDay > li:nth-child(1) >img,ul#fiveDay > li:nth-child(1) >img,ul#sixDay > li:nth-child(1) >img,ul#sevenDay > li:nth-child(1) >img{
-    padding-bottom: 10px;
-}
-ul#firstDay > li:nth-child(2)> img,ul#secondDay > li:nth-child(2) >img,ul#threeDay > li:nth-child(2) >img,ul#forthDay > li:nth-child(2) >img,ul#fiveDay > li:nth-child(2) >img,ul#sixDay > li:nth-child(2) >img,ul#sevenDay > li:nth-child(2) >img{
-    padding-bottom: 10px;
-}
-ul#firstDay > li:nth-child(3)> img,ul#secondDay > li:nth-child(3) >img,ul#threeDay > li:nth-child(3) >img,ul#forthDay > li:nth-child(3) >img,ul#fiveDay > li:nth-child(3) >img,ul#sixDay > li:nth-child(3) >img,ul#sevenDay > li:nth-child(3) >img{
-    height: 35px;
-}
-ul#firstDay > li:nth-child(4)> img,ul#secondDay > li:nth-child(4) >img,ul#threeDay > li:nth-child(4) >img,ul#forthDay > li:nth-child(4) >img,ul#fiveDay > li:nth-child(4) >img,ul#sixDay > li:nth-child(4) >img,ul#sevenDay > li:nth-child(4) >img{
-    height: 35px;
-}
-ul#firstDay > li> span:last-child,ul#secondDay > li > span:last-child,ul#threeDay > li > span:last-child,ul#forthDay > li > span:last-child,ul#fiveDay > li > span:last-child,ul#sixDay > li > span:last-child,ul#sevenDay > li > span:last-child{
-    display: block;
-    height: 20px;
-    text-align: center;
-    margin: 20px 0px 10px 3px;
-    border: 1px solid #979797;
-    padding: 0px;
-}
-ul#firstDay > li:nth-child(1) > span:last-child,ul#secondDay > li:nth-child(1) > span:last-child,ul#threeDay > li:nth-child(1) > span:last-child,ul#forthDay > li:nth-child(1) > span:last-child,ul#fiveDay > li:nth-child(1) > span:last-child,ul#sixDay > li:nth-child(1) > span:last-child,ul#sevenDay > li:nth-child(1) > span:last-child{
-    background-color: #b9e88b;
-}
-ul#firstDay > li:nth-child(2) > span:last-child,ul#secondDay > li:nth-child(2) > span:last-child,ul#threeDay > li:nth-child(2) > span:last-child,ul#forthDay > li:nth-child(2) > span:last-child,ul#fiveDay > li:nth-child(2) > span:last-child,ul#sixDay > li:nth-child(2) > span:last-child,ul#sevenDay > li:nth-child(2) > span:last-child{
-    background-color: #f7e53b;
-}
-ul#firstDay > li:nth-child(3) > span:last-child,ul#secondDay > li:nth-child(3) > span:last-child,ul#threeDay > li:nth-child(3) > span:last-child,ul#forthDay > li:nth-child(3) > span:last-child,ul#fiveDay > li:nth-child(3) > span:last-child,ul#sixDay > li:nth-child(3) > span:last-child,ul#sevenDay > li:nth-child(3) > span:last-child{
-    background-color: #f3a536;
-}
-ul#firstDay > li:nth-child(4) > span:last-child,ul#secondDay > li:nth-child(4) > span:last-child,ul#threeDay > li:nth-child(4) > span:last-child,ul#forthDay > li:nth-child(4) > span:last-child,ul#fiveDay > li:nth-child(4) > span:last-child,ul#sixDay > li:nth-child(4) > span:last-child,ul#sevenDay > li:nth-child(4) > span:last-child{
-    background-color: #f7e53b;
-}
-
 /* Скорость ветра */
-ul#middleTable>li:nth-child(6), ul#middleTable>li:nth-child(7){
-    margin-left: 333px;
-    opacity: 0;
-}
-ul#speedWindDay1,ul#speedWindDay2,ul#speedWindDay3,ul#speedWindDay4,ul#speedWindDay5,ul#speedWindDay6,ul#speedWindDay7{
-    padding-top: 10px;
-}
-ul#speedWindDay1>li,ul#speedWindDay2>li,ul#speedWindDay3>li,ul#speedWindDay4>li,ul#speedWindDay5>li,ul#speedWindDay6>li,ul#speedWindDay7>li{
+#speedWindDay1>li,#speedWindDay2>li,#speedWindDay3>li,#speedWindDay4>li,#speedWindDay5>li{
     display: inline-block;
     margin-left: 7px;
     margin-right: 7px;
@@ -235,110 +130,68 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
     margin-top: 1px;
 }
 /* Осадки */
-ul#bottomTable>li:nth-child(6), ul#bottomTable>li:nth-child(7){
+#bottomTable>li:nth-child(6), #bottomTable>li:nth-child(7){
     margin-left: 333px;
     opacity: 0;
 }
-ul#probability1Day, ul#probability2Day, ul#probability3Day, ul#probability4Day, ul#probability5Day, ul#probability6Day, ul#probability7Day{
-    padding: 40px 0 0 0;
+#bottomTable > li > ul ,#middleTable > li > ul{
+    display: flex;
+    flex-direction: row;
 }
-ul#probability1Day>li, ul#probability2Day>li, ul#probability3Day>li, ul#probability4Day>li, ul#probability5Day>li, ul#probability6Day>li, ul#probability7Day>li{
-    display: inline-block;
+#middleTable > li > ul {
+    padding: 10px 5px 10px 0;
+    justify-content: space-around;
+}
+#bottomTable > li > ul {
+    padding: 40px 5px 0 5px;
+    justify-content: space-between;
+}
+#bottomTable > li > ul > li{
     width: 34px;
     height: 70px;
-    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
-ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>span, ul#probability4Day>li>span, ul#probability5Day>li>span, ul#probability6Day>li>span, ul#probability7Day>li>span{
+#bottomTable > li > ul > li{
+    width: 34px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#probability1Day>li>span, #probability2Day>li>span, #probability3Day>li>span, #probability4Day>li>span, #probability5Day>li>span {
     text-align: center;
     width: 34px;
     display: inline-block;
-    margin: 50px 0 0 0;
 }
 /* Столбцы осадков фоном */
 .probNigth, .probMoning, .probDay, .probEvening{
     background: url('../img/FiveDay/Group.png') no-repeat;
     background-position-y: 70px;
 }
-
-/* Анимация */
-
-@keyframes show {
-    from {margin-left: -10px;opacity: 0;}
-    35% {margin-left: -5px;opacity: 0.2;}
-    50% {margin-left: -5px;opacity: 0.9;}
-    75% {margin-left: -5px;opacity: 1;}
-    to {margin-left: -5px;opacity: 1;}
-}
-@keyframes hide {
-    from {margin-left: -5px; margin-right: 0px;opacity: 0.8;}
-    5% {margin-left: -25px;margin-right: 0px;opacity: 0.6;}
-    10% {margin-left: -40px;margin-right: 0px;opacity: 0.4;}
-    25% {margin-left: -100px;margin-right: 0px;opacity: 0.1;}
-    50% {margin-left: -190px;margin-right: 0px;opacity: 0;}
-    to {margin-left: -499px;margin-right: 308px;opacity: 0;}
-}
-@keyframes showLeft {
-    from {margin-left: -190px;opacity: 0;margin-right: 0;}
-    50% {margin-left: -100px;opacity: 0.1;margin-right:0;}
-    75% {margin-left: -40px;margin-right: 0px;opacity: 0.4;}
-    90% {margin-left: -25px;margin-right: 0px;opacity: 0.8;}
-    to {margin-left: -5px;opacity: 1;margin-right: 0;}
-}
-@keyframes hideRight {
-    from {margin-left: -5px;opacity: 1;}
-    50% {margin-left: -5px;opacity: 0.1;}
-    75% {margin-left: -5px;opacity: 0;}
-    90% {margin-left: -5px;opacity: 0;}
-    to {margin-left: 499px;opacity: 0;}
-}
-.animate{
-    animation: show 200ms linear forwards;
-}
-.hideElem{
-    animation: hide 200ms linear forwards;
-}
-.animateRight{
-    animation: showLeft 200ms linear forwards;
-}
-.hideRight{
-    animation: hideRight 200ms linear forwards;
-}
-
 /* слайдер дней */
-
-#outer{
-    border: 1px solid #979797;
-    height: 170px;
-    margin-left: -5px;
-    background:#fff;
-}
 #slider{
     height: 170px;
-    width: 500px;
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #panelNav{
-    display: block;
-    height: 120px;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .navigation{
-    display: block;
-    margin: 0 auto;
-    width: 180px;
-    height: 30px;
     padding: 10px;
-  /*   border: 1px solid black; */
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
 }
 .arrowLeft,.arrowRight{
-    width: 40px;
-    height: 120px;
-    display: inline-block;
-}
-.arrowLeft{
-    margin-left: 10px;
-}
-.arrowRight{
-    margin-left: 5px;
+    padding: 0 10px;
 }
 .arrowLeft::after{
     content: '';
@@ -380,31 +233,20 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
     cursor: pointer;
     z-index: 0;
 }
-.arrowLeft:hover,.arrowRight:hover{
-    cursor: pointer;
-    color: #bcb5b9;
-}
 #day{
-    width: 400px;
-    height: 110px;
-    display: inline-block;
-    margin-left: -5px;
-    padding: 5px 0;
-    perspective: 400px;
+    width: 60%;
+    perspective: 800px;
     perspective-origin: 50% 50%;
     transform-style: preserve-3d;
     z-index: 1;
-}
-.slide,.timeDay{
-    display: inline-block;
 }
 .slide{
     z-index: 1;
     opacity: 0;
     border: 1px solid black;
     position: absolute;
-    width: 400px;
-    height: 110px;
+    width: 100%;
+    min-height: 120px;
     transform: rotate(180deg);
     transition: all 1s ease;
     background: #ffffff;
@@ -424,7 +266,6 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
 }
 .currentDayShow{
     animation: show 1s ease forwards;
-    /* transform: scale(1,1); */
 }
 @keyframes showRight {
     from {opacity: 1;transform: rotateY(-180deg)}
@@ -484,12 +325,11 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
 }
 #timeDay{
     padding: 2px 0;
-    display: block;
+    display: flex;
+    justify-content: space-around;
 }
 .timeDay{
-    display: inline-block;
     width: 50px;
-    margin: 0px 23px;
     text-align: center;
 }
 .timeDay>span{
@@ -506,16 +346,7 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
     text-align: center;
     border: 1px solid black;
 }
-.nightImg{
-    height: 42px;
-}
-.moningImg{
-    height: 42px;
-}
-.dayImg{
-    height: 42px;
-}
-.eveningImg{
+.nightImg, .moningImg, .dayImg, .eveningImg{
     height: 42px;
 }
 .nightTemp{
@@ -531,7 +362,6 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
     background: greenyellow;
 }
 .navDays{
-    display: inline-block;
     width: 30px;
     text-align: center;
     padding: 3px 0;
@@ -547,4 +377,92 @@ ul#probability1Day>li>span, ul#probability2Day>li>span, ul#probability3Day>li>sp
 .current{
     background: springgreen;
     text-transform: capitalize;
+}
+@media (max-width: 980px) {
+    #bottomTable > li > ul {
+        padding: 0 5px;
+    }
+}
+@media (max-width: 900px) {
+    #bottomTable > li > ul {
+        flex-wrap: wrap;
+    }
+    #middleTable > li > ul {
+        flex-wrap: wrap;
+    }
+    #bottomTable > li > ul > li{
+        margin: 0 10px;
+    }
+    #middleTable > li > ul > li{
+        margin: 5px 20px;
+    }
+}
+@media (max-width: 768px) {
+    #dayAndNigth{
+        flex-wrap: wrap;
+    }
+    .navigation{
+        width: 80%;
+    }
+    #day{
+        width: 80%;
+    }
+    #middleTable > li > ul > li{
+        margin: 5px 10px;
+    }
+}
+@media (max-width: 690px) { 
+    #bottomHeader{
+        height: auto!important;
+        padding: 10px;
+    }
+    #bottomHeader > #form{
+        margin-top: 10px;
+    }
+}
+@media (max-width: 680px) {
+    #bottomTable > li > ul > li{
+        margin: 0 5px;
+    }
+}
+@media (max-width: 560px) {
+    #bottomTable > li > ul > li{
+        margin: 0;
+    }
+}
+@media (max-width: 535px) {
+    #dateTodayDetails{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #dateTodayDetails > span{
+        width: 240px;
+    }
+    #bottomTable > li > ul{
+        padding: 0 20%;
+    }
+    #bottomTable > li > ul > li{
+        margin: 0;
+    }
+}
+@media (max-width: 320px) {
+    #day{
+        width: 100%;
+    }
+    .navigation{
+        width: 100%;
+    }
+    .arrowLeft, .arrowRight{
+        padding: 0 5px;
+    }
+    .arrowLeft::after, .arrowRight::after, .arrowLeft::before, .arrowRight::before {
+        width: 15px;
+        height: 3px;
+    }
+    .arrowLeft::after, .arrowRight::after{
+        margin-top: 6px;
+    }
+    #bottomTable > li > ul{
+        padding: 0 17%;
+    }
 }
