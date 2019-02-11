@@ -2,8 +2,7 @@
 
 /* Нижняя часть шапки */
 
-section#bottomHeader span#placeTop{
-    display: inline-block;
+#bottomHeader #placeTop{
     font-size: 16px;
     color: #0f0f0f;
     margin-top: 9px;
@@ -12,7 +11,7 @@ section#bottomHeader span#placeTop{
 
 /* Основное содеражание страницы */
 
-main#main{
+#main{
     padding: 70px 0 143px 0;
     height: auto;
     background-color: #ffffff;
@@ -20,45 +19,116 @@ main#main{
     border-left: 2px solid #bcb5b9;
     border-bottom: 1px solid #979797;
 }
-ul#tableHistory{
+#tableHistory{
     width: 100%;
     height: auto;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
 }
-ul#tableHistory > li{
+.month{
     list-style-type: none;
-    display: inline-block;
-    width: 80px;
+    width: calc(100%/13);
     background: #0f0f0f;
-    height: 250px;
+    height: auto;
     border: 0;
-    margin-right: -5.5px;
     padding: 0;
+    display: flex;
+    flex-direction: column;
 }
-ul#tableHistory > li > span{
+.month > span{
     font-size: 14px;
-    display: inline-block;
     border: 0;
-    width: 80px;
-    height: 14px;
+    height: 40px;
     text-align: center;
-    padding: 18px 0px;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-ul#tableHistory > li > span.main{
-    height: 32px;
-    padding: 9px 0px;
-}
-ul#tableHistory > li:nth-child(2n+1) >span:nth-child(2n){
+#tableHistory > li:nth-child(2n+1) >span:nth-child(2n){
     background-color: #ffffff;
 }
-ul#tableHistory > li:nth-child(2n+1) >span:nth-child(2n+1){
+#tableHistory > li:nth-child(2n+1) >span:nth-child(2n+1){
     background-color: #c4c4c4;
 }
-ul#tableHistory > li:nth-child(2n) >span:nth-child(2n+1){
+#tableHistory > li:nth-child(2n) >span:nth-child(2n+1){
     background-color: #ffffff;
 }
-ul#tableHistory > li:nth-child(2n) >span:nth-child(2n){
+#tableHistory > li:nth-child(2n) >span:nth-child(2n){
     background-color: #c4c4c4;
+}
+
+/* Media */
+@media (max-width: 930px) {
+    span.main{
+        font-size: 12px;
+    }
+    .month > span:first-child{
+        font-size: 12px;
+    }
+}
+@media (max-width: 800px) {
+    span.main{
+        font-size: 10px;
+    }
+    .month > span:first-child{
+        font-size: 10px;
+    }
+}
+@media (max-width: 700px) {
+    #main{
+        display: flex;
+        justify-content: center;
+    }
+    #tableHistory {
+        flex-direction: column;
+    }
+    .month{
+        flex-direction: row;
+        width: 100%;
+    }
+    .month > span { 
+        width: calc(100%/5);
+        min-height: 40px;
+        height: auto;
+    }
+    span.main{
+        font-size: 14px;
+    }
+    .month > span:first-child{
+        font-size: 14px;
+    }
+}
+@media (max-width: 400px) {
+    span.main{
+        font-size: 12px;
+    }
+}
+@media (max-width: 360px) {
+    #form {
+        margin-top: 0;
+    }
+    span.main{
+        font-size: 10px;
+    }
+}
+@media (max-width: 320px) {
+    #main{
+        padding: 30px 0 60px 0;
+    }
+    span.main{
+        font-size: 10px!important;
+        font-weight: 600!important;
+    }
+    .month > span:first-child{
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .month > span{
+        font-weight: 100;
+        font-size: 20px;
+    }
 }

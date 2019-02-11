@@ -99,7 +99,7 @@ ul{
 .dayWeek:focus,.dayWeek:hover{
     border: 1px solid #afbfcd;
 }
-ul li:first-child>.dayWeek{
+li:first-child>.dayWeek{
     border: 1px solid #afbfcd;
 }
 .dayWeek>p:first-child{
@@ -230,7 +230,7 @@ ul li:first-child>.dayWeek{
     }
 }
 @media (max-width: 600px) {
-        .dayWeek{
+    .dayWeek{
         flex-direction: row;
         padding: 10px;
         justify-content: space-around;
@@ -274,10 +274,10 @@ ul li:first-child>.dayWeek{
     .blockInformation {
         min-height: 0;
     }
-    .probability > .colProbabilityInfo:nth-child(2n+1) {
+    .colProbabilityInfo:nth-child(2n+1) {
         width: 0;
     }
-    .probability > .colProbabilityInfo:nth-child(2) {
+    .colProbabilityInfo:nth-child(2) {
         width: 90%;
     }
 }
@@ -311,6 +311,12 @@ ul li:first-child>.dayWeek{
     .speedWind{
         padding-bottom: 5px;
         font-size: 14px;
+    }
+    #main{
+        padding: 2px;
+    }
+    #form {
+        margin-top: 0;
     }
     .windArrow{
         height: 30px;

@@ -4,20 +4,19 @@ body{
 }
 /* Картника погоды */
 
-#bottomHeader > #topCloudy{
+#topCloudy{
     position: absolute;
-    margin-left: 20px; 
+    padding-left: 20px; 
     margin-top: 0px;
     height: 30px;
 }
 
 /* Температура и место */
 
-#bottomHeader #placeTop{
-    display: inline-block;
+#bottomHeader > #placeTop{
     font-size: 15px;
     color: #0f0f0f;
-    margin-top: 9px;
+    margin-top: 6px;
     margin-left: 100px;
 }
 
@@ -107,12 +106,12 @@ body{
 
 /* Таблица со значениями */
 /* Скорость ветра */
-#speedWindDay1>li,#speedWindDay2>li,#speedWindDay3>li,#speedWindDay4>li,#speedWindDay5>li{
+.speedWindDay>li{
     display: inline-block;
     margin-left: 7px;
     margin-right: 7px;
 }
-ul#speedWindDay1>li>span,ul#speedWindDay2>li>span,ul#speedWindDay3>li>span,ul#speedWindDay4>li>span,ul#speedWindDay5>li>span,ul#speedWindDay6>li>span,ul#speedWindDay7>li>span{
+.speedWindDay>li>span{
     display: block;
     overflow: hidden;
 	width: 25px;
@@ -122,45 +121,38 @@ ul#speedWindDay1>li>span,ul#speedWindDay2>li>span,ul#speedWindDay3>li>span,ul#sp
     background: #d8d8d8;
     text-align: center;
 }
-ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>span>span,ul#speedWindDay4>li>span>span,ul#speedWindDay5>li>span>span,ul#speedWindDay6>li>span>span,ul#speedWindDay7>li>span>span{
+.speedWindDay>li>span>span{
     transform: skewX(25deg);
     transform-origin: 0 100%;
     display: block;
     margin-left: 7px;
     margin-top: 1px;
 }
+.speedWindDay{
+    padding: 10px 5px 10px 0;
+    justify-content: space-around;
+}
 /* Осадки */
+.probabilityDay ,#middleTable > li > ul{
+    display: flex;
+    flex-direction: row;
+}
 #bottomTable>li:nth-child(6), #bottomTable>li:nth-child(7){
     margin-left: 333px;
     opacity: 0;
 }
-#bottomTable > li > ul ,#middleTable > li > ul{
-    display: flex;
-    flex-direction: row;
-}
-#middleTable > li > ul {
-    padding: 10px 5px 10px 0;
-    justify-content: space-around;
-}
-#bottomTable > li > ul {
+.probabilityDay {
     padding: 40px 5px 0 5px;
     justify-content: space-between;
 }
-#bottomTable > li > ul > li{
+.probabilityDay > li{
     width: 34px;
     height: 70px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
-#bottomTable > li > ul > li{
-    width: 34px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-#probability1Day>li>span, #probability2Day>li>span, #probability3Day>li>span, #probability4Day>li>span, #probability5Day>li>span {
+.probabilityDay>li>span {
     text-align: center;
     width: 34px;
     display: inline-block;
@@ -379,21 +371,21 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
     text-transform: capitalize;
 }
 @media (max-width: 980px) {
-    #bottomTable > li > ul {
+    .probabilityDay {
         padding: 0 5px;
     }
 }
 @media (max-width: 900px) {
-    #bottomTable > li > ul {
+    .probabilityDay {
         flex-wrap: wrap;
     }
-    #middleTable > li > ul {
+    .speedWindDay {
         flex-wrap: wrap;
     }
-    #bottomTable > li > ul > li{
+    .probabilityDay > li{
         margin: 0 10px;
     }
-    #middleTable > li > ul > li{
+    .speedWindDay > li{
         margin: 5px 20px;
     }
 }
@@ -407,7 +399,7 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
     #day{
         width: 80%;
     }
-    #middleTable > li > ul > li{
+    .speedWindDay > li{
         margin: 5px 10px;
     }
 }
@@ -416,17 +408,22 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
         height: auto!important;
         padding: 10px;
     }
-    #bottomHeader > #form{
+    #form{
         margin-top: 10px;
     }
 }
 @media (max-width: 680px) {
-    #bottomTable > li > ul > li{
+    .probabilityDay > li{
         margin: 0 5px;
     }
 }
+@media (max-width: 610px) {
+    #topCloudy{
+        margin-top: -20px;
+    }
+}
 @media (max-width: 560px) {
-    #bottomTable > li > ul > li{
+    .probabilityDay > li{
         margin: 0;
     }
 }
@@ -438,10 +435,10 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
     #dateTodayDetails > span{
         width: 240px;
     }
-    #bottomTable > li > ul{
+    .probabilityDay{
         padding: 0 20%;
     }
-    #bottomTable > li > ul > li{
+    .probabilityDay > li{
         margin: 0;
     }
 }
@@ -462,7 +459,7 @@ ul#speedWindDay1>li>span>span,ul#speedWindDay2>li>span>span,ul#speedWindDay3>li>
     .arrowLeft::after, .arrowRight::after{
         margin-top: 6px;
     }
-    #bottomTable > li > ul{
+    .probabilityDay{
         padding: 0 17%;
     }
 }
