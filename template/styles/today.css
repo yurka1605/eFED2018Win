@@ -58,6 +58,8 @@
 /* Дни недели */
 ul{
     list-style: none;
+}
+#hoursDays, #windDetails, #probabilityDetails, #tempPlus, #tempMinus{
     display: flex;
 }
 #hoursDays{
@@ -69,6 +71,7 @@ ul{
     justify-content: center;
 }
 #fiveDays>ul{
+    display: flex;
     justify-content: space-around;
 }
 .days{
@@ -183,7 +186,7 @@ li:first-child>.dayWeek{
     text-align: center;
 }
 /* Probability Graf */
-#probabilityBlock > ul {
+#probabilityDetails{
     justify-content: flex-start;
     justify-content: space-around;
 }
