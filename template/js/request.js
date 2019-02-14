@@ -13,7 +13,7 @@ const page = {
         const searchField = document.getElementById('searchField');
         searchField.addEventListener('change', getActionField);
         function getActionField() {
-            const city = searchField.value;
+            const city = searchField.value.trim();
             if (regExpFindField.test(city) === true ) {
                 This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
                 if (currentLocation != 'historical-review.html') {

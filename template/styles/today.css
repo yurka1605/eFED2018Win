@@ -1,5 +1,5 @@
 /* Основная часть */
-main#main{
+#main{
     border-right: 2px solid #bcb5b9;
     border-left: 2px solid #bcb5b9;
     border-bottom: 1px solid #979797;
@@ -7,21 +7,25 @@ main#main{
     padding: 20px;
     background-color: #ffffff;
 }
-section#mainDetails{
-    height: 220px;
+#mainDetails{
+    min-height: 220px;
+    height: auto;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 #detailsPlace{
-    float: left;
     font-size: 28px;
     line-height: 1.3;
-    padding-left: 10px;
+    padding: 0 10px;
     display: block;
     width: 300px;
     text-transform: capitalize;
 }
-p#temperature{
-    float: right;
+.detailsPlaceBlock{
+    display:flex;
+}
+#temperature{
     margin-top: 25px;
     font-size: 35px;
 }
@@ -29,18 +33,18 @@ p#temperature{
     max-height: 100px;
     float: left;
 }
-span#details{
-    float: right;
+#details{
     font-size: 28px;
     line-height: 1.3;
-    padding-right: 50px;
     display: block;
+    width: 500px;
+}
+#detailsButton{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
 }
 .detailsTab{
-    margin-top: 40px;
-    margin-right: 22px;
-    border: 1px solid #979797;
-    height: 48px;
     padding: 15px 15px;
     font-size: 16px;
     color: #000000;
@@ -53,23 +57,26 @@ span#details{
 
 /* Дни недели */
 ul{
-    padding-left: 10px;
     list-style: none;
 }
-#fiveDays>ul{
-    margin: 0 auto;
-    width: 575px;
+#hoursDays, #windDetails, #probabilityDetails, #tempPlus, #tempMinus{
+    display: flex;
 }
-.time{
-    display:inline-block;
-    padding: 5px;
-    width: 105px;
+#hoursDays{
+    justify-content: space-around;
+    padding: 0;
+}
+#fiveDays {
+    display: flex;
+    justify-content: center;
+}
+#fiveDays>ul{
+    display: flex;
+    justify-content: space-around;
 }
 .days{
-    display:inline-block;
     padding: 5px;
     width: 105px;
-    margin-left: -5px;
 }
 .speedWind{
     display:block;
@@ -84,15 +91,18 @@ ul{
     text-align: center;
     font-weight: 600;
 }
-section.dayWeek{
+.dayWeek{
     text-align: center;
     cursor: pointer;
     border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
 }
 .dayWeek:focus,.dayWeek:hover{
     border: 1px solid #afbfcd;
 }
-ul li:first-child>.dayWeek{
+li:first-child>.dayWeek{
     border: 1px solid #afbfcd;
 }
 .dayWeek>p:first-child{
@@ -125,19 +135,9 @@ ul li:first-child>.dayWeek{
 }
 #temperatureBlock{
     height: auto;
-    margin: 0 40px;
 }
 /* Temp */
-.tempPlus:nth-child(1), .tempMinus:nth-child(1), .windBlockInfo:nth-child(1){
-    margin-left: -5px;
-}
-.tempPlus:last-child, .tempMinus:last-child, .windBlockInfo:last-child{
-    margin-right: 0px;
-}
 .tempPlus ,.tempMinus{
-    display: inline-block;
-    margin-right: 91px;
-    margin-left: -5px;
     height: auto;
     position: relative;
 }
@@ -171,44 +171,161 @@ ul li:first-child>.dayWeek{
 }
 #tempPlus{
     border-bottom: 1px solid black;
-    width: 870px;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+#tempMinus{
+    align-items: flex-start;
+    justify-content: space-around;
 }
 /* WindSpeed */
-.windBlockInfo:nth-child(1){
-    margin-left: 38px;
-}
-.windBlockInfo{
-    display: inline-block;
-    margin-right: 80px;
-    margin-left: -5px;
+#windBlock > ul{
+    justify-content: space-around;
 }
 .wind{
     text-align: center;
 }
 /* Probability Graf */
-#probabilityBlock{
-    padding-left: 10px;
+#probabilityDetails{
+    justify-content: flex-start;
+    justify-content: space-around;
 }
-.probability {
-    display: inline-block;
+.probability{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 125px;
 }
 .colProbabilityInfo{
-    display: inline-block;
-    margin-left: -5px;
-    vertical-align: bottom;
+    width: 30%;
 }
 .probabilityCol{
     background: #e7edf8;
     border-top: 3px solid #7492d4;
     display: block;
-    width: 39.7px;
 }
 .probabilityValue{
     color: #7492d4;
     font-weight: 600;
-}
-.probabilityValue{
     display: block;
-    width: 39.7px;
     text-align: center;
+}
+@media (max-width: 768px) { 
+    .detailsTab{
+        font-size: 14px;
+        padding: 10px 10px;
+    }
+}
+@media (max-width: 690px) { 
+    #mainDetails{
+        flex-wrap: wrap;
+    }
+    #detailsPlace{
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px 0;
+    }
+    .detailsPlaceBlock{
+        margin-left: 30px;
+    }
+    .dayWeek>img {
+        height: 60px;
+    }
+}
+@media (max-width: 600px) {
+    .dayWeek{
+        flex-direction: row;
+        padding: 10px;
+        justify-content: space-around;
+    }
+    .dayWeek>p:first-child {
+        font-size: 24px;
+    }
+    .dayWeek>p:last-child {
+        width: 90px;
+        font-size: 24px;
+    }
+    .days{
+        width: 100%;
+        padding: 0;
+    }
+    .dayWeek>p:first-child {
+        padding: 0 auto;
+    }
+    #fiveDays>ul{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+@media (max-width: 535px) {
+    #imgWeatherToday{
+        height: 70px;
+    }
+    #detailsPlace{
+        font-size: 24px!important;
+    }
+    #temperature{
+        font-size: 28px;
+    }
+    #main{
+        padding: 5px;
+    }
+    #detailsButton{
+        padding-top: 10px;
+    }
+    .blockInformation {
+        min-height: 0;
+    }
+    .colProbabilityInfo:nth-child(2n+1) {
+        width: 0;
+    }
+    .colProbabilityInfo:nth-child(2) {
+        width: 90%;
+    }
+}
+@media (max-width: 430px) {
+    #detailsPlace, #temperatureInfo, #details{
+        font-size: 20px!important;
+    }
+    #temperature{
+        margin-top: 0;
+        margin-left: 10px;
+    }
+    .detailsPlaceBlock{
+        margin-left: 10px;
+        align-items: center;
+    }
+    #imgWeatherToday{
+        height: 50px;
+    }
+    .detailsTab{
+        padding: 5px;
+        font-size: 13px;
+    }
+    .time{
+        font-size: 13px;
+    }
+    .probabilityValue{
+        font-size: 13px;
+    }
+}
+@media (max-width: 360px) {
+    .speedWind{
+        padding-bottom: 5px;
+        font-size: 14px;
+    }
+    #main{
+        padding: 2px;
+    }
+    #form {
+        margin-top: 0;
+    }
+    .windArrow{
+        height: 30px;
+        width: 30px;
+    }
+    #mainDetails {
+        padding: 5px;
+    }
 }

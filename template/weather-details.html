@@ -19,12 +19,12 @@
     <section id="mainToday">
       <header id="header">
         <nav id="topHeader">
-          <button id="today" class="mainTab currentPage">Сегодня</button>
+          <a href="weather-details.html"><button id="today" class="mainTab currentPage">Сегодня</button></a>
           <a href="index.html"><button id="fiveDay" class="mainTab">5 дней</button></a>
           <a href="historical-review.html"><button id="historyWeather" class="mainTab">История погоды</button></a>
         </nav>
         <section id="bottomHeader">
-          <span>Загрязнение воздуха: <span id="polutionInfo"></span></span>
+          <span>Загрязнение воздуха:<span id="polutionInfo"></span></span>
           <div id="form">
             <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
             <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Поиск" pattern="">
@@ -34,19 +34,27 @@
       <main id="main">
         <section id="mainDetails">
           <span id="detailsPlace">
-            <p><span id="cityInfo"></span>,<span id="countryInfo"></span></p>
-            <p id="dayWeekInfo"></p>
-            <p id="weatherInfo"></p>
-            <p><img id="imgWeatherToday" src="" alt="" title="">
-            <p id="temperature"><span id="temperatureInfo"></span></p></p>
-            </span>
+            <div>
+              <p><span id="cityInfo"></span>,<span id="countryInfo"></span></p>
+              <p id="dayWeekInfo"></p>
+              <p id="weatherInfo"></p>
+            </div>
+            <div class="detailsPlaceBlock">
+              <img id="imgWeatherToday" src="" alt="" title="">
+              <p id="temperature"><span id="temperatureInfo"></span></p>
+            </div>
+          </span>
           <span id="details">
-            <p>Вероятность осадков: <span id="probabilityPracipationInfo"></span>%</p>  
-            <p>Влажность: <span id="wetnessInfo"></span>%</p>
-            <p>Ветер: <span id="windSpeedInfo"></span> м/с</p>
-            <button id="temperatureInformarion" class="detailsTab currentTab">Температура</button>
-            <button id="probability" class="detailsTab">Вероятность осадков</button>
-            <button id="windInfo" class="detailsTab">Ветер</button>
+            <div>
+              <p>Вероятность осадков: <span id="probabilityPracipationInfo"></span>%</p>  
+              <p>Влажность: <span id="wetnessInfo"></span>%</p>
+              <p>Ветер: <span id="windSpeedInfo"></span> м/с</p>
+            </div>
+            <div id="detailsButton">
+              <button id="temperatureInformarion" class="detailsTab currentTab">Температура</button>
+              <button id="probability" class="detailsTab">Вероятность осадков</button>
+              <button id="windInfo" class="detailsTab">Ветер</button>
+            </div>
           </span>
         </section>
         <section  id="temperatureBlock" class="blockInformation currentBlock">
@@ -152,7 +160,7 @@
           </ul>
         </section>
         <section id="probabilityBlock" class="blockInformation">
-          <ul>
+          <ul id="probabilityDetails">
             <li class="probability">
               <div class="colProbabilityInfo">
                 <div class="probabilityCol"></div>
@@ -252,7 +260,7 @@
           </ul>
         </section>
         <section id="windBlock" class="blockInformation">
-          <ul>
+          <ul id="windDetails">
             <li class="windBlockInfo">
                 <section class="wind">
                     <span class="speedWind"></span>
@@ -303,7 +311,7 @@
             </li>
           </ul>
         </section>
-        <ul>
+        <ul id="hoursDays">
           <li class="time"><span class="timeWeather"></span></li>
           <li class="time"><span class="timeWeather"></span></li>
           <li class="time"><span class="timeWeather"></span></li>

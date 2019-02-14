@@ -21,7 +21,7 @@
           <header id="header">
             <nav id="topHeader">
               <a href="weather-details.html"><button id="today" class="mainTab">Сегодня</button></a>
-              <button id="fiveDay" class="mainTab currentPage">5 дней</button>
+              <a href="index.html"><button id="fiveDay" class="mainTab currentPage">5 дней</button></a>
               <a href="historical-review.html"><button id="historyWeather" class="mainTab">История погоды</button></a>
             </nav>
             <section id="bottomHeader">
@@ -36,15 +36,12 @@
             </section>
           </header>
           <main id="main">
-            <section id="fiveDayDetails">
-              <div class ="arrow"><img id="leftArrow" src="img/FiveDay/arrow-left.png" alt="Левая стрелка"></div>
-              <section id="tableDay">
-                <div id="outer">
-                  <div id="slider">
-                    <div id="panelNav">
-                      <div class="arrowLeft"></div>
-                      <div id="day">
-                        <div class="slide currentDayShow">
+            <section id="tableDay">
+              <div id="slider">
+                <div id="panelNav">
+                  <div class="arrowLeft"></div>
+                  <div id="day">
+                    <div class="slide currentDayShow">
                           <div class="numberDay"></div>
                           <div id="timeDay">
                             <div class="timeDay">
@@ -68,123 +65,122 @@
                               <span class="eveningTemp"></span>
                             </div>
                           </div>
-                        </div>
-                        <div class="slide">
-                          <div class="numberDay"></div>
-                          <div id="timeDay">
-                            <div class="timeDay">
-                              <span class="night">Ночь</span>
-                              <span><img class="nightImg" src="" alt=""></span>
-                              <span class="nightTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="moning">Утро</span>
-                              <span><img class="moningImg" src="" alt=""></span>
-                              <span class="moningTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class ="day" >День</span>
-                              <span><img class="dayImg" src="" alt=""></span>
-                              <span class ="dayTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="evening">Вечер</span>
-                              <span><img class="eveningImg" src="" alt=""></span>
-                              <span class="eveningTemp"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="slide">
-                          <div class="numberDay"></div>
-                          <div id="timeDay">
-                            <div class="timeDay">
-                              <span class="night">Ночь</span>
-                              <span><img class="nightImg" src="" alt=""></span>
-                              <span class="nightTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="moning">Утро</span>
-                              <span><img class="moningImg" src="" alt=""></span>
-                              <span class="moningTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class ="day" >День</span>
-                              <span><img class="dayImg" src="" alt=""></span>
-                              <span class ="dayTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="evening">Вечер</span>
-                              <span><img class="eveningImg" src="" alt=""></span>
-                              <span class="eveningTemp"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="slide">
-                          <div class="numberDay"></div>
-                          <div id="timeDay">
-                            <div class="timeDay">
-                              <span class="night">Ночь</span>
-                              <span><img class="nightImg" src="" alt=""></span>
-                              <span class="nightTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="moning">Утро</span>
-                              <span><img class="moningImg" src="" alt=""></span>
-                              <span class="moningTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class ="day" >День</span>
-                              <span><img class="dayImg" src="" alt=""></span>
-                              <span class ="dayTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="evening">Вечер</span>
-                              <span><img class="eveningImg" src="" alt=""></span>
-                              <span class="eveningTemp"></span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="slide">
-                          <div class="numberDay"></div>
-                          <div id="timeDay">
-                            <div class="timeDay">
-                              <span class="night">Ночь</span>
-                              <span><img class="nightImg" src="" alt=""></span>
-                              <span class="nightTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="moning">Утро</span>
-                              <span><img class="moningImg" src="" alt=""></span>
-                              <span class="moningTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class ="day" >День</span>
-                              <span><img class="dayImg" src="" alt=""></span>
-                              <span class ="dayTemp"></span>
-                            </div>
-                            <div class="timeDay">
-                              <span class="evening">Вечер</span>
-                              <span><img class="eveningImg" src="" alt=""></span>
-                              <span class="eveningTemp"></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="arrowRight"></div>
                     </div>
-                    <div class="navigation">
-                      <div class="navDays current"></div>
-                      <div class="navDays"></div>
-                      <div class="navDays"></div>
-                      <div class="navDays"></div>
-                      <div class="navDays"></div>
+                    <div class="slide">
+                          <div class="numberDay"></div>
+                          <div id="timeDay">
+                            <div class="timeDay">
+                              <span class="night">Ночь</span>
+                              <span><img class="nightImg" src="" alt=""></span>
+                              <span class="nightTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="moning">Утро</span>
+                              <span><img class="moningImg" src="" alt=""></span>
+                              <span class="moningTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class ="day" >День</span>
+                              <span><img class="dayImg" src="" alt=""></span>
+                              <span class ="dayTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="evening">Вечер</span>
+                              <span><img class="eveningImg" src="" alt=""></span>
+                              <span class="eveningTemp"></span>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="slide">
+                          <div class="numberDay"></div>
+                          <div id="timeDay">
+                            <div class="timeDay">
+                              <span class="night">Ночь</span>
+                              <span><img class="nightImg" src="" alt=""></span>
+                              <span class="nightTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="moning">Утро</span>
+                              <span><img class="moningImg" src="" alt=""></span>
+                              <span class="moningTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class ="day" >День</span>
+                              <span><img class="dayImg" src="" alt=""></span>
+                              <span class ="dayTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="evening">Вечер</span>
+                              <span><img class="eveningImg" src="" alt=""></span>
+                              <span class="eveningTemp"></span>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="slide">
+                          <div class="numberDay"></div>
+                          <div id="timeDay">
+                            <div class="timeDay">
+                              <span class="night">Ночь</span>
+                              <span><img class="nightImg" src="" alt=""></span>
+                              <span class="nightTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="moning">Утро</span>
+                              <span><img class="moningImg" src="" alt=""></span>
+                              <span class="moningTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class ="day" >День</span>
+                              <span><img class="dayImg" src="" alt=""></span>
+                              <span class ="dayTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="evening">Вечер</span>
+                              <span><img class="eveningImg" src="" alt=""></span>
+                              <span class="eveningTemp"></span>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="slide">
+                          <div class="numberDay"></div>
+                          <div id="timeDay">
+                            <div class="timeDay">
+                              <span class="night">Ночь</span>
+                              <span><img class="nightImg" src="" alt=""></span>
+                              <span class="nightTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="moning">Утро</span>
+                              <span><img class="moningImg" src="" alt=""></span>
+                              <span class="moningTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class ="day" >День</span>
+                              <span><img class="dayImg" src="" alt=""></span>
+                              <span class ="dayTemp"></span>
+                            </div>
+                            <div class="timeDay">
+                              <span class="evening">Вечер</span>
+                              <span><img class="eveningImg" src="" alt=""></span>
+                              <span class="eveningTemp"></span>
+                            </div>
+                          </div>
                     </div>
                   </div>
+                  <div class="arrowRight"></div>
                 </div>
-                <span id="maxSpeedWind">Максимальная скорость ветра,м/с</span>
-                <ul id="middleTable">
+                <div class="navigation">
+                  <div class="navDays current"></div>
+                  <div class="navDays"></div>
+                  <div class="navDays"></div>
+                  <div class="navDays"></div>
+                  <div class="navDays"></div>
+                </div>
+              </div>
+              <span id="maxSpeedWind">Максимальная скорость ветра,м/с</span>
+              <ul id="middleTable">
                   <li>
-                    <ul id="speedWindDay1">
+                    <ul class="speedWindDay">
                       <li>
                         <span><span class="windNigth"></span></span>
                       </li>
@@ -200,7 +196,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="speedWindDay2">
+                    <ul class="speedWindDay">
                       <li>
                         <span><span class="windNigth"></span></span>
                       </li>
@@ -216,7 +212,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="speedWindDay3">
+                    <ul class="speedWindDay">
                       <li>
                         <span><span class="windNigth"></span></span>
                       </li>
@@ -232,7 +228,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="speedWindDay4">
+                    <ul class="speedWindDay">
                       <li>
                         <span><span class="windNigth"></span></span>
                       </li>
@@ -248,7 +244,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="speedWindDay5">
+                    <ul class="speedWindDay">
                       <li>
                         <span><span class="windNigth"></span></span>
                       </li>
@@ -263,43 +259,11 @@
                       </li>
                     </ul>
                   </li>
+              </ul>
+              <span id="probability">Осадки,мм</span>
+              <ul id="bottomTable">
                   <li>
-                    <ul id="speedWindDay6">
-                      <li>
-                        <span><span class="windNigth"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windMoning"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windDay"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windEvening"></span></span>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <ul id="speedWindDay7">
-                      <li>
-                        <span><span class="windNigth"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windMoning"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windDay"></span></span>
-                      </li>
-                      <li>
-                        <span><span class="windEvening"></span></span>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <span id="probability">Осадки,мм</span>
-                <ul id="bottomTable">
-                  <li>
-                    <ul id="probability1Day">
+                    <ul class="probabilityDay">
                       <li class="probNigth"><span></span></li>
                       <li class="probMoning"><span></span></li>
                       <li class="probDay"><span></span></li>
@@ -307,7 +271,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="probability2Day">
+                    <ul class="probabilityDay">
                       <li class="probNigth"><span></span></li>
                       <li class="probMoning"><span></span></li>
                       <li class="probDay"><span></span></li>
@@ -315,7 +279,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="probability3Day">
+                    <ul class="probabilityDay">
                       <li class="probNigth"><span></span></li>
                       <li class="probMoning"><span></span></li>
                       <li class="probDay"><span></span></li>
@@ -323,7 +287,7 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="probability4Day">
+                    <ul class="probabilityDay">
                       <li class="probNigth"><span></span></li>
                       <li class="probMoning"><span></span></li>
                       <li class="probDay"><span></span></li>
@@ -331,57 +295,57 @@
                     </ul>
                   </li>
                   <li>
-                    <ul id="probability5Day">
+                    <ul class="probabilityDay">
                       <li class="probNigth"><span></span></li>
                       <li class="probMoning"><span></span></li>
                       <li class="probDay"><span></span></li>
                       <li class="probEvening"><span></span></li>
                     </ul>
                   </li>
-                </ul>
-              </section>
-              <div class ="arrow"><img id="rightArrow" src="img/FiveDay/arrow-right.png" alt="Правая стрелка"></div>
+              </ul>
             </section>
             <section id="dateTodayDetails"><span id="DateAndWeekDay"></span><span>Солнце и луна</span></section >
-            <section id="todayDetailsDay">
-              <span>
-                <img src="img/FiveDay/Sun.png" alt="">
+            <section id="dayAndNigth">
+              <section id="todayDetailsDay">
                 <span>
-                  <span>
-                    Долгота дня - 
-                    <span id="longDay"></span>
-                  </span>
-                  <span>
-                    Восход - 
-                    <span id="sunrise"></span>
-                  </span>
-                  <span>
-                    Заход - 
-                    <span id="sunset"></span>
-                  </span>
-                </span>
-              </span>
-              <span>Сегодня день на <span>2</span>минуты <span>длиннее</span>, чем вчера</span>
-            </section>
-            <section id="todayDetailsNight">
-                <span>
-                  <img src="img/FiveDay/Moon.png" alt="">
+                  <img src="img/FiveDay/Sun.png" alt="">
                   <span>
                     <span>
-                      <span>Луна растущая</span> - 
-                      <span id="moontime"></span>
+                      Долгота дня - 
+                      <span id="longDay"></span>
                     </span>
                     <span>
                       Восход - 
-                      <span id="moonrise"></span>
+                      <span id="sunrise"></span>
                     </span>
                     <span>
                       Заход - 
-                      <span id="moonset"></span>
+                      <span id="sunset"></span>
                     </span>
                   </span>
                 </span>
-                <span>Полнолуние - <span></span> через <span>23</span> дня</span>
+                <span>Сегодня день на <span>2</span>минуты <span>длиннее</span>, чем вчера</span>
+              </section>
+              <section id="todayDetailsNight">
+                  <span>
+                    <img src="img/FiveDay/Moon.png" alt="">
+                    <span>
+                      <span>
+                        <span>Луна растущая</span> - 
+                        <span id="moontime"></span>
+                      </span>
+                      <span>
+                        Восход - 
+                        <span id="moonrise"></span>
+                      </span>
+                      <span>
+                        Заход - 
+                        <span id="moonset"></span>
+                      </span>
+                    </span>
+                  </span>
+                  <span>Полнолуние - <span></span> через <span>23</span> дня</span>
+              </section>
             </section>
           </main>
           <footer id="footer">
