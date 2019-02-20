@@ -11,7 +11,7 @@
 
 /* Основное содеражание страницы */
 
-#main{
+main{
     padding: 70px 0 143px 0;
     height: auto;
     background-color: #ffffff;
@@ -79,7 +79,7 @@
     }
 }
 @media (max-width: 700px) {
-    #main{
+    main{
         display: flex;
         justify-content: center;
     }
@@ -100,6 +100,12 @@
     }
     .month > span:first-child{
         font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    .mainScroll{
+        padding-top: 200px!important;
+        padding-bottom: 150px!important;
     }
 }
 @media (max-width: 400px) {

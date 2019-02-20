@@ -1,5 +1,5 @@
 /* Основная часть */
-#main{
+main{
     border-right: 2px solid #bcb5b9;
     border-left: 2px solid #bcb5b9;
     border-bottom: 1px solid #979797;
@@ -268,7 +268,7 @@ li:first-child>.dayWeek{
     #temperature{
         font-size: 28px;
     }
-    #main{
+    main{
         padding: 5px;
     }
     #detailsButton{
@@ -315,7 +315,7 @@ li:first-child>.dayWeek{
         padding-bottom: 5px;
         font-size: 14px;
     }
-    #main{
+    main{
         padding: 2px;
     }
     #form {
