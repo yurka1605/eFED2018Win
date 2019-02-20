@@ -17,8 +17,15 @@
     <script type="text/javascript" src="js/requestVars.js"></script>
   </head>
   <body>
+    <section class="overlay">  
+    </section>
+    <div class="spinner">
+      <svg viewBox="0 0 500 500" width="500px" height="450px">
+        <path id="sun" stroke-width="10"/>
+      </svg>
+    </div>
     <section id="mainToday">
-          <header id="header">
+          <header class="headerNavigation headerScroll">
             <nav id="topHeader">
               <a href="weather-details.html"><button id="today" class="mainTab">Сегодня</button></a>
               <a href="index.html"><button id="fiveDay" class="mainTab currentPage">5 дней</button></a>
@@ -30,12 +37,12 @@
                 <span id="temperatureHeaderInfo"></span> <span id="cityInfo"></span>,<span id="countryInfo"></span>
               </span>
               <div id="form">
-                <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
+                <button id="find" type="submit"></button>
                 <input id="searchField" title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
               </div>
             </section>
           </header>
-          <main id="main">
+          <main class="mainScroll">
             <section id="tableDay">
               <div id="slider">
                 <div id="panelNav">
@@ -352,6 +359,8 @@
             <span id="year"></span> &copy Copyright
           </footer>
     </section>
+    <script type="text/javascript" src="js/spinner.js"></script>
+    <script type="text/javascript" src="js/request.js"></script>
+    <script type="text/javascript" src="js/scrollPage.js"></script>
   </body>
-  <script type="text/javascript" src="js/request.js"></script>
 </html>

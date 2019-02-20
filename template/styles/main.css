@@ -7,7 +7,8 @@ img{
     text-transform: capitalize;
 }
 body{
-    background-color: #858585;
+  background: rgb(30,144,255);
+  background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgba(0,0,255,1) 100%);
 }
 button{
     cursor: pointer;
@@ -15,6 +16,39 @@ button{
 }
 input{
     -webkit-appearance: none;
+}
+.blockCenterX{
+  margin: 0 auto;
+}
+.blockCenterY{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.blockCenterXY{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* Spinner */
+.overlay{
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(30,144,255);
+    background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgba(0,0,255,1) 100%);
+    z-index: 2;
+}
+.spinner{
+  position: fixed;
+  opacity: 1;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: block;
 }
 /* Обертка */
 #mainToday{
@@ -25,21 +59,26 @@ input{
     border-right: 3px solid #f5f5f5;
     border-left: 3px solid #f5f5f5;
     border-bottom: 6px solid #f5f5f5;
+    background: #ffffff;
 }
 /* Шапка */
-#header{
-    min-height: 97px;
-    border-top: 2px solid #bcb5b9;
-    border-right: 2px solid #bcb5b9;
-    border-left: 2px solid #bcb5b9;
-    border-bottom: 1px solid #979797;
-    background-color: #f2f2f2;
+.headerNavigation{
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 97px;
+  border-top: 2px solid #bcb5b9;
+  border-right: 2px solid #bcb5b9;
+  border-left: 2px solid #bcb5b9;
+  border-bottom: 1px solid #979797;
+  background-color: #f2f2f2;
+  transition: all 0.3s ease;
 }
 /* Верхняя часть шапки */
 #topHeader{
     background-color: #d8d8d8;
     border-bottom: 1px solid #979797;
     display: flex;
+    position: relative;
     padding: 10px 0 10px 25px;
 }
 #topHeader > a:last-child > button{
@@ -47,9 +86,15 @@ input{
 }
 .mainTab{
     margin-right: 25px;
-    padding: 5px 19px;
+    display: inline-block;
+    width: 104px;
+    height: 30px;
     font-size: 16px;
     color: #000000;
+}
+#historyWeather{
+  width: 204px;
+  height: 30px;
 }
 .mainTab:hover{
     outline: none;
@@ -82,44 +127,164 @@ input{
     outline: none;
     border-radius: 5px;
 }
-#form > button{
+#find{
     position: absolute;
     border: 1px solid transparent;
     background-color: transparent;
-    padding: 6px 9px 4px 9px;
+    width: 35px;
+    height: 30px;
     outline:none;
     cursor: pointer;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+#find:hover{
+  background: #c4b8b8;
+}
+#find::after{
+  content: url(../img/find.png);
+}
 #form > button:focus-within{
     border-color: #bdbdbd;
 }
-/* Подвал */
-#footer{
-    text-align: center;
-    background-color: #d7d7d7;
-    padding: 15px 0 20px 0;
-    border-right: 2px solid #bcb5b9;
-    border-left: 2px solid #bcb5b9;
-    border-bottom: 2px solid #939393;
+/* Sun */
+#sun{
+    fill: yellow;
+    /* d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M313,210 L400,160 M320,230 L380,220 M321,250 L421,250'); */
+    stroke: yellow;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
-@media (max-width: 690px) { 
+.path{
+  animation: path 1s linear infinite alternate;
+}
+.sun{
+  animation: sun 1s linear forwards;
+}
+@keyframes sun {
+    0%{
+      d: path('M150,250 C150,250 150,250 150,250 L150,250');
+      fill: none;
+    }
+    15%{
+      d: path('M150,250 C150,150 300,150 200,250 L200,250');
+    }
+    35%{
+      d: path('M150,250 C150,150 300,150 250,250 L250,250');
+    }
+    55%{
+      d: path('M150,250 C150,150 300,150 300,250 L300,250');
+    }
+    75%{
+      d: path('M150,250 C150,150 300,150 300,250 L150,250');
+    }
+    100%{
+      d: path('M150,250 C150,150 300,150 300,250Z');
+      fill: yellow;
+    }
+}
+@keyframes path {
+    0%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250 M130,250 L130,250');
+    }
+    7.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250 M130,250 L20,250');
+    }
+    15%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220 M132,230 L70,220');
+    }
+    22.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160 M137,210 L35,160');
+    }
+    30%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150 M150,190 L105,150');
+    }
+    37.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90 M167,175 L110,90');
+    }
+    45%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110 M190,160 L170,110');
+  }
+    52.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M220,155 L220,70 M220,155 L220,70 M220,155 L220,70 M220,155 L220,70 M220,155 L220,70 M220,155 L220,70');
+    }
+    60%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M250,160 L270,110 M250,160 L270,110 M250,160 L270,110 M250,160 L270,110 M250,160 L270,110');
+    }
+    67.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M275,170 L325,100 M275,170 L325,100 M275,170 L325,100 M275,170 L325,100');
+    }
+   75%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M297,187 L340,150 M297,187 L340,150 M297,187 L340,150');
+    }
+    82.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M313,210 L400,160 M313,210 L400,160 M313,210 L400,160');
+    }
+    90%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M313,210 L400,160 M320,230 L380,220 M320,230 L380,220');
+    }
+    97.5%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M313,210 L400,160 M320,230 L380,220 M321,250 L421,250');
+    }
+   100%{
+      d: path('M150,250 C150,150 300,150 300,250Z M130,250 L20,250 M132,230 L70,220 M137,210 L35,160 M150,190 L105,150 M167,175 L110,90 M190,160 L170,110 M220,155 L220,70 M250,160 L270,110 M275,170 L325,100 M297,187 L340,150 M313,210 L400,160 M320,230 L380,220 M321,250 L421,250');
+    }
+}
+/* Подвал */
+footer{
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #d7d7d7;
+  padding: 15px 0 20px 0;
+  border-right: 2px solid #bcb5b9;
+  border-left: 2px solid #bcb5b9;
+  border-bottom: 2px solid #939393;
+  transition: all 0.3s linear;
+}
+@media (max-width: 690px) {
+    #headerNavigation{
+      z-index: 3;
+      top: 0;
+    }
     #bottomHeader{
         height: 82px;
     }
     #form{
         margin-left: 20px;
     }
+    .mainTab{
+      padding: 5px 19px;
+      width: auto;
+      height: auto;
+    }
+    #historyWeather{
+      width: auto;
+      height: auto;
+    }
 }
 @media (max-width: 480px) {
-    .mainTab{
-        padding: 5px;
-    }
-    #topHeader{
-        padding: 10px;
-        justify-content: space-around;
-    }
+  .headerScroll{
+    position: fixed;
+    z-index: 3;
+    width: calc(100% - 6px);
+  }
+  .mainScroll{
+    padding-top: 135px;
+    padding-bottom: 55px;
+  }
+  footer{
+    position: fixed;
+    bottom: 0px;
+    width: calc(100% - 6px);
+    border-top: 1px solid #979797;
+  }
+  .mainTab{
+      padding: 5px;    
+  }
+  #topHeader{
+    padding: 10px;
+    justify-content: space-around;
+  }
 }
 @media (max-width: 420px) {
     .mainTab{
@@ -146,12 +311,18 @@ input{
     #form > input {
         margin: 0;
     }
+  .overlay{
+      display: none!important;
+  }
+  .spinner{
+      display: none!important;
+  }
 }
 @media (max-width: 320px) {
     .mainTab{
         margin-right: 7px;
     }
-    #main {
+    main {
         padding: 3px;
     }
     #topHeader{

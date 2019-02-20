@@ -16,8 +16,15 @@
     <script type="text/javascript" src="js/requestVars.js"></script>
   </head>
   <body>
+    <section class="overlay">  
+    </section>
+    <div class="spinner">
+      <svg viewBox="0 0 500 500" width="500px" height="450px">
+        <path id="sun" stroke-width="10"/>
+      </svg>
+    </div>
     <section id="mainToday">
-      <header id="header">
+      <header class="headerNavigation headerScroll">
         <nav id="topHeader">
           <a href="weather-details.html"><button id="today" class="mainTab currentPage">Сегодня</button></a>
           <a href="index.html"><button id="fiveDay" class="mainTab">5 дней</button></a>
@@ -26,12 +33,12 @@
         <section id="bottomHeader">
           <span>Загрязнение воздуха:<span id="polutionInfo"></span></span>
           <div id="form">
-            <button id="find" type="submit"><img  src="img/find.png" alt="Поиск" title="Поиск"></button>
+            <button id="find" type="submit"></button>
             <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Поиск" pattern="">
           </div>
         </section>
       </header>
-      <main id="main">
+      <main class="mainScroll">
         <section id="mainDetails">
           <span id="detailsPlace">
             <div>
@@ -361,11 +368,13 @@
         </ul>    
         </section>
       </main>
-      <footer id="footer">
+      <footer>
         <span id="year"></span> &copy Copyright
       </footer>
     </section>
     <script type="text/javascript" src="js/weather-details.js"></script>
+    <script type="text/javascript" src="js/spinner.js"></script>
     <script type="text/javascript" src="js/request.js"></script>
+    <script type="text/javascript" src="js/scrollPage.js"></script>
   </body>
 </html>

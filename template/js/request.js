@@ -2,6 +2,7 @@
 /* import {historicalReviewMock}  from '../mocks/HistoricalReviewMock'; */
 const page = {
     init() {
+        twistSpinner();
         const This = this;
         This.getWeatherDetails(defaultCity, This.render, WEATHER_DETAILS_ENDPOINT);
         if (currentLocation != 'historical-review.html') {
@@ -15,13 +16,14 @@ const page = {
         function getActionField() {
             const city = searchField.value.trim();
             if (regExpFindField.test(city) === true ) {
+                twistSpinner();
                 This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
                 if (currentLocation != 'historical-review.html') {
                     This.getWeatherDetails(city, This.hours, WEATHER_DETAILS_HOURS);
                 } else  {
                     This.getWeatherDetails(city, This.history, HISTORY_DETAILS);
                 }
-            } else return;
+            } else alert('error');
             searchField.value = '';
         }
     },
@@ -31,10 +33,12 @@ const page = {
         xhr.onload = function () {
             if (this.readyState === 4 && this.status === 200) {
                 callback(JSON.parse(xhr.responseText));
+                hideSpinner();
             } else {
                 if (currentLocation == 'historical-review.html') {
                     callback(historicalReviewMock, city);
-                } else return;
+                    hideSpinner();
+                } else hideSpinner();
             }
         };
         xhr.open('GET', url, true);
@@ -312,3 +316,4 @@ const page = {
     }
 };
 page.init();
+hideSpinner();
