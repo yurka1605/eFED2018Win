@@ -1,16 +1,19 @@
 'use strict';
-const myObject = {
-    count: 1,
-    next: function() {
-        this.count++;
-        return this.count;
-    },
-    prev: function() {
-        this.count--;
-        return this.count;
+function counter(index) {
+    let current = 0;
+    return () => {
+        current = current + index;
+        return current;
     }
 }
-console.log( myObject.next());
-console.log( myObject.next());
-console.log( myObject.next());
-console.log( myObject.prev());
+const next = counter(1); // next
+
+console.log(next());
+console.log(next());
+console.log(next());
+
+const prev = counter(-1);// prev
+
+console.log(prev());
+console.log(prev());
+console.log(prev());
