@@ -29,20 +29,31 @@ const page = {
     },
     getWeatherDetails(city, callback ,requestText) {
         const url = `${ requestText }${ city }${ lang }${ units }`; 
-        const xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                callback(JSON.parse(xhr.responseText));
-                hideSpinner();
-            } else {
-                if (currentLocation == 'historical-review.html') {
+        const requestInit = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default',
+        };
+        const request = new Request(url, requestInit);
+        fetch(request)
+            .then( response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else if (currentLocation === 'historical-review.html' && response.status === 401) {
                     callback(historicalReviewMock, city);
                     hideSpinner();
-                } else hideSpinner();
-            }
-        };
-        xhr.open('GET', url, true);
-        xhr.send();
+                } else {
+                    throw new Error('Response status not 200.');
+                }
+            })
+            .then( success => {
+                callback(success);
+                hideSpinner();
+            })
+            .catch( error => {
+                console.log('Problem with request: ' + error.message);
+                hideSpinner();
+            });
     },
     render(data) {
         let currentCity = document.getElementById('cityInfo'),
