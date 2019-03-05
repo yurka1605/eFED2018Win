@@ -28,34 +28,64 @@ const page = {
         }
     },
     getWeatherDetails(city, callback ,requestText) {
-        const url = `${ requestText }${ city }${ lang }${ units }`; 
-        const requestInit = {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'default',
-        };
-        const request = new Request(url, requestInit);
-        fetch(request)
-            .then( response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else if (currentLocation === 'historical-review.html' && response.status === 401) {
-                    callback(historicalReviewMock, city);
+        function Fetcher() {
+            this.url = 'http//';
+            this.requestInit = {
+                method: 'GET',
+                mode: 'cors',
+                cache: 'default',
+            };
+        }
+        Fetcher.prototype.fetchServer = function() {
+            fetch(this.request)
+                .then( response => {
+                    if (response.status === 200) {
+                        return response.json();
+                    } else if (currentLocation === 'historical-review.html' && response.status === 401) {
+                        callback(historicalReviewMock, city);
+                        hideSpinner();
+                    } else {
+                        throw new Error('Response status not 200.');
+                    }
+                })
+                .then( success => {
+                    callback(success);
                     hideSpinner();
-                } else {
-                    throw new Error('Response status not 200.');
-                }
-            })
-            .then( success => {
-                callback(success);
-                hideSpinner();
-            })
-            .catch( error => {
-                console.log('Problem with request: ' + error.message);
-                hideSpinner();
-            });
+                })
+                .catch( error => {
+                    console.log('Problem with request: ' + error.message);
+                    hideSpinner();
+                });
+        };
+
+        function currentFetcher(url) {
+            Fetcher.apply(this, arguments);
+            this.url = url;
+            this.request = new Request(this.url, this.requestInit);
+        }
+        currentFetcher.prototype = Object.create(Fetcher.prototype);
+
+        const currentResponse = new currentFetcher(`${ requestText }${ city }${ lang }${ units }`);
+        currentResponse.fetchServer();
     },
     render(data) {
+        // function Transformer(data) {
+        //     this.data = data;
+        //     this.currentDate = new Date(data.dt*1000);
+        // }
+        // function transformToday() {
+        //     Transformer.apply(this, arguments);
+        //     this.himidity = this.data.main.humidity;
+        //     this.windSpeed = this.data.wind.speed.toFixed(1);
+        //     this.clouds = this.data.clouds.all;
+        //     this.cuurentDayWeek = this.currentDate.toLocaleString('ru', {
+        //         weekday: 'long'
+        //     });
+        //     this.weatherDecscriptions = this.data.weather[0].description;
+        //     this.currentCoordinate = this.data.coord.lat.toFixed(0) + ',' + this.data.coord.lon.toFixed(0);
+        //     this.WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ this.currentCoordinate }/current.json?appid=${ APP_ID }`;
+        //     this.polution = page.getWeatherDetails('', getPolution, this.WEATHER_DETAILS_POLUTION);
+        // }
         let currentCity = document.getElementById('cityInfo'),
             currentCountry = document.getElementById('countryInfo'),
             currentYear = document.getElementById('year'),
