@@ -4,11 +4,14 @@ const page = {
     init() {
         twistSpinner();
         const This = this;
-        This.getWeatherDetails(defaultCity, This.render, WEATHER_DETAILS_ENDPOINT);
+        let currentSessionCityPage;
+        const sessionCity = sessionStorage.getItem('city');
+        sessionCity === null ? currentSessionCityPage = defaultCity : currentSessionCityPage = sessionCity;
+        This.getWeatherDetails(currentSessionCityPage, This.render, WEATHER_DETAILS_ENDPOINT);
         if (currentLocation != 'historical-review.html') {
-            This.getWeatherDetails(defaultCity, This.hours, WEATHER_DETAILS_HOURS);
+            This.getWeatherDetails(currentSessionCityPage, This.hours, WEATHER_DETAILS_HOURS);
         } else  {
-            This.getWeatherDetails(defaultCity, This.history, HISTORY_DETAILS);
+            This.getWeatherDetails(currentSessionCityPage, This.history, HISTORY_DETAILS);
         }
         /* Find City */
         const searchField = document.getElementById('searchField');
@@ -25,6 +28,7 @@ const page = {
                 }
             } else alert('error');
             searchField.value = '';
+            sessionStorage.setItem('city', city);
         }
     },
     getWeatherDetails(city, callback ,requestText) {
