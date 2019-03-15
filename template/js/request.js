@@ -83,7 +83,7 @@ const page = {
         //     });
         //     this.weatherDecscriptions = this.data.weather[0].description;
         //     this.currentCoordinate = this.data.coord.lat.toFixed(0) + ',' + this.data.coord.lon.toFixed(0);
-        //     this.WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ this.currentCoordinate }/current.json?appid=${ APP_ID }`;
+        //     this.WEATHER_DETAILS_POLUTION = `https://api.openweathermap.org/pollution/v1/co/${ this.currentCoordinate }/current.json?appid=${ APP_ID }`;
         //     this.polution = page.getWeatherDetails('', getPolution, this.WEATHER_DETAILS_POLUTION);
         // }
         let currentCity = document.getElementById('cityInfo'),
@@ -95,7 +95,7 @@ const page = {
             arr =  getDataPage('Id', arr);
             /* Получение загрязнения воздуха */
             const currentCoordinate = data.coord.lat.toFixed(0) + ',' + data.coord.lon.toFixed(0);
-            const WEATHER_DETAILS_POLUTION = `http://api.openweathermap.org/pollution/v1/co/${ currentCoordinate }/current.json?appid=${ APP_ID }`;
+            const WEATHER_DETAILS_POLUTION = `https://api.openweathermap.org/pollution/v1/co/${ currentCoordinate }/current.json?appid=${ APP_ID }`;
             page.getWeatherDetails('', getPolution, WEATHER_DETAILS_POLUTION);
             /* Влажность */
             arr[2].innerHTML = data.main.humidity;
