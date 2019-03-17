@@ -1,16 +1,5 @@
 function getPolution(data) {
-    const currentPolution = document.getElementById('polutionInfo');
-    currentPolution.innerHTML = data.data[0].value;
-}
-function getDataPage (methodGet, array) {
-    let arrDomNodes = [];
-    for (let i = 0; i < array.length; i++) {
-        let arrItem;
-        if (methodGet == 'Id') arrItem = document.getElementById(array[i]);
-        else if (methodGet == 'ClassName') arrItem = document.getElementsByClassName(array[i]);
-        arrDomNodes.push(arrItem);
-    }
-    return arrDomNodes;
+    document.getElementById('polutionInfo').innerHTML = data.data[0].value;
 }
 function getWeatherFiveDay(data) {
     let number = ''; 
@@ -201,4 +190,53 @@ function probabilityCol(numberCol) {
         valueCol = '70px';
     }
     return valueCol;
+}
+//Получение Html элементов
+function getDataPage (methodGet, array) {
+    let arrDomNodes = [];
+    for (let i = 0; i < array.length; i++) {
+        let arrItem;
+        if (methodGet === 'Id') arrItem = document.getElementById(array[i]);
+        else if (methodGet === 'ClassName') arrItem = document.getElementsByClassName(array[i]);
+        arrDomNodes.push(arrItem);
+    }
+    return arrDomNodes;
+}
+//Трансформация данных истории
+function historyTransform(data, city) {
+    let history = [];
+    for (const key in data) {
+        if (key == city) {
+            let minMiddle, maxMiddle, recordMax, recordMin;
+            const objectYears = data[key];
+            for (let i = 0; i < 12; i++) {
+                for (const prop in objectYears) {
+                    if (prop == '1960') {
+                        minMiddle = objectYears[prop][i].avearage;
+                        maxMiddle = objectYears[prop][i].avearage;
+                        recordMax = objectYears[prop][i].max;
+                        recordMin = objectYears[prop][i].min;
+                    } else {
+                        if(minMiddle > objectYears[prop][i].avearage) {
+                            minMiddle = objectYears[prop][i].avearage;
+                        } else if(maxMiddle < objectYears[prop][i].avearage) {
+                            maxMiddle = objectYears[prop][i].avearage;
+                        } else if(recordMax < objectYears[prop][i].max) {
+                            recordMax = objectYears[prop][i].max;
+                        } else if(recordMin > objectYears[prop][i].min) {
+                            recordMin = objectYears[prop][i].min;
+                        }
+                    }
+                }
+                let objectData = {
+                    minMiddle: minMiddle,
+                    maxMiddle: maxMiddle,
+                    recordMax: recordMax,
+                    recordMin: recordMin
+                };
+                history.push(objectData);
+            }
+        }
+    }
+    return history;
 }
