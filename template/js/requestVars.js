@@ -8,15 +8,19 @@ let locationFull = window.location.pathname.split('/');
 const currentLocation = locationFull[locationFull.length-1];
 const units = '&units=metric';
 const regExpFindField = /(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)|(^[A-Z]{1}[a-z]{1,100}-{1}[A-Za-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}-{1}[А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100}-{1}[A-Za-z]{1,100}-{1}[A-Za-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}-{1}[А-Яа-я]{1,100}-{1}[А-Яа-я]{1,100}$)/;
+
 //Сессии
+
 let currentSessionCityPage;
 const sessionCity = sessionStorage.getItem('city');
 sessionCity == null || '' ? currentSessionCityPage = defaultCity : currentSessionCityPage = sessionCity;
 
 //Поле поиска
+
 const searchField = document.getElementById('searchField');
 
 //html elements hours today
+
 let arrHours =  ['tempvaluePlus', 'tempColPlus', 'tempvalueMinus','tempColMinus','timeWeather','speedWind','windArrow','dayWeek','tempDay','tempNight', 'probabilityValue', 'probability'];
 arrHours = getDataPage('ClassName', arrHours);
 const tempValuePlus = arrHours[0],
@@ -31,8 +35,9 @@ const tempValuePlus = arrHours[0],
     tempNight = arrHours[9],
     probabilityValue = arrHours[10],
     probability = arrHours[11];
-//five day
-// Hours
+
+// Hours five day
+
 let arrFiveDayHours = ['navDays', 'numberDay', 'nightImg', 'moningImg', 'dayImg', 'eveningImg', 'nightTemp', 'moningTemp', 'dayTemp', 'eveningTemp', 'windNigth', 'windMoning', 'windDay', 'windEvening', 'probNigth', 'probMoning', 'probDay', 'probEvening'];
 arrFiveDayHours = getDataPage('ClassName', arrFiveDayHours);
 const navDays = arrFiveDayHours[0],
