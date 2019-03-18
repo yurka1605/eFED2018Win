@@ -118,6 +118,15 @@ input{
     color: #0f0f0f;
     margin-left: 17px;
 }
+#form:hover::after{
+    content: 'Введите город с большой буквы';
+    position: absolute;
+    font-size: small;
+    color:  #000000;
+    background: #ffffff;
+    margin-top: 2px;
+    border: 1px solid #7492d4;
+}
 #form > input{
     width: 300px;
     background-color: #e4e4e4;
