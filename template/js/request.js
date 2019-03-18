@@ -267,6 +267,6 @@ class history extends Pages {
 }
 let currentPage;
 if (currentLocation === 'weather-details.html') currentPage = new today(currentSessionCityPage);
-else if (currentLocation === 'index.html') currentPage = new fiveDay(currentSessionCityPage);
+else if (currentLocation === 'index.html' || currentLocation === '') currentPage = new fiveDay(currentSessionCityPage);
 else if (currentLocation === 'historical-review.html') currentPage = new history(currentSessionCityPage);
 currentPage.init();
