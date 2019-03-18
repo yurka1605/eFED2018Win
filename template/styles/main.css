@@ -158,8 +158,8 @@ input{
 }
 /* Sun */
 svg{
-  width: 600px; 
-  height: 600px;
+  width: 400px;
+  height: auto;
   /* animation: upSun 3s alternate infinite; */
 }
 /* @keyframes upSun{
