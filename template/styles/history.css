@@ -49,16 +49,16 @@ main{
     justify-content: center;
 }
 #tableHistory > li:nth-child(2n+1) >span:nth-child(2n){
-    background-color: #ffffff;
+    background-color: rgb(225, 240, 250);
 }
 #tableHistory > li:nth-child(2n+1) >span:nth-child(2n+1){
-    background-color: #c4c4c4;
+    background-color: rgb(95, 195, 235);
 }
 #tableHistory > li:nth-child(2n) >span:nth-child(2n+1){
-    background-color: #ffffff;
+    background-color: rgb(225, 240, 250);
 }
 #tableHistory > li:nth-child(2n) >span:nth-child(2n){
-    background-color: #c4c4c4;
+    background-color: rgb(95, 195, 235);
 }
 
 /* Media */

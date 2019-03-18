@@ -48,7 +48,7 @@ main{
     width: 100%;
     text-align: center;
     padding: 5px 0px;
-    background-color: #d8d8d8;
+    background-color: rgb(95, 195, 235);
 }
 #middleTable, #bottomTable{
     display: flex;
@@ -95,6 +95,7 @@ main{
     width: 90%;
     border: 1px solid #979797;
     display: flex;
+    background-color: rgb(95, 195, 235);
 }
 #dateTodayDetails > span{
     width: 40%;
@@ -118,7 +119,7 @@ main{
 	height: 20px;
 	transform: skewX(-25deg);
 	transform-origin: 0 100%;
-    background: #d8d8d8;
+    background-color: rgb(95, 195, 235);
     text-align: center;
 }
 .speedWindDay>li>span>span{
@@ -189,7 +190,7 @@ main{
     content: '';
     width: 30px;
     height: 5px;
-    background: #0f0f0f;
+    background-color: rgb(95, 195, 235);
     display: block;
     transform: rotate(45deg);
     margin-top: 14px;
@@ -199,7 +200,7 @@ main{
     width: 30px;
     transform: rotate(-45deg);
     height: 5px;
-    background: #0f0f0f;
+    background-color: rgb(95, 195, 235);
     display: block;
     margin-top: 50px;
 }
@@ -207,7 +208,7 @@ main{
     content: '';
     height: 5px;
     width: 30px;
-    background: #0f0f0f;
+    background-color: rgb(95, 195, 235);
     display: block;
     transform: rotate(-45deg);
     margin-top: 14px;
@@ -217,7 +218,7 @@ main{
     width: 30px;
     transform: rotate(45deg);
     height: 5px;
-    background: #0f0f0f;
+    background-color: rgb(95, 195, 235);
     display: block;
     margin-top: 50px;
 }
@@ -312,7 +313,7 @@ main{
     text-align: center;
     border-bottom: 1px solid black; 
     padding: 0 5px;
-    background: springgreen;
+    background-color: rgb(95, 195, 235);
     text-transform: capitalize;
 }
 #timeDay{
@@ -358,7 +359,7 @@ main{
     text-align: center;
     padding: 3px 0;
     border: 1px solid black;
-    background: yellow;
+    background-color: rgb(225, 240, 250);
     cursor: pointer;
 }
 .hideNavDay{
@@ -367,7 +368,7 @@ main{
     border: 0;
 }
 .current{
-    background: springgreen;
+    background-color: rgb(95, 195, 235);
     text-transform: capitalize;
 }
 @media (max-width: 980px) {

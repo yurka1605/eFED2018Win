@@ -7,12 +7,13 @@ img{
     text-transform: capitalize;
 }
 body{
-  background: rgb(30,144,255);
-  background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgba(0,0,255,1) 100%);
+  background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgb(89, 89, 206) 100%);
 }
 button{
   cursor: pointer;
   -webkit-appearance: none;
+  border-radius: 15px;
+  background-color: rgb(225, 240, 250);
 }
 input{
   -webkit-appearance: none;
@@ -34,15 +35,14 @@ input{
 /* Spinner */
 .overlay{
   display: block;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
-  background: rgb(30,144,255);
-  background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgba(0,0,255,1) 100%);
+  background: radial-gradient(circle, rgba(30,144,255,1) 69%, rgb(89, 89, 206) 100%);
   z-index: 4;
 }
 .spinner{
-  position: absolute;
+  position: fixed;
   opacity: 1;
   z-index: 5;
   top: 50%;
@@ -75,7 +75,7 @@ input{
 }
 /* Верхняя часть шапки */
 #topHeader{
-    background-color: #d8d8d8;
+    background-color: rgb(95, 195, 235);
     border-bottom: 1px solid #979797;
     display: flex;
     position: relative;
@@ -98,16 +98,18 @@ input{
 }
 .mainTab:hover{
     outline: none;
-    background: #979797;
+    background: rgb(59, 126, 214);
+    color: #ffffff;
 }
 .currentPage{
     outline: none;
-    background: #979797;
+    background: rgb(59, 126, 214);
+    color: #ffffff;
 }
 /* Нижняя часть шапки */
 #bottomHeader{
     min-height: 41px;
-    background-color: #f2f2f2;
+    background-color: rgb(225, 240, 250);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -120,7 +122,7 @@ input{
 }
 #form > input{
     width: 300px;
-    background-color: #e4e4e4;
+    background-color: #ffffff;
     padding: 7px 7px 7px 40px;
     border: 1px solid #bdbdbd;
     margin-right: 23px;
@@ -135,11 +137,13 @@ input{
     height: 30px;
     outline:none;
     cursor: pointer;
+    border-radius: 0px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 #find:hover{
-  background: #c4b8b8;
+  background: rgb(59, 126, 214);
+  color: #ffffff;
 }
 #find::after{
   content: url(../img/find.png);
@@ -250,7 +254,7 @@ svg{
 footer{
   box-sizing: border-box;
   text-align: center;
-  background-color: #d7d7d7;
+  background-color: rgb(95, 195, 235);
   padding: 15px 0 20px 0;
   border-right: 2px solid #bcb5b9;
   border-left: 2px solid #bcb5b9;
