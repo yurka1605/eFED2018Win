@@ -48,7 +48,7 @@ class today extends Pages {
     init() {
         super.init();
         const This = this;
-        This.getWeatherDetails(currentSessionCityPage, This.hours, WEATHER_DETAILS_HOURS);
+        This.getWeatherDetails(currentSessionCityPage, today.renderHours, WEATHER_DETAILS_HOURS);
         
         /* Поиск города */
         const searchField = document.getElementById('searchField');
@@ -57,8 +57,8 @@ class today extends Pages {
             if (regExpFindField.test(city) === true ) {
                 twistSpinner();
                 This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
-                This.getWeatherDetails( city, This.hours, WEATHER_DETAILS_HOURS);
-            } else alert('error');
+                This.getWeatherDetails( city, today.renderHours, WEATHER_DETAILS_HOURS);
+            } else alert('Попробуйте ввести название на английском, либо в формате "Нижний Новгород" или "Ростов-на-Дону"');
             searchField.value = '';
         });
     }
@@ -67,7 +67,7 @@ class today extends Pages {
         /* Получение загрязнения воздуха */
         const currentCoordinate = data.coord.lat.toFixed(0) + ',' + data.coord.lon.toFixed(0);
         const WEATHER_DETAILS_POLUTION = `https://api.openweathermap.org/pollution/v1/co/${ currentCoordinate }/current.json?appid=${ APP_ID }`;
-        const polution = new Pages(''); 
+        const polution = new Pages('');
         polution.getWeatherDetails('', getPolution, WEATHER_DETAILS_POLUTION);
 
         /* Температура целыми числами */
@@ -84,13 +84,10 @@ class today extends Pages {
         /* Осадки */
         arrToday[4].innerHTML = data.clouds.all;
         /* Дата */
-        let currenDayWeek = new Date(data.dt*1000).toLocaleString('ru', {
-            weekday: 'long'
-        });
-        arrToday[5].innerHTML = currenDayWeek;
+        arrToday[5].innerHTML = new Date(data.dt*1000).toLocaleString('ru', { weekday: 'long' });
         arrToday[6].innerHTML = data.weather[0].description;
     }
-    hours(data) {
+    static renderHours(data) {
         for (let j = 0; j < hours.length; j++) {
             /* hours */
             hours[j].innerHTML = data.list[j].dt_txt.split(' ')[1].split(':')[0] + ':00';
@@ -104,8 +101,7 @@ class today extends Pages {
             tempColMinus[j].style.border = '0';
             if (temp < 0) {
                 tempValueMinus[j].innerHTML = temp;
-                temp = temp*(-1);
-                tempColMinus[j].style.height = temp*3 + 'px';
+                tempColMinus[j].style.height = temp*(-3) + 'px';
                 tempColMinus[j].style.border = '1px solid black';
                 tempColMinus[j].style.borderTop = '0';
             } else if (temp > 0) {
@@ -113,17 +109,14 @@ class today extends Pages {
                 tempValuePlus[j].innerHTML = temp;
                 tempColPlus[j].style.border = '1px solid black';
                 tempColPlus[j].style.borderBottom = '0';
-            } else {
-                temp = temp*(-1);
-                tempValuePlus[j].innerHTML = temp;
-            }
+            } else tempValuePlus[j].innerHTML = temp*(-1);
             /* Wind */
             speedWind[j].innerHTML = data.list[j].wind.speed.toFixed(0) + 'м/с';
             windArrow[j].style.transform = `rotate(${ data.list[j].wind.deg }deg)`;
             /* Вероятность осадков */
             probabilityValue[j].innerHTML = data.list[j].clouds.all + '%';
             let heightValue = data.list[j].clouds.all;
-            let randomValue = Math.floor(Math.random() * (10 - 0 + 1)) + 0;
+            let randomValue = Math.floor(Math.random() * 11);
             probability[j].children[0].children[0].style.height = heightValue - randomValue +'px';
             probability[j].children[1].children[1].style.height = heightValue +'px';
             probability[j].children[2].children[0].style.height = heightValue + randomValue +'px';
@@ -134,14 +127,12 @@ class today extends Pages {
         for (const key in objectDay) {
             let max = '', min = '', maxInd;
             for (let i = 0; i < objectDay[key].temp.length; ++i) {
-                if (objectDay[key].temp[i] != '') {
-                    if (max < objectDay[key].temp[i] || max == '' ) {
+                if (objectDay[key].temp[i] !== '') {
+                    if (max < objectDay[key].temp[i] || max === '' ) {
                         max = objectDay[key].temp[i];
                         maxInd = i;
                     }
-                    if (min > objectDay[key].temp[i] || min == '') {
-                        min = objectDay[key].temp[i];
-                    }
+                    if (min > objectDay[key].temp[i] || min === '') min = objectDay[key].temp[i];
                 }
             }
             if (j < 5) {
@@ -159,7 +150,7 @@ class today extends Pages {
 class fiveDay extends Pages {
     init() {
         super.init();
-        this.getWeatherDetails(currentSessionCityPage, this.hours, WEATHER_DETAILS_HOURS);
+        this.getWeatherDetails(currentSessionCityPage, fiveDay.renderHours, WEATHER_DETAILS_HOURS);
         const This = this;
         /* Поиск города */
         const searchField = document.getElementById('searchField');
@@ -167,28 +158,26 @@ class fiveDay extends Pages {
             const city = searchField.value.trim();
             if (regExpFindField.test(city) === true ) {
                 twistSpinner();
-                This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
-                This.getWeatherDetails(city, This.hours, WEATHER_DETAILS_HOURS);
-            } else alert('error');
+                This.getWeatherDetails(city, This.render, WEATHER_DETAILS_ENDPOINT);
+                This.getWeatherDetails(city, fiveDay.renderHours, WEATHER_DETAILS_HOURS);
+            } else alert('Попробуйте ввести название на английском, либо в формате "Нижний Новгород" или "Ростов-на-Дону"');
             searchField.value = '';
         });
     }
     render(data) {
         super.render(data);
-        let sunrise = new Date(data.sys.sunrise*1000).toLocaleDateString('ru', {
+        const sunrise = new Date(data.sys.sunrise*1000).toLocaleDateString('ru', {
             hour: 'numeric',
             minute: 'numeric'
         });
-        let sunset = new Date(data.sys.sunset*1000).toLocaleDateString('ru', {
+        const sunset = new Date(data.sys.sunset*1000).toLocaleDateString('ru', {
             hour: 'numeric',
             minute: 'numeric'
         });
-        let currentMonth = new Date(data.dt*1000).toLocaleDateString('ru', {
+        const currentMonth = new Date(data.dt*1000).toLocaleDateString('ru', {
             day: 'numeric',
             month: 'long'
         });
-        let currentDayWeek = `${ currentMonth }, сегодня`;
-
         let arrFiveDay =  getDataPage('Id', ['temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset']);
         /* Температура целыми числами */
         arrFiveDay[0].innerHTML = data.main.temp.toFixed(0) + '&degC';
@@ -196,22 +185,15 @@ class fiveDay extends Pages {
         arrFiveDay[1].src = `img/Today/${data.weather[0].icon}.png`;
         arrFiveDay[1].alt = data.weather[0].description;
         arrFiveDay[1].title = data.weather[0].description;
-        arrFiveDay[2].innerHTML = currentDayWeek;
+        arrFiveDay[2].innerHTML = `${ currentMonth }, сегодня`;
         arrFiveDay[3].innerHTML = sunrise.split(',')[1];
         arrFiveDay[4].innerHTML = sunset.split(',')[1];
-        const hourSunset = sunset.split(',')[1].split(':')[0];
-        const minutesSunset = sunset.split(',')[1].split(':')[1];
-        const hourSunrise = sunrise.split(',')[1].split(':')[0];
-        const minutesSunrise = sunrise.split(',')[1].split(':')[1];
-        const longDaySeconds = hourSunset*60 + minutesSunset*1 - hourSunrise*60 - minutesSunrise*1;
-        const longDay = Math.round(longDaySeconds/60) + ' ч ' + longDaySeconds%60 + ' мин';
-        const longNight = Math.round((24*60 - longDaySeconds)/60) + ' ч ' + (24*60 - longDaySeconds)%60 + ' мин';
-        arrFiveDay[5].innerHTML = longDay;
-        arrFiveDay[6].innerHTML = longNight;
+        arrFiveDay[5].innerHTML = longDayNight(sunrise, sunset)[0];
+        arrFiveDay[6].innerHTML = longDayNight(sunrise, sunset)[1];
         arrFiveDay[7].innerHTML = sunset.split(',')[1];
         arrFiveDay[8].innerHTML = sunrise.split(',')[1];
     }
-    hours(data) {
+    static renderHours(data) {
         const objectDay =  getWeatherFiveDay(data);
         let i = 0;
         for (const key in objectDay) {
@@ -225,8 +207,7 @@ class fiveDay extends Pages {
                 moningTemp[i].innerHTML = objectDay[key].temp[0].toFixed(0) + '&deg';
                 moningWind[i].innerHTML = objectDay[key].wind[0].toFixed(0);
                 moningProb[i].children[0].innerHTML = objectDay[key].prob[0];
-                let moningCol = probabilityCol(objectDay[key].prob[0]);
-                moningProb[i].style.backgroundPositionY = moningCol;
+                moningProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[0]);
                 /* Ночь */
                 nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
                 nightImg[i].alt = objectDay[key].imgDescr[1];
@@ -234,8 +215,7 @@ class fiveDay extends Pages {
                 nightWind[i].innerHTML = objectDay[key].wind[1].toFixed(0);
                 nightTemp[i].innerHTML = objectDay[key].temp[1].toFixed(0) + '&deg';
                 nightProb[i].children[0].innerHTML = objectDay[key].prob[1];
-                let nightCol = probabilityCol(objectDay[key].prob[1]);
-                nightProb[i].style.backgroundPositionY = nightCol;
+                nightProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[1]);
                 /* День */
                 dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
                 dayImg[i].alt = objectDay[key].imgDescr[2];
@@ -243,8 +223,7 @@ class fiveDay extends Pages {
                 dayWind[i].innerHTML = objectDay[key].wind[2].toFixed(0);
                 dayTemp[i].innerHTML = objectDay[key].temp[2].toFixed(0) + '&deg';
                 dayProb[i].children[0].innerHTML = objectDay[key].prob[2];
-                let dayCol = probabilityCol(objectDay[key].prob[2]);
-                dayProb[i].style.backgroundPositionY = dayCol;
+                dayProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[2]);
                 /* Вечер */
                 eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
                 eveningImg[i].alt = objectDay[key].imgDescr[3];
@@ -252,20 +231,16 @@ class fiveDay extends Pages {
                 eveningWind[i].innerHTML = objectDay[key].wind[3].toFixed(0);
                 eveningTemp[i].innerHTML = objectDay[key].temp[3].toFixed(0) + '&deg';
                 eveningProb[i].children[0].innerHTML = objectDay[key].prob[3];
-                let eveningCol = probabilityCol(objectDay[key].prob[3]);
-                eveningProb[i].style.backgroundPositionY = eveningCol;
+                eveningProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[3]);
                 i++;
             }
         }
     }
 }
 class history extends Pages {
-    constructor(city) {
-        super(city);
-    }
     init() {
         super.init();
-        this.getWeatherDetails(currentSessionCityPage, this.history, HISTORY_DETAILS);
+        this.getWeatherDetails(currentSessionCityPage, history.renderHistory, HISTORY_DETAILS);
         const This = this;
         /* Поиск города */
         const searchField = document.getElementById('searchField');
@@ -273,13 +248,13 @@ class history extends Pages {
             const city = searchField.value.trim();
             if (regExpFindField.test(city) === true ) {
                 twistSpinner();
+                This.getWeatherDetails( city, history.renderHistory, HISTORY_DETAILS);
                 This.getWeatherDetails( city, This.render, WEATHER_DETAILS_ENDPOINT);
-                This.getWeatherDetails( city, This.history, WEATHER_DETAILS_ENDPOINT);
-            } else alert('error');
+            } else alert('Попробуйте ввести название на английском, либо в формате "Нижний Новгород" или "Ростов-на-Дону"');
             searchField.value = '';
         });
     }
-    history(data, city) {
+    static renderHistory(data, city) {
         const history = historyTransform(data, city);
         const month = document.getElementsByClassName('month');
         for (let k = 0; k < history.length; k++) {
@@ -291,11 +266,7 @@ class history extends Pages {
     }
 }
 let currentPage;
-if (currentLocation == 'weather-details.html') {
-    currentPage = new today(currentSessionCityPage);
-} else if (currentLocation == 'index.html') {
-    currentPage = new fiveDay(currentSessionCityPage);
-}else if (currentLocation == 'historical-review.html') {
-    currentPage = new history(currentSessionCityPage);
-}
+if (currentLocation === 'weather-details.html') currentPage = new today(currentSessionCityPage);
+else if (currentLocation === 'index.html') currentPage = new fiveDay(currentSessionCityPage);
+else if (currentLocation === 'historical-review.html') currentPage = new history(currentSessionCityPage);
 currentPage.init();

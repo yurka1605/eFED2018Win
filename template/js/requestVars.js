@@ -15,10 +15,6 @@ let currentSessionCityPage;
 const sessionCity = sessionStorage.getItem('city');
 sessionCity == null || '' ? currentSessionCityPage = defaultCity : currentSessionCityPage = sessionCity;
 
-//Поле поиска
-
-const searchField = document.getElementById('searchField');
-
 //html elements hours today
 
 let arrHours =  ['tempvaluePlus', 'tempColPlus', 'tempvalueMinus','tempColMinus','timeWeather','speedWind','windArrow','dayWeek','tempDay','tempNight', 'probabilityValue', 'probability'];

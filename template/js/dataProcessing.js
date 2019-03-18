@@ -1,23 +1,23 @@
-function getPolution(data) {
+const getPolution = data => {
     document.getElementById('polutionInfo').innerHTML = data.data[0].value;
-}
-function getWeatherFiveDay(data) {
+};
+const getWeatherFiveDay = data => {
     let number = ''; 
     let objectDay = {};
 
     for (let i = 0; i < data.list.length; i++) {
         /* Добавление Свойств в объект */
         const dateFull = data.list[i].dt_txt.split(' ')[0];
-        if ( number != dateFull ) {
+        if ( number !== dateFull ) {
             number = dateFull;
             objectDay[dateFull] = [];
-        } else if ( number == dateFull || number == '' ) number = dateFull;
+        } else if ( number === dateFull || number === '' ) number = dateFull;
     }
     /* Добавляем в свойства объекта массивы из объектов */
     for (const key in objectDay) {
         for (let i = 0; i < data.list.length; i++) {
             const dateFull = data.list[i].dt_txt.split(' ')[0];
-            if ( key == dateFull ) {
+            if ( key === dateFull ) {
                 objectDay[key].push(data.list[i]);
             }
         }
@@ -56,78 +56,78 @@ function getWeatherFiveDay(data) {
             weekDay = currentDay.split(',')[0];
             fullDate = currentDay;
             let hours = objectDay[key][i].dt_txt.split(' ')[1].split(':')[0];
-            if (hours == '06' || hours == '09') {
+            if (hours === '06' || hours === '09') {
                 tempMoning = objectDay[key][i].main.temp;
                 imgSrcMoning = objectDay[key][i].weather[0].icon;
                 imgDescrMoning = objectDay[key][i].weather[0].description;
                 windMoning = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
+                if (objectDay[key][i].snow === undefined) {
+                    if (objectDay[key][i].rain === undefined) {
                         probMoning = '0.0';
                     } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
+                        if (objectDay[key][i].rain['3h'] === undefined) {
                             probMoning = '0.0';
                         } else probMoning = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
+                    if (objectDay[key][i].snow['3h'] === undefined) {
                         probMoning = '0.0';
                     } else probMoning = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
-            if (hours == '21' || hours == '18') {
+            if (hours === '21' || hours === '18') {
                 tempEvening = objectDay[key][i].main.temp;
                 imgSrcEvening = objectDay[key][i].weather[0].icon;
                 imgDescrEvening = objectDay[key][i].weather[0].description;
                 windEvening = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
+                if (objectDay[key][i].snow === undefined) {
+                    if (objectDay[key][i].rain === undefined) {
                         probEvening = '0.0';
                     } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
+                        if (objectDay[key][i].rain['3h'] === undefined) {
                             probEvening = '0.0';
                         } else probEvening = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
+                    if (objectDay[key][i].snow['3h'] === undefined) {
                         probEvening = '0.0';
                     } else probEvening = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
-            if (hours == '00' || hours == '03') {
+            if (hours === '00' || hours === '03') {
                 tempNight = objectDay[key][i].main.temp;
                 imgSrcNigth = objectDay[key][i].weather[0].icon;
                 imgDescrNigth = objectDay[key][i].weather[0].description;
                 windNigth = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
+                if (objectDay[key][i].snow === undefined) {
+                    if (objectDay[key][i].rain === undefined) {
                         probNigth = '0.0';
                     } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
+                        if (objectDay[key][i].rain['3h'] === undefined) {
                             probNigth = '0.0';
                         } else probNigth = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
+                    if (objectDay[key][i].snow['3h'] === undefined) {
                         probNigth = '0.0';
                     } else probNigth = objectDay[key][i].snow['3h'].toFixed(1);
                 }
             }
-            if (hours == '12' || hours == '15') {
+            if (hours === '12' || hours === '15') {
                 tempDay = objectDay[key][i].main.temp;
                 imgSrcDay = objectDay[key][i].weather[0].icon;
                 imgDescrDay = objectDay[key][i].weather[0].description;
                 windDay = objectDay[key][i].wind.speed;
-                if (objectDay[key][i].snow == undefined) {
-                    if (objectDay[key][i].rain == undefined) {
+                if (objectDay[key][i].snow === undefined) {
+                    if (objectDay[key][i].rain === undefined) {
                         probDay = '0.0';
                     } else {
-                        if (objectDay[key][i].rain['3h'] == undefined) {
+                        if (objectDay[key][i].rain['3h'] === undefined) {
                             probDay = '0.0';
                         } else probDay = objectDay[key][i].rain['3h'].toFixed(1);
                     }
                 } else {
-                    if (objectDay[key][i].snow['3h'] == undefined) {
+                    if (objectDay[key][i].snow['3h'] === undefined) {
                         probDay = '0.0';
                     } else probDay = objectDay[key][i].snow['3h'].toFixed(1);
                 }
@@ -156,43 +156,32 @@ function getWeatherFiveDay(data) {
         };
     }
     return objectDay;
-}
-function findEmptyElements(empty ,elem, arr) {
+};
+//Поиск пустых елементов
+const findEmptyElements = (empty ,elem, arr) => {
     for (let index = 0; index < arr.length; index++) {
-        if (arr[index] != '') {
-            elem = arr[index];
-        } else {
-            empty.push(index);
-        }
+        arr[index] !== '' ? elem = arr[index] : empty.push(index);
     }
     for (let k = 0; k < empty.length; k++) {
         arr[empty[k]] = elem;
     }
     return arr;
-}
-function probabilityCol(numberCol) {
+};
+//Столбцы
+const probabilityCol = numberCol => {
     let valueCol;
-    if (numberCol > 6) {
-        valueCol = '22px';
-    } else if(numberCol > 5 ) {
-        valueCol = '28px';
-    } else if (numberCol > 4) {
-        valueCol = '30px';
-    } else if(numberCol > 3) {
-        valueCol = '38px';
-    } else if(numberCol > 2) {
-        valueCol = '46px';
-    } else if (numberCol > 1) {
-        valueCol = '54px';
-    } else if(numberCol > 0) {
-        valueCol = '62px';
-    } else {
-        valueCol = '70px';
-    }
+    if (numberCol > 6) valueCol = '22px';
+    else if(numberCol > 5 ) valueCol = '28px';
+    else if (numberCol > 4) valueCol = '30px';
+    else if(numberCol > 3) valueCol = '38px';
+    else if(numberCol > 2) valueCol = '46px';
+    else if (numberCol > 1) valueCol = '54px';
+    else if(numberCol > 0)valueCol = '62px';
+    else valueCol = '70px';
     return valueCol;
-}
+};
 //Получение Html элементов
-function getDataPage (methodGet, array) {
+const getDataPage = (methodGet, array) => {
     let arrDomNodes = [];
     for (let i = 0; i < array.length; i++) {
         let arrItem;
@@ -201,17 +190,17 @@ function getDataPage (methodGet, array) {
         arrDomNodes.push(arrItem);
     }
     return arrDomNodes;
-}
+};
 //Трансформация данных истории
-function historyTransform(data, city) {
+const historyTransform = (data, city) => {
     let history = [];
     for (const key in data) {
-        if (key == city) {
+        if (key === city) {
             let minMiddle, maxMiddle, recordMax, recordMin;
             const objectYears = data[key];
             for (let i = 0; i < 12; i++) {
                 for (const prop in objectYears) {
-                    if (prop == '1960') {
+                    if (prop === '1960') {
                         minMiddle = objectYears[prop][i].avearage;
                         maxMiddle = objectYears[prop][i].avearage;
                         recordMax = objectYears[prop][i].max;
@@ -239,4 +228,15 @@ function historyTransform(data, city) {
         }
     }
     return history;
-}
+};
+//Длина дня и ночи
+const longDayNight = (sunrise, sunset) => {
+    const hourSunset = sunset.split(',')[1].split(':')[0];
+    const minutesSunset = sunset.split(',')[1].split(':')[1];
+    const hourSunrise = sunrise.split(',')[1].split(':')[0];
+    const minutesSunrise = sunrise.split(',')[1].split(':')[1];
+    const longDaySeconds = hourSunset*60 + minutesSunset*1 - hourSunrise*60 - minutesSunrise*1;
+    const longDay = Math.round(longDaySeconds/60) + ' ч ' + longDaySeconds%60 + ' мин';
+    const longNight = Math.round((24*60 - longDaySeconds)/60) + ' ч ' + (24*60 - longDaySeconds)%60 + ' мин';
+    return [longDay, longNight];
+};

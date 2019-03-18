@@ -2,14 +2,14 @@ const overlay = document.getElementsByClassName('overlay')[0];
 const spinner = document.getElementsByClassName('spinner')[0];
 const sun = document.getElementById('sun');
 const body = document.getElementsByTagName('body')[0];
-async function hideSpinner() {
+const hideSpinner = async () => {
     await setTimeout(() => {
         spinner.style.display = 'none';
         overlay.style.display = 'none';
         body.style.overflow = 'auto';
     }, 2000);
-}
-async function twistSpinner() {
+};
+const twistSpinner = async () => {
     spinner.style.display = 'block';
     overlay.style.display = 'block';
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
@@ -19,4 +19,4 @@ async function twistSpinner() {
         sun.classList.remove('sun');
         sun.classList.add('path');
     },1000);
-}
+};
