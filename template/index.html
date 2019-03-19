@@ -13,6 +13,7 @@
     </style>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/dataProcessing.js"></script>
     <script type="text/javascript" src="js/requestVars.js"></script>
@@ -38,8 +39,8 @@
                 <span id="temperatureHeaderInfo"></span> <span id="cityInfo"></span>,<span id="countryInfo"></span>
               </span>
               <div id="form">
-                <button id="find" type="submit"></button>
-                <input id="searchField" title="Возможно в названии города присутствуют цифры.Введите название города с большой буквы. Если название состоит из двух слов,то введите второе слово через пробел" role="search" type="search" placeholder="Поиск" pattern="(^[A-Z]{1}[a-z]{1,100}$)|(^[А-Я]{1}[а-я]{1,100}$)|(^[А-Я]{1}[а-я]{1,100} [А-Яа-я]{1,100}$)|(^[A-Z]{1}[a-z]{1,100} [A-Za-z]{1,100}$)">
+                <button id="find" type="submit"><i class='fa fa-search'></i></button>
+                <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Введите город с большой буквы..." pattern="">
               </div>
             </section>
           </header>

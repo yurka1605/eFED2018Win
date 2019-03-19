@@ -9,10 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Сайт погоды. Погода на сегодня</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
     <style>
       @import url('styles/today.css');
     </style>
-      <link rel="shortcut icon" href="./img/favicon.ico" type="image/ico">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/ico">
     <script type="text/javascript" src="js/dataProcessing.js"></script>
     <script type="text/javascript" src="js/requestVars.js"></script>
   </head>
@@ -34,8 +35,8 @@
         <section id="bottomHeader">
           <span>Загрязнение воздуха:<span id="polutionInfo"></span></span>
           <div id="form">
-            <button id="find" type="submit"></button>
-            <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Поиск" pattern="">
+            <button id="find" type="submit"><i class='fa fa-search'></i></button>
+            <input id="searchField" title="Введите название города с большой буквы" role="search" type="search" placeholder="Введите город с большой буквы..." pattern="">
           </div>
         </section>
       </header>
