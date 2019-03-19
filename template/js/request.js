@@ -106,12 +106,12 @@ class today extends Pages {
             if (temp < 0) {
                 tempValueMinus[j].innerHTML = temp;
                 tempColMinus[j].style.height = temp*(-3) + 'px';
-                tempColMinus[j].style.border = '1px solid black';
+                tempColMinus[j].style.border = '1px solid #3268bf';
                 tempColMinus[j].style.borderTop = '0';
             } else if (temp > 0) {
                 tempColPlus[j].style.height = temp*3 + 'px';
                 tempValuePlus[j].innerHTML = temp;
-                tempColPlus[j].style.border = '1px solid black';
+                tempColPlus[j].style.border = '1px solid #3268bf';
                 tempColPlus[j].style.borderBottom = '0';
             } else tempValuePlus[j].innerHTML = temp*(-1);
             /* Wind */
@@ -195,15 +195,11 @@ class fiveDay extends Pages {
         temperatureHeaderInfo.innerHTML = data.main.temp.toFixed(0) + '&degC';
         /* Текущая погода картинкой */
         topCloudy.src = `img/Today/${data.weather[0].icon}.png`;
-        topCloudy.alt = data.weather[0].description;
-        topCloudy.title = data.weather[0].description;
+        topCloudy.alt = topCloudy.title = data.weather[0].description;
         DateAndWeekDay.innerHTML = `${ currentMonth }, сегодня`;
-        sunrises.innerHTML = sunrise.split(',')[1];
-        sunsets.innerHTML = sunset.split(',')[1];
-        longDay.innerHTML = longDayNight(sunrise, sunset)[0];
-        moontime.innerHTML = longDayNight(sunrise, sunset)[1];
-        moonrise.innerHTML = sunset.split(',')[1];
-        moonset.innerHTML = sunrise.split(',')[1];
+        sunrises.innerHTML = moonset.innerHTML = sunrise.split(',')[1];
+        sunsets.innerHTML = moonrise.innerHTML = sunset.split(',')[1];
+        [longDay.innerHTML, moontime.innerHTML]  = longDayNight(sunrise, sunset);
     }
     static renderHours(data) {
         const objectDay =  getWeatherFiveDay(data);
@@ -213,37 +209,29 @@ class fiveDay extends Pages {
                 navDays[i].innerHTML = objectDay[key].weekDay;
                 numberDay[i].innerHTML = objectDay[key].fullDate;
                 /* Утро */
-                moningImg[i].src = `img/Today/${ objectDay[key].imgSrc[0] }.png`;
-                moningImg[i].alt = objectDay[key].imgDescr[0];
-                moningImg[i].title = objectDay[key].imgDescr[0];
-                moningTemp[i].innerHTML = objectDay[key].temp[0].toFixed(0) + '&deg';
-                moningWind[i].innerHTML = objectDay[key].wind[0].toFixed(0);
-                moningProb[i].children[0].innerHTML = objectDay[key].prob[0];
-                moningProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[0]);
+                [
+                    moningImg[i].src, moningImg[i].alt, moningImg[i].title,
+                    moningWind[i].innerHTML, moningTemp[i].innerHTML,
+                    moningProb[i].children[0].innerHTML, moningProb[i].style.backgroundPositionY
+                ] = renderDays( objectDay[key], 0);
                 /* Ночь */
-                nightImg[i].src = `img/Today/${ objectDay[key].imgSrc[1] }.png`;
-                nightImg[i].alt = objectDay[key].imgDescr[1];
-                nightImg[i].title = objectDay[key].imgDescr[1];
-                nightWind[i].innerHTML = objectDay[key].wind[1].toFixed(0);
-                nightTemp[i].innerHTML = objectDay[key].temp[1].toFixed(0) + '&deg';
-                nightProb[i].children[0].innerHTML = objectDay[key].prob[1];
-                nightProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[1]);
+                [
+                    nightImg[i].src, nightImg[i].alt, nightImg[i].title,
+                    nightWind[i].innerHTML, nightTemp[i].innerHTML,
+                    nightProb[i].children[0].innerHTML, nightProb[i].style.backgroundPositionY
+                ] = renderDays( objectDay[key], 1);
                 /* День */
-                dayImg[i].src = `img/Today/${ objectDay[key].imgSrc[2] }.png`;
-                dayImg[i].alt = objectDay[key].imgDescr[2];
-                dayImg[i].title = objectDay[key].imgDescr[2];
-                dayWind[i].innerHTML = objectDay[key].wind[2].toFixed(0);
-                dayTemp[i].innerHTML = objectDay[key].temp[2].toFixed(0) + '&deg';
-                dayProb[i].children[0].innerHTML = objectDay[key].prob[2];
-                dayProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[2]);
+                [
+                    dayImg[i].src, dayImg[i].alt, dayImg[i].title,
+                    dayWind[i].innerHTML, dayTemp[i].innerHTML,
+                    dayProb[i].children[0].innerHTML, dayProb[i].style.backgroundPositionY
+                ] = renderDays( objectDay[key], 2);
                 /* Вечер */
-                eveningImg[i].src = `img/Today/${ objectDay[key].imgSrc[3] }.png`;
-                eveningImg[i].alt = objectDay[key].imgDescr[3];
-                eveningImg[i].title = objectDay[key].imgDescr[3];
-                eveningWind[i].innerHTML = objectDay[key].wind[3].toFixed(0);
-                eveningTemp[i].innerHTML = objectDay[key].temp[3].toFixed(0) + '&deg';
-                eveningProb[i].children[0].innerHTML = objectDay[key].prob[3];
-                eveningProb[i].style.backgroundPositionY = probabilityCol(objectDay[key].prob[3]);
+                [
+                    eveningImg[i].src, eveningImg[i].alt, eveningImg[i].title,
+                    eveningWind[i].innerHTML, eveningTemp[i].innerHTML,
+                    eveningProb[i].children[0].innerHTML, eveningProb[i].style.backgroundPositionY
+                ] = renderDays( objectDay[key], 3);
                 i++;
             }
         }
