@@ -13,9 +13,8 @@ const twistSpinner = async () => {
     spinner.style.display = 'block';
     overlay.style.display = 'block';
     document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-
     sun.classList.add('sun');
-    await setTimeout(function() {
+    await setTimeout(() => {
         sun.classList.remove('sun');
         sun.classList.add('path');
     },1000);

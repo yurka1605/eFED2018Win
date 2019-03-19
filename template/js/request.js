@@ -16,28 +16,24 @@ class Pages {
         });
         fetch(request)
             .then( response => {
-                if (response.status === 200) {
-                    return response.json();
-                }else if (response.status === 401) {
-                    callback(historicalReviewMock, city);
-                    hideSpinner();
-                } else {
-                    throw new Error('Response status not 200.');
-                }
+                if (response.status === 200) return response.json();
+                else if (response.status === 401) throw response.status;
+                else throw new Error('Response status not 200.');
             })
             .then( success => {
-                callback(success);  
+                callback(success);
                 hideSpinner();
             })
             .catch( error => {
-                console.log('Problem with request: ' + error.message);
+                if (error === 401 && currentLocation === 'historical-review.html') callback(historicalReviewMock, city);
+                else console.log('Problem with request: ' + error.message);
                 hideSpinner();
             });
     }
     render(data) {
+        sessionStorage.setItem('city', data.name);
         /* Страна */
         document.getElementById('cityInfo').innerHTML = data.name;
-        sessionStorage.setItem('city', data.name);
         /* Город */
         document.getElementById('countryInfo').innerHTML = data.sys.country;
         /* Год */
@@ -69,23 +65,31 @@ class today extends Pages {
         const WEATHER_DETAILS_POLUTION = `https://api.openweathermap.org/pollution/v1/co/${ currentCoordinate }/current.json?appid=${ APP_ID }`;
         const polution = new Pages('');
         polution.getWeatherDetails('', getPolution, WEATHER_DETAILS_POLUTION);
-
         /* Температура целыми числами */
-        let arrToday =  getDataPage('Id', ['temperatureInfo', 'imgWeatherToday', 'wetnessInfo', 'windSpeedInfo', 'probabilityPracipationInfo', 'dayWeekInfo','weatherInfo']);
-        arrToday[0].innerHTML = data.main.temp.toFixed(0) + '&degC';
+        const [
+            temperatureInfo, imgWeatherToday, wetnessInfo,
+            windSpeedInfo, probabilityPracipationInfo,
+            dayWeekInfo, weatherInfo,
+        ] =  getDataPage('Id', [
+            'temperatureInfo', 'imgWeatherToday', 'wetnessInfo',
+            'windSpeedInfo', 'probabilityPracipationInfo',
+            'dayWeekInfo', 'weatherInfo',
+        ]);
+        /* Температура целыми числами */
+        temperatureInfo.innerHTML = data.main.temp.toFixed(0) + '&degC';
         /* Текущая погода картинкой */
-        arrToday[1].src = `img/Today/${data.weather[0].icon}.png`;
-        arrToday[1].alt = data.weather[0].description;
-        arrToday[1].title = data.weather[0].description;
+        imgWeatherToday.src = `img/Today/${data.weather[0].icon}.png`;
+        imgWeatherToday.alt = data.weather[0].description;
+        imgWeatherToday.title = data.weather[0].description;
         /* Влажность */
-        arrToday[2].innerHTML = data.main.humidity;
+        wetnessInfo.innerHTML = data.main.humidity;
         /* Скорость ветра */
-        arrToday[3].innerHTML = data.wind.speed.toFixed(1);
+        windSpeedInfo.innerHTML = data.wind.speed.toFixed(1);
         /* Осадки */
-        arrToday[4].innerHTML = data.clouds.all;
+        probabilityPracipationInfo.innerHTML = data.clouds.all;
         /* Дата */
-        arrToday[5].innerHTML = new Date(data.dt*1000).toLocaleString('ru', { weekday: 'long' });
-        arrToday[6].innerHTML = data.weather[0].description;
+        dayWeekInfo.innerHTML = new Date(data.dt*1000).toLocaleString('ru', { weekday: 'long' });
+        weatherInfo.innerHTML = data.weather[0].description;
     }
     static renderHours(data) {
         for (let j = 0; j < hours.length; j++) {
@@ -178,20 +182,28 @@ class fiveDay extends Pages {
             day: 'numeric',
             month: 'long'
         });
-        let arrFiveDay =  getDataPage('Id', ['temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay','sunrise','sunset','longDay','moontime', 'moonrise', 'moonset']);
+        const [
+            temperatureHeaderInfo, topCloudy, DateAndWeekDay,
+            sunrises, sunsets, longDay,
+            moontime, moonrise, moonset,
+        ] =  getDataPage('Id', [
+            'temperatureHeaderInfo', 'topCloudy', 'DateAndWeekDay',
+            'sunrise', 'sunset', 'longDay',
+            'moontime', 'moonrise', 'moonset',
+        ]);
         /* Температура целыми числами */
-        arrFiveDay[0].innerHTML = data.main.temp.toFixed(0) + '&degC';
+        temperatureHeaderInfo.innerHTML = data.main.temp.toFixed(0) + '&degC';
         /* Текущая погода картинкой */
-        arrFiveDay[1].src = `img/Today/${data.weather[0].icon}.png`;
-        arrFiveDay[1].alt = data.weather[0].description;
-        arrFiveDay[1].title = data.weather[0].description;
-        arrFiveDay[2].innerHTML = `${ currentMonth }, сегодня`;
-        arrFiveDay[3].innerHTML = sunrise.split(',')[1];
-        arrFiveDay[4].innerHTML = sunset.split(',')[1];
-        arrFiveDay[5].innerHTML = longDayNight(sunrise, sunset)[0];
-        arrFiveDay[6].innerHTML = longDayNight(sunrise, sunset)[1];
-        arrFiveDay[7].innerHTML = sunset.split(',')[1];
-        arrFiveDay[8].innerHTML = sunrise.split(',')[1];
+        topCloudy.src = `img/Today/${data.weather[0].icon}.png`;
+        topCloudy.alt = data.weather[0].description;
+        topCloudy.title = data.weather[0].description;
+        DateAndWeekDay.innerHTML = `${ currentMonth }, сегодня`;
+        sunrises.innerHTML = sunrise.split(',')[1];
+        sunsets.innerHTML = sunset.split(',')[1];
+        longDay.innerHTML = longDayNight(sunrise, sunset)[0];
+        moontime.innerHTML = longDayNight(sunrise, sunset)[1];
+        moonrise.innerHTML = sunset.split(',')[1];
+        moonset.innerHTML = sunrise.split(',')[1];
     }
     static renderHours(data) {
         const objectDay =  getWeatherFiveDay(data);
@@ -265,7 +277,6 @@ class history extends Pages {
         }
     }
 }
-let currentPage;
 if (currentLocation === 'weather-details.html') currentPage = new today(currentSessionCityPage);
 else if (currentLocation === 'index.html' || currentLocation === '') currentPage = new fiveDay(currentSessionCityPage);
 else if (currentLocation === 'historical-review.html') currentPage = new history(currentSessionCityPage);
