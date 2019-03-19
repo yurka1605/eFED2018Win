@@ -15,7 +15,7 @@ body{
 
 #bottomHeader > #placeTop{
     font-size: 15px;
-    color: #0f0f0f;
+    color: #3268bf;
     margin-top: 6px;
     margin-left: 100px;
 }
@@ -47,7 +47,7 @@ main{
     border: 1px solid #979797;
     width: 100%;
     text-align: center;
-    padding: 5px 0px;
+    padding: 5px 0;
     background-color: rgb(95, 195, 235);
 }
 #middleTable, #bottomTable{
@@ -236,7 +236,7 @@ main{
 .slide{
     z-index: 1;
     opacity: 0;
-    border: 1px solid black;
+    border: 1px solid #979797;
     position: absolute;
     width: 100%;
     min-height: 120px;
@@ -311,7 +311,7 @@ main{
 .numberDay{
     display: block;
     text-align: center;
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid #979797;
     padding: 0 5px;
     background-color: rgb(95, 195, 235);
     text-transform: capitalize;
@@ -337,28 +337,28 @@ main{
     padding: 2px 5px;
     margin: 0 auto;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid #979797;
 }
 .nightImg, .moningImg, .dayImg, .eveningImg{
     height: 42px;
 }
 .nightTemp{
-    background: chartreuse;
+    background: rgb(225, 240, 250);
 }
 .moningTemp{
-    background: coral;
+    background: rgb(225, 240, 250);
 }
 .dayTemp{
-    background: #f3a536;
+    background: rgb(225, 240, 250);
 }
 .eveningTemp{
-    background: greenyellow;
+    background: rgb(225, 240, 250);
 }
 .navDays{
     width: 30px;
     text-align: center;
     padding: 3px 0;
-    border: 1px solid black;
+    border: 1px solid #979797;
     background-color: rgb(225, 240, 250);
     cursor: pointer;
 }

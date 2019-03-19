@@ -193,12 +193,12 @@ const page = {
                     tempValueMinus[j].innerHTML = temp;
                     temp = temp*(-1);
                     tempColMinus[j].style.height = temp*3 + 'px';
-                    tempColMinus[j].style.border = '1px solid black';
+                    tempColMinus[j].style.border = '1px solid #3268bf';
                     tempColMinus[j].style.borderTop = '0';
                 } else if (temp > 0) {
                     tempColPlus[j].style.height = temp*3 + 'px';
                     tempValuePlus[j].innerHTML = temp;
-                    tempColPlus[j].style.border = '1px solid black';
+                    tempColPlus[j].style.border = '1px solid #3268bf';
                     tempColPlus[j].style.borderBottom = '0';
                 } else {
                     temp = temp*(-1);

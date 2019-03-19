@@ -13,6 +13,7 @@ main{
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    color: #3268bf;
 }
 #detailsPlace{
     font-size: 28px;
@@ -47,7 +48,6 @@ main{
 .detailsTab{
     padding: 15px 15px;
     font-size: 16px;
-    color: #000000;
     background-color: rgb(225, 240, 250);
 }
 
@@ -84,6 +84,7 @@ ul{
     display:block;
     padding-bottom: 20px;
     font-weight: 600;
+    color: #3268bf;
 }
 .timeWeather{
     display:block;
@@ -114,13 +115,14 @@ li:first-child>.dayWeek{
     text-transform: capitalize;
 }
 .dayWeek>p:last-child{
-    padding: 10px 15px 5px 0px;
+    padding: 10px 15px 5px 0;
 }
 .dayWeek>img{
     height:50px;
 }
 .tempDay{
     font-weight: 600;
+    color: #3268bf;
 }
 .tempNight{
     float: right;
@@ -156,9 +158,10 @@ li:first-child>.dayWeek{
     text-align: center;
     width: 30px;
     padding: 3px 0;
+    color: #3268bf;
 }
 .tempColPlus ,.tempColMinus{
-    height: 0px;
+    height: 0;
     width: 20px;
     background: #6382c5;
     margin: auto;
@@ -172,7 +175,7 @@ li:first-child>.dayWeek{
     border-top: 0;
 }
 #tempPlus{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #3268bf;
     align-items: flex-end;
     justify-content: space-around;
 }

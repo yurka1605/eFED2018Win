@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     font-family: sans-serif;
+    color: #3268bf;
 }
 img{
     text-transform: capitalize;
@@ -14,6 +15,7 @@ button{
   -webkit-appearance: none;
   border-radius: 15px;
   background-color: rgb(225, 240, 250);
+    color: #3268bf;
 }
 input{
   -webkit-appearance: none;
@@ -90,7 +92,6 @@ input{
     width: 104px;
     height: 30px;
     font-size: 16px;
-    color: #000000;
 }
 #historyWeather{
   width: 204px;
@@ -117,15 +118,15 @@ input{
 }
 #bottomHeader>span{
     font-size: 15px;
-    color: #0f0f0f;
+    color: #3268bf;
     margin-left: 17px;
 }
 #form:hover::after{
     content: 'Введите город с большой буквы';
     position: absolute;
     font-size: small;
-    color:  #000000;
-    background: #ffffff;
+    color:  #3268bf;
+    background: rgb(225, 240, 250);
     margin-top: 2px;
     border: 1px solid #7492d4;
 }
@@ -146,9 +147,7 @@ input{
     height: 30px;
     outline:none;
     cursor: pointer;
-    border-radius: 0px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    border-radius: 5px 0px 0px 5px;
 }
 #find:hover{
   background: rgb(59, 126, 214);
