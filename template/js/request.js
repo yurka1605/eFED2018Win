@@ -125,89 +125,6 @@ class today extends Pages {
             probability[j].children[1].children[1].style.height = heightValue +'px';
             probability[j].children[2].children[0].style.height = heightValue + randomValue +'px';
         }
-<<<<<<< HEAD
-        /* Страна Россия */
-        if (data.sys.country == 'RU') currentCountry.innerHTML = 'Россия';
-        else currentCountry.innerHTML = data.sys.country;
-        /* Город */
-        currentCity.innerHTML = data.name;
-        /* Год */
-        currentYear.innerHTML = currentDate.getFullYear();
-    },
-    hours(data) {
-        if (currentLocation == 'weather-details.html') {
-            arr =  ['tempvaluePlus', 'tempColPlus', 'tempvalueMinus','tempColMinus','timeWeather','speedWind','windArrow','dayWeek','tempDay','tempNight', 'probabilityValue', 'probability'];
-            arr = getDataPage('ClassName', arr);
-            let tempValuePlus = arr[0],
-                tempColPlus = arr[1],
-                tempValueMinus = arr[2],
-                tempColMinus = arr[3],
-                hours = arr[4],
-                speedWind = arr[5],
-                windArrow = arr[6],
-                daysWeek = arr[7],
-                tempDay = arr[8],
-                tempNight = arr[9],
-                probabilityValue = arr[10],
-                probability = arr[11];
-
-            for (let j = 0; j < hours.length; j++) {
-                /* hours */
-                let currentHour = data.list[j].dt_txt;
-                currentHour = currentHour.split(' ')[1].split(':')[0];
-                hours[j].innerHTML = currentHour + ':00';
-                /* Temps */
-                let temp = data.list[j].main.temp.toFixed(0);
-                tempColPlus[j].style.height = '0';
-                tempValuePlus[j].innerHTML = '';
-                tempColPlus[j].style.border = '0';
-                tempColMinus[j].style.height = '0';
-                tempValueMinus[j].innerHTML = '';
-                tempColMinus[j].style.border = '0';
-                if (temp < 0) {
-                    tempValueMinus[j].innerHTML = temp;
-                    temp = temp*(-1);
-                    tempColMinus[j].style.height = temp*3 + 'px';
-                    tempColMinus[j].style.border = '1px solid #3268bf';
-                    tempColMinus[j].style.borderTop = '0';
-                } else if (temp > 0) {
-                    tempColPlus[j].style.height = temp*3 + 'px';
-                    tempValuePlus[j].innerHTML = temp;
-                    tempColPlus[j].style.border = '1px solid #3268bf';
-                    tempColPlus[j].style.borderBottom = '0';
-                } else {
-                    temp = temp*(-1);
-                    tempValuePlus[j].innerHTML = temp;
-                }
-                /* Wind */
-                speedWind[j].innerHTML = data.list[j].wind.speed.toFixed(0) + 'м/с';
-                windArrow[j].style.transform = `rotate(${ data.list[j].wind.deg }deg)`;
-                /* Вероятность осадков */
-                probabilityValue[j].innerHTML = data.list[j].clouds.all + '%';
-                let probabilityCol1 = probability[j].children[0].children[0];
-                let probabilityCol2 = probability[j].children[1].children[1];
-                let probabilityCol3 = probability[j].children[2].children[0];
-                let heightValue = data.list[j].clouds.all;
-                let randomValue = Math.floor(Math.random() * (10 - 0 + 1)) + 0;
-                probabilityCol1.style.height = heightValue - randomValue +'px';
-                probabilityCol2.style.height = heightValue +'px';
-                probabilityCol3.style.height = heightValue + randomValue +'px';
-            }
-            /* Five days */
-            const objectDay =  getWeatherFiveDay(data);
-            let j = 0;
-            for (const key in objectDay) {
-                let max = '', min = '', maxInd;
-                for (let i = 0; i < objectDay[key].temp.length; ++i) {
-                    if (objectDay[key].temp[i] != '') {
-                        if (max < objectDay[key].temp[i] || max == '' ) {
-                            max = objectDay[key].temp[i];
-                            maxInd = i;
-                        }
-                        if (min > objectDay[key].temp[i] || min == '') {
-                            min = objectDay[key].temp[i];
-                        }
-=======
         /* Five days */
         const objectDay =  getWeatherFiveDay(data);
         let j = 0;
@@ -218,7 +135,6 @@ class today extends Pages {
                     if (max < objectDay[key].temp[i] || max === '' ) {
                         max = objectDay[key].temp[i];
                         maxInd = i;
->>>>>>> JS-ES6-ES7-ES8
                     }
                     if (min > objectDay[key].temp[i] || min === '') min = objectDay[key].temp[i];
                 }
