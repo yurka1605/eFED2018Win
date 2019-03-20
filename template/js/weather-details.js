@@ -1,8 +1,7 @@
 'use strict';
 window.onload = () => {
     /* Tab click */
-    const detailsTab = document.getElementsByClassName('detailsTab');
-    const blockInfo = document.getElementsByClassName('blockInformation');
+    const [detailsTab, blockInfo] = getDataPage('ClassName',['detailsTab', 'blockInformation']);
     const tabCheck = (event) => {
         for (let j = 0; j < detailsTab.length; j++) {
             detailsTab[j].classList.remove('currentTab');
