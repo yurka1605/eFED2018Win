@@ -1,9 +1,9 @@
 'use strict';
-window.onload = function () {
+window.onload = () => {
     /* Tab click */
     const detailsTab = document.getElementsByClassName('detailsTab');
     const blockInfo = document.getElementsByClassName('blockInformation');
-    function tabCheck(event) {
+    const tabCheck = (event) => {
         for (let j = 0; j < detailsTab.length; j++) {
             detailsTab[j].classList.remove('currentTab');
         }
@@ -12,7 +12,7 @@ window.onload = function () {
             if (detailsTab[k].classList.contains('currentTab') === true) blockInfo[k].classList.add('currentBlock');
             else blockInfo[k].classList.remove('currentBlock');
         }
-    }
+    };
     for (let i = 0; i < detailsTab.length; i++) {
         detailsTab[i].addEventListener('click', tabCheck);
     }
